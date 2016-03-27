@@ -3,20 +3,19 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to BookData's documentation!
+Python 和数据科学
 ====================================
+.. note::
 
-Contents:
+    本书是 Scott 在学习数据科学所写的学习笔记，但写成了一本书的形式，欢迎交流与指教。
+
+目录:
+^^^^^
 
 .. toctree::
-   :maxdepth: 2
-
-
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
-
+    :maxdepth: 2
+    :glob:
+    
+    beginning/index
+    base/index
+    tool/index
