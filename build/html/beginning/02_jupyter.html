@@ -1,0 +1,386 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>2. Jupyter 的安装和使用 &mdash; BookData 0.1 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="BookData 0.1 documentation" href="../index.html"/>
+        <link rel="up" title="入门篇" href="index.html"/>
+        <link rel="next" title="3. 数值计算（Numpy）" href="03_numpy.html"/>
+        <link rel="prev" title="1. Linux 基础" href="01_linux.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> BookData
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">入门篇</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="01_linux.html">1. Linux 基础</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">2. Jupyter 的安装和使用</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ipython-jupyter">2.1. IPython 和 Jupyter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">2.2. 安装</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">远程使用</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">2.3. 快捷操作</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cell-type">单元类型 (cell type)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">常用快捷</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#split-cell">拆分单元 (split cell)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">2.4. 查看对象信息</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">2.5. 魔术命令</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">2.6. 转换</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="03_numpy.html">3. 数值计算（Numpy）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_matplotlib.html">4. 数据绘图（Matplotlib）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="05_seaborn.html">5. 数据绘图（Seaborn)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../base/index.html">基础篇</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tool/index.html">工具篇</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">BookData</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">入门篇</a> &raquo;</li>
+      
+    <li>2. Jupyter 的安装和使用</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/beginning/02_jupyter.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="jupyter">
+<h1>2. Jupyter 的安装和使用<a class="headerlink" href="#jupyter" title="Permalink to this headline">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Date:</th><td class="field-body">2016-04-04</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="ipython-jupyter">
+<h2>2.1. IPython 和 Jupyter<a class="headerlink" href="#ipython-jupyter" title="Permalink to this headline">¶</a></h2>
+<p>IPython 是一个 Python REPl shell，环境远比 Python 自带的强大，而 Jupyter
+Notebook 则是一个基于 IPython REPl 的 Web
+应用，运行结果可保存为后缀.ipynb，交互性强，所见即所得，数据分析，写分析报告等的不二利器。</p>
+<p>官方解释：</p>
+<blockquote>
+<div>The Jupyter Notebook is a web application that allows you to create
+and share documents that contain live code, equations,
+visualizations and explanatory text. Uses include: data cleaning and
+transformation, numerical simulation, statistical modeling, machine
+learning and much more.</div></blockquote>
+</div>
+<div class="section" id="id1">
+<h2>2.2. 安装<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>如果有看过我上一篇文章 <a class="reference external" href="http://scottming.com/2016/04/03/use_linux/#linux--1">《用 Linux
+处理数据》</a>
+，并安装了
+<a class="reference external" href="https://www.continuum.io/downloads">Anaconda</a>，那么你已经有
+Jupyter 了，打开终端，输入 <code class="docutils literal"><span class="pre">jupyter</span> <span class="pre">notebook</span></code> 即可。</p>
+<div class="section" id="id2">
+<h3>远程使用<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>如果有远程使用的需求，则需把远程服务器配置下。</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span># 服务器下载 ssh 服务，如 Debian
+sudo apt-get install openssh-server
+# 不知道 ssh 是否打开，可以把他重启下
+sudo service sshd restart
+</pre></div>
+</div>
+<p>然后可以在局域网用其他电脑访问下，Mac 可直接在终端输入
+<code class="docutils literal"><span class="pre">ssh</span> <span class="pre">username&#64;ip</span></code>, 这里的 ip 指的局域网下的这台服务器的
+ip，建议在路由器设置成静态
+ip，若在外网使用，则需在路由器里面设置好端口转发。</p>
+<p>然后参考官方教程 <a class="reference external" href="http://jupyter-notebook.readthedocs.org/en/latest/public_server.html">Running a notebook
+server</a>
+配置。</p>
+<div class="admonition attention">
+<p class="first admonition-title">Attention</p>
+<p class="last">jupyter_notebook_config.py 这个文件里面 certfile 和 keyfile 的地址应为绝对地址.</p>
+</div>
+<p>一大串输入很麻烦，也易出错，建议打开 .zshrc，并在底部添加一行：</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>alias jn=&#39;jupyter notebook --certfile=/home/scott/.jupyter/mycert.pem --keyfile /home/scott/.jupyter/mykey.key&#39;
+</pre></div>
+</div>
+<p>这样到其他电脑键入：</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">jn</span>
+</pre></div>
+</div>
+<p>若能看到类似下方的输出，证明配置成功了。</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>[I 09:56:29.937 NotebookApp] The Jupyter Notebook is running at: https://[all ip addresses on your system]:8889/
+</pre></div>
+</div>
+<p>我的端口配置的是 <code class="docutils literal"><span class="pre">8889</span></code>，
+你也可以设置成其他的，再到路由器里配置下端口转发，大功告成。如果有用
+R，也可用类似的方法配置下 <a class="reference external" href="https://www.rstudio.com/products/rstudio/download-server/">RStudio
+Server</a>，超简单。</p>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>2.3. 快捷操作<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>Jupyter Notebook 的快捷键是一大亮点，如果有看过我这篇文章 <a class="reference external" href="http://scottming.com/2016/01/01/remap_keyboard/">《让 CapsLock
+键更实用》</a><a class="footnote-reference" href="#f1" id="id4">[1]</a> ，并对 Mac 或 Win 做了配置，那么你熟悉几个
+Jupyter 的快捷，用 Jupyter 写报告之类基本上不需要鼠标了。</p>
+<div class="section" id="cell-type">
+<h3>单元类型 (cell type)<a class="headerlink" href="#cell-type" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal"><span class="pre">Jupyter</span> <span class="pre">Notebook</span></code>文档由一系列的单元 (cell)
+组成，主要用的两类单元是：</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">markdown</span> <span class="pre">cell</span></code>，命令模式下，按 <code class="docutils literal"><span class="pre">m</span></code> 可将单元切换为
+<code class="docutils literal"><span class="pre">markdown</span> <span class="pre">cell</span></code> 。</li>
+<li><code class="docutils literal"><span class="pre">code</span> <span class="pre">cell</span></code>，命令模式下，按 <code class="docutils literal"><span class="pre">y</span></code> 可将单元切换为 <code class="docutils literal"><span class="pre">code</span> <span class="pre">cell</span></code> 。</li>
+</ul>
+</div>
+<div class="section" id="id5">
+<h3>常用快捷<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>查看快捷键帮助: <code class="docutils literal"><span class="pre">h</span></code></li>
+<li>保存: <code class="docutils literal"><span class="pre">s</span></code></li>
+<li>cell 间移动: <code class="docutils literal"><span class="pre">j</span></code>, <code class="docutils literal"><span class="pre">k</span></code></li>
+<li>添加 cell: <code class="docutils literal"><span class="pre">a</span></code>, <code class="docutils literal"><span class="pre">b</span></code></li>
+<li>删除 cell: <code class="docutils literal"><span class="pre">dd</span></code></li>
+<li>cell 编辑: <code class="docutils literal"><span class="pre">x</span></code>, <code class="docutils literal"><span class="pre">c</span></code>, <code class="docutils literal"><span class="pre">v</span></code>, <code class="docutils literal"><span class="pre">z</span></code></li>
+<li>中断 kernel: <code class="docutils literal"><span class="pre">ii</span></code></li>
+<li>重启 kernel: <code class="docutils literal"><span class="pre">00</span></code></li>
+<li>注释 code: <code class="docutils literal"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">/</span></code></li>
+</ul>
+</div>
+<div class="section" id="split-cell">
+<h3>拆分单元 (split cell)<a class="headerlink" href="#split-cell" title="Permalink to this headline">¶</a></h3>
+<p>编辑模式下按 <code class="docutils literal"><span class="pre">control</span> <span class="pre">+</span> <span class="pre">shift</span> <span class="pre">+</span> <span class="pre">-</span></code> 可拆分 c ell</p>
+</div>
+</div>
+<div class="section" id="id6">
+<h2>2.4. 查看对象信息<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+<p>按 <code class="docutils literal"><span class="pre">tab</span></code> 键查看提示信息</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span></span>np.&lt;tab&gt;
+</pre></div>
+</div>
+<p>查找 <code class="docutils literal"><span class="pre">numpy</span></code> 模块下，名称含有 <code class="docutils literal"><span class="pre">cos</span></code> 的对象</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span></span>np.*cos*?
+</pre></div>
+</div>
+<p>提供 numpy 模块的帮助信息</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span></span>np?
+</pre></div>
+</div>
+<p>提供 numpy 模块更详细的帮助信息</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span></span>np??
+</pre></div>
+</div>
+<p>查看 docstring</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span></span>%pdoc np
+</pre></div>
+</div>
+</div>
+<div class="section" id="id7">
+<h2>2.5. 魔术命令<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<p>最常用的是这个 <code class="docutils literal"><span class="pre">%matplotlib</span> <span class="pre">inline</span></code>，有点类似
+<code class="docutils literal"><span class="pre">ipython</span> <span class="pre">--pylab</span></code>，画图用的；测试程序运行时间则只需把 <code class="docutils literal"><span class="pre">%time</span></code>
+放在前面。</p>
+<p>更多魔术命令可在 Jupyter Notebook 里键入：</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span></span>%lsmagic
+</pre></div>
+</div>
+</div>
+<div class="section" id="id8">
+<h2>2.6. 转换<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span></span># ipynb 文件转为 html
+jupyter nbconvert --to html filename.ipynb
+</pre></div>
+</div>
+<p>更多转换内容，请键入：</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>jupyter notebook --help
+</pre></div>
+</div>
+<p>转换 rst、py、md 等格式都是非常方便的，但转
+pdf，对中文的支持不好。必须先装 LaTex，LaTex 则需先把字体等调好。</p>
+<p class="rubric">Footnotes</p>
+<table class="docutils footnote" frame="void" id="f1" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id4">[1]</a></td><td>让键盘更高效的一篇文，昨天顺手把karabiner 配置的 gist 更新了。</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="03_numpy.html" class="btn btn-neutral float-right" title="3. 数值计算（Numpy）" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="01_linux.html" class="btn btn-neutral" title="1. Linux 基础" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Scott Ming.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
