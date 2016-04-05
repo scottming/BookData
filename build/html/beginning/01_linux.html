@@ -87,19 +87,19 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="">1. Linux 基础</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id1">1.1. 为什么使用 Linux 和命令行</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id2">1.2. Linux 安装和配置</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id3">1.3. 基础命令</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id4">重定向和管道符</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">1.3. 基础命令</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id5">重定向和管道符</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id5">1.4. 处理数据常用命令</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id6">行过滤</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id7">列提取</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">1.4. 处理数据常用命令</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id7">行过滤</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">列提取</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#grep">grep 查找</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#wc">wc 基本统计</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#sort">sort 排序</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id8">1.5. 其他</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">1.5. 其他</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="02_jupyter.html">2. Jupyter 的安装和使用</a></li>
@@ -171,17 +171,8 @@ X 系统也适应。</p>
 <div class="section" id="id1">
 <h2>1.1. 为什么使用 Linux 和命令行<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><p>一提到
-Linux，许多人都会说到“自由”，但我不认为他们都知道“自由”的真正涵义。“自由”是一种权力，
-它决定你的计算机能做什么，同时能L够拥有这种“自由”的唯一方式就是知道计算机正在做什么。
-“自由”是指一台没有任何秘密的计算机，你可以从它那里了解一切，只要你用心的去寻找。</p>
-<p>你是否注意到，在电影中一个“超级黑客”坐在电脑前，从不摸一下鼠标，
-就能够在30秒内侵入到超安全的军事计算机中。这是因为电影制片人意识到，
-作为人类，本能地知道让计算机圆满完成工作的唯一途径，是用键盘来操纵计算机。</p>
-<p>现在，大多数的计算机用户只是熟悉图形用户界面（GUI），并且产品供应商和此领域的学者会灌输给用户这样的思想，
-命令行界面（CLI）是过去使用的一种很恐怖的东西。这就很不幸，因为一个好的命令行界面，
-是用来和计算机进行交流沟通的非常有效的方式，正像人类社会使用文字互通信息一样。人们说，“图形用户界面让简单的任务更容易完成，
-而命令行界面使完成复杂的任务成为可能”，到现在这句话仍然很正确。</p>
+<div><p>Have you ever noticed in the movies when the “super hacker,”— you know, the guy who can break into the ultra-secure military computer in under thirty seconds —sits down at the computer, he never touches a mouse? It’s because movie makers realize that we, as human beings, instinctively know the only way to really get anything done on a computer is by typing on a keyboard.</p>
+<p>Most computer users today are only familiar with the graphical user interface (GUI) and have been taught by vendors and pundits that the command line interface (CLI) is a terrifying thing of the past. This is unfortunate, because a good command line interface is a marvelously expressive way of communicating with a computer in much the same way the written word is for human beings. It’s been said that “graphical user interfaces make easy tasks easy, while command line interfaces make difficult tasks possible” and this is still very true today.</p>
 <p class="attribution">&mdash;The Linux Command Line</p>
 </div></blockquote>
 </div>
@@ -189,7 +180,7 @@ Linux，许多人都会说到“自由”，但我不认为他们都知道“自
 <h2>1.2. Linux 安装和配置<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>如果没有任何编程及命令行基础，推荐使用 Ubuntu，有经验后可转
 Debian，包多，稳定。进入系统，安装下
-<a class="reference external" href="https://anaconda.org/">Anaconda</a>，基本的 Python 环境 &amp;
+<a class="reference external" href="https://anaconda.org/">Anaconda</a><a class="footnote-reference" href="#f1" id="id3">[1]</a>，基本的 Python 环境 &amp;
 数据工具箱便有了。</p>
 <p>再进入终端仿真器，0S X 自带 Terminal，但推荐用 iTerm 2，Debian 是
 Konsole，配置下 终极Shell 环境 <a class="reference external" href="http://ohmyz.sh/">Oh My ZSH!</a></p>
@@ -207,8 +198,8 @@ Konsole，配置下 终极Shell 环境 <a class="reference external" href="http:
 </div>
 <p>至此，便可开始数据科学之旅了。</p>
 </div>
-<div class="section" id="id3">
-<h2>1.3. 基础命令<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id4">
+<h2>1.3. 基础命令<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <p>很多数据问题都可以用命令行解决，而且有些可以解决的非常高效，前提你熟悉一些基础的。
 入门级命令，无非这些：</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span>pwd #打印出当前工作目录名
@@ -243,8 +234,8 @@ Course</a>，Python
 <li><a class="reference external" href="https://book.douban.com/subject/26387975/">《命令行中的数据科学》</a>,
 如何用命令行分析数据的一本书。</li>
 </ul>
-<div class="section" id="id4">
-<h3>重定向和管道符<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id5">
+<h3>重定向和管道符<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <p>若你有仔细看过推荐书的任何一本，并做了些许练习，那么你的命令行已经入门了。在介绍命令行处理数据前，我想先谈谈重定向和管道符，若要给
 Linux 的符号们举行「频繁使用」比赛，那他们必定是冠军。</p>
 <p>平常你在终端里输入<code class="docutils literal"><span class="pre">ls</span> <span class="pre">-l</span></code>，结果应该类似这样：</p>
@@ -261,7 +252,7 @@ drwxr-xr-x@  5 Scott  staff   170B Mar  9 12:34 G.Other
 -rw-rw-r--@  1 Scott  staff   312B Apr  3 16:18 README.md
 </pre></div>
 </div>
-<p>文件是文件名排序的，若加个管道符‘|’呢？</p>
+<p>文件是文件名排序的，若加个管道符 <code class="docutils literal"><span class="pre">|</span></code> 呢？</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span>➜  Dropbox ls -l | sort
 -rw-r--r--@  1 Scott  staff     0B Apr  3 07:58 Icon
 -rw-rw-r--@  1 Scott  staff   312B Apr  3 16:18 README.md
@@ -275,16 +266,15 @@ drwxr-xr-x@ 19 Scott  staff   646B Apr  3 10:27 A.HighlyEffectiveSelf
 total 704
 </pre></div>
 </div>
-<p>这里我加了‘|’ 和 ‘sort’
+<p>这里我加了 <code class="docutils literal"><span class="pre">|</span></code> 和 <code class="docutils literal"><span class="pre">sort</span></code>
 命令，你会发现，文件的排序已经变了，变成了文件大小的排序。这个命令和简单解释为<code class="docutils literal"><span class="pre">ls</span> <span class="pre">-l</span></code>输出了文件排序结果，而
 <code class="docutils literal"><span class="pre">sort</span></code> 则接受了这个结果，并把它重新按文件的大小进行了排序，所以
-‘|’起到的就是管道的作用，可以从标准输入读取数据，然后再把数据输送到标准输出。这个特性非常有用，意味着你可以进行非常复杂的操作。</p>
+<code class="docutils literal"><span class="pre">|</span></code> 就是管道的作用，可以从标准输入读取数据，然后再把数据输送到标准输出。这个特性非常有用，意味着你可以进行非常复杂的操作。</p>
 <p>而什么是重定向‘&gt;’呢？你用命令行操作的结果正常是直接显示在屏幕上的，那还有别的方式吗？你试试：</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">ls</span> <span class="o">-</span><span class="n">l</span> <span class="o">&gt;</span> <span class="n">ex01</span><span class="o">.</span><span class="n">txt</span>
 </pre></div>
 </div>
-<p>你发现，没有任何动静，但工作目录多了一个 <code class="docutils literal"><span class="pre">ex01.txt</span></code>
-的文件，查看下这个文件试试，</p>
+<p>你发现，没有任何动静，但工作目录多了一个 <code class="docutils literal"><span class="pre">ex01.txt</span></code> 的文件，查看下这个文件试试，</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span>➜  Dropbox cat ex01.txt
 total 704
 drwxr-xr-x@ 19 Scott  staff  646 Apr  3 10:27 A.HighlyEffectiveSelf
@@ -302,10 +292,10 @@ drwxr-xr-x@  5 Scott  staff  170 Mar  9 12:34 G.Other
 <p>输出结果已经在这个文件里面了，这就是重定向的特性，允许我们来重定义标准输出送到哪里，在‘&gt;’符号后面接个文件名即可。这点是非常实用的，比如你处理完数据后，肯定希望保存到一个文件里面。另外要注意一点，‘&gt;’会格式化原有文件的内容，所以如果你是添加内容，请采用‘&gt;&gt;’。</p>
 </div>
 </div>
-<div class="section" id="id5">
-<h2>1.4. 处理数据常用命令<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id6">
-<h3>行过滤<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<h2>1.4. 处理数据常用命令<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id7">
+<h3>行过滤<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
 <p>若拿到一个很大的数据后，你肯定不想立马查看所有数据，一没必要，而打开慢，而是想做下行过滤，看看一小部分。常用的行过滤命令有<code class="docutils literal"><span class="pre">head、tail、seq</span></code>。</p>
 <p>看前10行数据：</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span>➜  ~ head user_service_time.txt
@@ -354,8 +344,8 @@ bid service_time    weekday hour    lasttime
 </pre></div>
 </div>
 </div>
-<div class="section" id="id7">
-<h3>列提取<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id8">
+<h3>列提取<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
 <p>行提取很简单，那么列提取应该如何做呢？</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span># 把所有缩进符号改为逗号(英文）， 再重定向成 csv 文件, .txt 文件可用 cat，excel 文件则需 in2csv
 cat user_service_time.txt | tr &#39;/t&#39; &#39;,&#39; &gt; user_service_time.csv
@@ -440,11 +430,17 @@ cat user_service_time.txt | tr &#39;/t&#39; &#39;,&#39; &gt; user_service_time.c
 </div>
 </div>
 </div>
-<div class="section" id="id8">
-<h2>1.5. 其他<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id9">
+<h2>1.5. 其他<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal"><span class="pre">iconv</span></code> <code class="docutils literal"><span class="pre">cut</span></code> <code class="docutils literal"><span class="pre">past</span></code> <code class="docutils literal"><span class="pre">uniq</span></code>
-等工具也是极好的，只不过用的略少，具体的数据分析则用 Pandas
-更方便些。其他的，想到再添加。</p>
+等工具也是极好的，只不过用的略少，具体的数据分析则用 Pandas 更方便些。其他的，想到再添加。</p>
+<p class="rubric">Footnotes</p>
+<table class="docutils footnote" frame="void" id="f1" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id3">[1]</a></td><td>一个打包好 Python 科学计算常用包的平台工具，安装它，也就拥有了Python、NumPy、SciPy、Matplotlib、IPython、Jupyter 等</td></tr>
+</tbody>
+</table>
 </div>
 </div>
 

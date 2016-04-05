@@ -10,19 +10,9 @@ X 系统也适应。
 为什么使用 Linux 和命令行
 -------------------------
 
-    一提到
-    Linux，许多人都会说到“自由”，但我不认为他们都知道“自由”的真正涵义。“自由”是一种权力，
-    它决定你的计算机能做什么，同时能L够拥有这种“自由”的唯一方式就是知道计算机正在做什么。
-    “自由”是指一台没有任何秘密的计算机，你可以从它那里了解一切，只要你用心的去寻找。
+    Have you ever noticed in the movies when the “super hacker,”— you know, the guy who can break into the ultra-secure military computer in under thirty seconds —sits down at the computer, he never touches a mouse? It’s because movie makers realize that we, as human beings, instinctively know the only way to really get anything done on a computer is by typing on a keyboard.
 
-    你是否注意到，在电影中一个“超级黑客”坐在电脑前，从不摸一下鼠标，
-    就能够在30秒内侵入到超安全的军事计算机中。这是因为电影制片人意识到，
-    作为人类，本能地知道让计算机圆满完成工作的唯一途径，是用键盘来操纵计算机。
-
-    现在，大多数的计算机用户只是熟悉图形用户界面（GUI），并且产品供应商和此领域的学者会灌输给用户这样的思想，
-    命令行界面（CLI）是过去使用的一种很恐怖的东西。这就很不幸，因为一个好的命令行界面，
-    是用来和计算机进行交流沟通的非常有效的方式，正像人类社会使用文字互通信息一样。人们说，“图形用户界面让简单的任务更容易完成，
-    而命令行界面使完成复杂的任务成为可能”，到现在这句话仍然很正确。
+    Most computer users today are only familiar with the graphical user interface (GUI) and have been taught by vendors and pundits that the command line interface (CLI) is a terrifying thing of the past. This is unfortunate, because a good command line interface is a marvelously expressive way of communicating with a computer in much the same way the written word is for human beings. It’s been said that “graphical user interfaces make easy tasks easy, while command line interfaces make difficult tasks possible” and this is still very true today.
 
     -- The Linux Command Line
 
@@ -31,7 +21,7 @@ Linux 安装和配置
 
 如果没有任何编程及命令行基础，推荐使用 Ubuntu，有经验后可转
 Debian，包多，稳定。进入系统，安装下
-`Anaconda <https://anaconda.org/>`__\ ，基本的 Python 环境 &
+`Anaconda <https://anaconda.org/>`__\ [#f1]_，基本的 Python 环境 &
 数据工具箱便有了。
 
 再进入终端仿真器，0S X 自带 Terminal，但推荐用 iTerm 2，Debian 是
@@ -117,7 +107,7 @@ Linux 的符号们举行「频繁使用」比赛，那他们必定是冠军。
     -rw-r--r--@  1 Scott  staff     0B Apr  3 07:58 Icon?
     -rw-rw-r--@  1 Scott  staff   312B Apr  3 16:18 README.md
 
-文件是文件名排序的，若加个管道符‘\|’呢？
+文件是文件名排序的，若加个管道符 ``|`` 呢？
 
 ::
 
@@ -133,10 +123,10 @@ Linux 的符号们举行「频繁使用」比赛，那他们必定是冠军。
     drwxr-xr-x@ 19 Scott  staff   646B Apr  3 10:27 A.HighlyEffectiveSelf
     total 704
 
-这里我加了‘\|’ 和 ‘sort’
+这里我加了 ``|`` 和 ``sort``
 命令，你会发现，文件的排序已经变了，变成了文件大小的排序。这个命令和简单解释为\ ``ls -l``\ 输出了文件排序结果，而
 ``sort`` 则接受了这个结果，并把它重新按文件的大小进行了排序，所以
-‘\|’起到的就是管道的作用，可以从标准输入读取数据，然后再把数据输送到标准输出。这个特性非常有用，意味着你可以进行非常复杂的操作。
+``|`` 就是管道的作用，可以从标准输入读取数据，然后再把数据输送到标准输出。这个特性非常有用，意味着你可以进行非常复杂的操作。
 
 而什么是重定向‘>’呢？你用命令行操作的结果正常是直接显示在屏幕上的，那还有别的方式吗？你试试：
 
@@ -144,8 +134,7 @@ Linux 的符号们举行「频繁使用」比赛，那他们必定是冠军。
 
     ls -l > ex01.txt
 
-你发现，没有任何动静，但工作目录多了一个 ``ex01.txt``
-的文件，查看下这个文件试试，
+你发现，没有任何动静，但工作目录多了一个 ``ex01.txt`` 的文件，查看下这个文件试试，
 
 ::
 
@@ -318,5 +307,8 @@ sort 排序
 ----
 
 ``iconv`` ``cut`` ``past`` ``uniq``
-等工具也是极好的，只不过用的略少，具体的数据分析则用 Pandas
-更方便些。其他的，想到再添加。
+等工具也是极好的，只不过用的略少，具体的数据分析则用 Pandas 更方便些。其他的，想到再添加。
+
+.. rubric:: Footnotes
+
+.. [#f1] 一个打包好 Python 科学计算常用包的平台工具，安装它，也就拥有了Python、NumPy、SciPy、Matplotlib、IPython、Jupyter 等
