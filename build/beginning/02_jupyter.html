@@ -85,7 +85,7 @@
                 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">入门篇</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="01_linux.html">1. Linux 基础</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">2. Jupyter 的安装和使用</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">2. Jupyter 的安装和使用</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#ipython-jupyter">2.1. IPython 和 Jupyter</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id1">2.2. 安装</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id2">远程使用</a></li>
@@ -131,7 +131,7 @@
         <div class="rst-content">
           
 
-
+ 
 
 
 
@@ -320,10 +320,10 @@ Jupyter 了，打开终端，输入 <code class="docutils literal"><span class="
 <div class="section" id="id2">
 <h3>远程使用<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <p>如果有远程使用的需求，则需把远程服务器配置下。</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span># 服务器下载 ssh 服务，如 Debian
-sudo apt-get install openssh-server
-# 不知道 ssh 是否打开，可以把他重启下
-sudo service sshd restart
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># 服务器下载 ssh 服务，如 Debian</span>
+<span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">openssh</span><span class="o">-</span><span class="n">server</span>
+<span class="c1"># 不知道 ssh 是否打开，可以把他重启下</span>
+<span class="n">sudo</span> <span class="n">service</span> <span class="n">sshd</span> <span class="n">restart</span>
 </pre></div>
 </div>
 <p>然后可以在局域网用其他电脑访问下，Mac 可直接在终端输入
@@ -338,15 +338,15 @@ server</a>
 <p class="last">jupyter_notebook_config.py 这个文件里面 certfile 和 keyfile 的地址应为绝对地址.</p>
 </div>
 <p>一大串输入很麻烦，也易出错，建议打开 .zshrc，并在底部添加一行：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>alias jn=&#39;jupyter notebook --certfile=/home/scott/.jupyter/mycert.pem --keyfile /home/scott/.jupyter/mykey.key&#39;
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">alias</span> <span class="n">jn</span><span class="o">=</span><span class="s1">&#39;jupyter notebook --certfile=/home/scott/.jupyter/mycert.pem --keyfile /home/scott/.jupyter/mykey.key&#39;</span>
 </pre></div>
 </div>
 <p>这样到其他电脑键入：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">jn</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">jn</span>
 </pre></div>
 </div>
 <p>若能看到类似下方的输出，证明配置成功了。</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>[I 09:56:29.937 NotebookApp] The Jupyter Notebook is running at: https://[all ip addresses on your system]:8889/
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">I</span> <span class="mi">09</span><span class="p">:</span><span class="mi">56</span><span class="p">:</span><span class="mf">29.937</span> <span class="n">NotebookApp</span><span class="p">]</span> <span class="n">The</span> <span class="n">Jupyter</span> <span class="n">Notebook</span> <span class="ow">is</span> <span class="n">running</span> <span class="n">at</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="p">[</span><span class="nb">all</span> <span class="n">ip</span> <span class="n">addresses</span> <span class="n">on</span> <span class="n">your</span> <span class="n">system</span><span class="p">]:</span><span class="mi">8889</span><span class="o">/</span>
 </pre></div>
 </div>
 <p>我的端口配置的是 <code class="docutils literal"><span class="pre">8889</span></code>，
@@ -427,12 +427,12 @@ Jupyter 的快捷，用 Jupyter 写报告之类基本上不需要鼠标了。</p
 </div>
 <div class="section" id="id8">
 <h2>2.6. 转换<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python"><div class="highlight"><pre><span></span># ipynb 文件转为 html
-jupyter nbconvert --to html filename.ipynb
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># ipynb 文件转为 html</span>
+<span class="n">jupyter</span> <span class="n">nbconvert</span> <span class="o">--</span><span class="n">to</span> <span class="n">html</span> <span class="n">filename</span><span class="o">.</span><span class="n">ipynb</span>
 </pre></div>
 </div>
 <p>更多转换内容，请键入：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>jupyter notebook --help
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">jupyter</span> <span class="n">notebook</span> <span class="o">--</span><span class="n">help</span>
 </pre></div>
 </div>
 <p>转换 rst、py、md 等格式都是非常方便的，但转
