@@ -1,0 +1,648 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>1. Linux 基础 &mdash; BookData 0.1 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="BookData 0.1 documentation" href="../index.html"/>
+        <link rel="up" title="入门篇" href="index.html"/>
+        <link rel="next" title="2. Jupyter 的安装和使用" href="02_jupyter.html"/>
+        <link rel="prev" title="入门篇" href="index.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> BookData
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">入门篇</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="">1. Linux 基础</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">1.1. 为什么使用 Linux 和命令行</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">1.2. Linux 安装和配置</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">1.3. 基础命令</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id5">重定向和管道符</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">1.4. 处理数据常用命令</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id7">行过滤</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">列提取</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#grep">grep 查找</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#wc">wc 基本统计</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sort">sort 排序</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">1.5. 其他</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="02_jupyter.html">2. Jupyter 的安装和使用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_numpy.html">3. 数值计算（Numpy）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_matplotlib.html">4. 数据绘图（Matplotlib）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="05_seaborn.html">5. 数据绘图（Seaborn)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../base/index.html">基础篇</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tool/index.html">工具篇</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">BookData</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">入门篇</a> &raquo;</li>
+      
+    <li>1. Linux 基础</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/beginning/01_linux.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput,
+div.nbinput > div,
+div.nbinput div[class^=highlight],
+div.nbinput div[class^=highlight] pre,
+div.nboutput,
+div.nboutput > div,
+div.nboutput div[class^=highlight],
+div.nboutput div[class^=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput div[class^=highlight] pre {
+    line-height: unset;
+}
+
+/* input/output containers */
+div.nbinput,
+div.nboutput {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+}
+
+/* input container */
+div.nbinput {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput > :first-child pre {
+    color: #303F9F;
+}
+
+/* output prompt */
+div.nboutput > :first-child pre {
+    color: #D84315;
+}
+
+/* all prompts */
+div.nbinput > :first-child[class^=highlight],
+div.nboutput > :first-child[class^=highlight],
+div.nboutput > :first-child {
+    min-width: 11ex;
+    padding-top: 0.4em;
+    padding-right: 0.4em;
+    text-align: right;
+    flex: 0;
+}
+
+/* input/output area */
+div.nbinput > :nth-child(2)[class^=highlight],
+div.nboutput > :nth-child(2),
+div.nboutput > :nth-child(2)[class^=highlight] {
+    padding: 0.4em;
+    -webkit-flex: 1;
+    flex: 1;
+}
+
+/* input area */
+div.nbinput > :nth-child(2)[class^=highlight] {
+    border: 1px solid #cfcfcf;
+    border-radius: 2px;
+    background: #f7f7f7;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.pngmath center alignment in output cells */
+div.nboutput div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput  > :nth-child(2).stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-bold { font-weight: bold; }
+</style>
+<div class="section" id="linux">
+<h1>1. Linux 基础<a class="headerlink" href="#linux" title="Permalink to this headline">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Date:</th><td class="field-body">2016-04-03</td>
+</tr>
+</tbody>
+</table>
+<p>这一节记录下做数据处理时用到的一些 Linux 和 命令行技巧。大部分命令在 OS
+X 系统也适应。</p>
+<div class="section" id="id1">
+<h2>1.1. 为什么使用 Linux 和命令行<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Have you ever noticed in the movies when the “super hacker,”— you know, the guy who can break into the ultra-secure military computer in under thirty seconds —sits down at the computer, he never touches a mouse? It’s because movie makers realize that we, as human beings, instinctively know the only way to really get anything done on a computer is by typing on a keyboard.</p>
+<p>Most computer users today are only familiar with the graphical user interface (GUI) and have been taught by vendors and pundits that the command line interface (CLI) is a terrifying thing of the past. This is unfortunate, because a good command line interface is a marvelously expressive way of communicating with a computer in much the same way the written word is for human beings. It’s been said that “graphical user interfaces make easy tasks easy, while command line interfaces make difficult tasks possible” and this is still very true today.</p>
+<p class="attribution">&mdash;The Linux Command Line</p>
+</div></blockquote>
+</div>
+<div class="section" id="id2">
+<h2>1.2. Linux 安装和配置<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>如果没有任何编程及命令行基础，推荐使用 Ubuntu，有经验后可转
+Debian，包多，稳定。进入系统，安装下
+<a class="reference external" href="https://anaconda.org/">Anaconda</a><a class="footnote-reference" href="#f1" id="id3">[1]</a>，基本的 Python 环境 &amp;
+数据工具箱便有了。</p>
+<p>再进入终端仿真器，0S X 自带 Terminal，但推荐用 iTerm 2，Debian 是
+Konsole，配置下 终极Shell 环境 <a class="reference external" href="http://ohmyz.sh/">Oh My ZSH!</a></p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>sh -c &quot;$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)&quot;
+</pre></div>
+</div>
+<p>如果提示你没有安装相关的依赖包，那么则需先安装相关依赖包，比如 Ubuntu
+则需要想安装 Git、和 zsh 等，</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>sudo apt-get install git zsh
+</pre></div>
+</div>
+<p>再装个查看数据、转换数据的小工具 csvkit，</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>sudo apt-get install csvkit
+</pre></div>
+</div>
+<p>至此，便可开始数据科学之旅了。</p>
+</div>
+<div class="section" id="id4">
+<h2>1.3. 基础命令<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>很多数据问题都可以用命令行解决，而且有些可以解决的非常高效，前提你熟悉一些基础的。
+入门级命令，无非这些：</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>pwd #打印出当前工作目录名
+cd #更改目录
+ls #列出目录内容
+ls #列出目录内容
+file #确定文件类型
+less #浏览文件内容
+cp #复制文件和目录
+mv #移动/重命名文件和目录
+mkdir #创建目录
+rm #删除文件和目录
+ln #创建硬链接和符号链接
+
+上面的 # 号代表注释，没有任何意义
+</pre></div>
+</div>
+<p>入门级命令太简单了，就不介绍了，如果从来没碰过命令行，不熟悉使用可以查看帮助，如<code class="docutils literal"><span class="pre">ls</span> <span class="pre">--help</span></code>，另外我推荐些好书。</p>
+<ul class="simple">
+<li><a class="reference external" href="https://book.douban.com/subject/26264642/">《笨办法学 Python》</a>
+的附录 <a class="reference external" href="http://learnpythonthehardway.org/book/appendixa.html">Appendix A: Command Line Crash
+Course</a>，Python
+入门靠的就是它，Zed 的这书绝对是神书，附录的 Command Line
+也是写的极好。</li>
+<li><a class="reference external" href="https://billie66.github.io/TLCL/book/">The Linux Command Line</a>,
+命令行入门神书，循序渐进，语言幽默，此书激发了我学 Linux 的兴趣。</li>
+<li><a class="reference external" href="http://linuxtools-rst.readthedocs.org/zh_CN/latest/index.html">《Linux
+工具快速教程》</a>，这本书作者写的比较简洁，比较适合有一定编程经验的人。</li>
+<li><a class="reference external" href="https://book.douban.com/subject/4889838/">《鸟哥的 Linux
+私房菜》</a>,
+书虽有点老了，但当做速查手册，翻翻查查，挺好。</li>
+<li><a class="reference external" href="https://book.douban.com/subject/26387975/">《命令行中的数据科学》</a>,
+如何用命令行分析数据的一本书。</li>
+</ul>
+<div class="section" id="id5">
+<h3>重定向和管道符<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p>若你有仔细看过推荐书的任何一本，并做了些许练习，那么你的命令行已经入门了。在介绍命令行处理数据前，我想先谈谈重定向和管道符，若要给
+Linux 的符号们举行「频繁使用」比赛，那他们必定是冠军。</p>
+<p>平常你在终端里输入<code class="docutils literal"><span class="pre">ls</span> <span class="pre">-l</span></code>，结果应该类似这样：</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>➜  Dropbox ls -l
+total 704
+drwxr-xr-x@ 19 Scott  staff   646B Apr  3 10:27 A.HighlyEffectiveSelf
+drwxr-xr-x@  5 Scott  staff   170B Apr  3 09:28 B.CreativePleasure
+drwxr-xr-x@ 10 Scott  staff   340B Apr  3 09:10 C.TheArtOfWork
+drwxr-xr-x@ 11 Scott  staff   374B Mar 10 12:40 D.HistoricalMemory
+drwxr-xr-x@ 12 Scott  staff   408B Apr  3 10:09 E.DataBank
+drwxr-xr-x@ 19 Scott  staff   646B Apr  3 09:14 F.BambooBasket
+drwxr-xr-x@  5 Scott  staff   170B Mar  9 12:34 G.Other
+-rw-r--r--@  1 Scott  staff     0B Apr  3 07:58 Icon?
+-rw-rw-r--@  1 Scott  staff   312B Apr  3 16:18 README.md
+</pre></div>
+</div>
+<p>文件是文件名排序的，若加个管道符 <code class="docutils literal"><span class="pre">|</span></code> 呢？</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>➜  Dropbox ls -l | sort
+-rw-r--r--@  1 Scott  staff     0B Apr  3 07:58 Icon
+-rw-rw-r--@  1 Scott  staff   312B Apr  3 16:18 README.md
+drwxr-xr-x@  5 Scott  staff   170B Apr  3 09:28 B.CreativePleasure
+drwxr-xr-x@  5 Scott  staff   170B Mar  9 12:34 G.Other
+drwxr-xr-x@ 10 Scott  staff   340B Apr  3 09:10 C.TheArtOfWork
+drwxr-xr-x@ 11 Scott  staff   374B Mar 10 12:40 D.HistoricalMemory
+drwxr-xr-x@ 12 Scott  staff   408B Apr  3 10:09 E.DataBank
+drwxr-xr-x@ 19 Scott  staff   646B Apr  3 09:14 F.BambooBasket
+drwxr-xr-x@ 19 Scott  staff   646B Apr  3 10:27 A.HighlyEffectiveSelf
+total 704
+</pre></div>
+</div>
+<p>这里我加了 <code class="docutils literal"><span class="pre">|</span></code> 和 <code class="docutils literal"><span class="pre">sort</span></code>
+命令，你会发现，文件的排序已经变了，变成了文件大小的排序。这个命令和简单解释为<code class="docutils literal"><span class="pre">ls</span> <span class="pre">-l</span></code>输出了文件排序结果，而
+<code class="docutils literal"><span class="pre">sort</span></code> 则接受了这个结果，并把它重新按文件的大小进行了排序，所以
+<code class="docutils literal"><span class="pre">|</span></code> 就是管道的作用，可以从标准输入读取数据，然后再把数据输送到标准输出。这个特性非常有用，意味着你可以进行非常复杂的操作。</p>
+<p>而什么是重定向‘&gt;’呢？你用命令行操作的结果正常是直接显示在屏幕上的，那还有别的方式吗？你试试：</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">ls</span> <span class="o">-</span><span class="n">l</span> <span class="o">&gt;</span> <span class="n">ex01</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<p>你发现，没有任何动静，但工作目录多了一个 <code class="docutils literal"><span class="pre">ex01.txt</span></code> 的文件，查看下这个文件试试，</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>➜  Dropbox cat ex01.txt
+total 704
+drwxr-xr-x@ 19 Scott  staff  646 Apr  3 10:27 A.HighlyEffectiveSelf
+drwxr-xr-x@  5 Scott  staff  170 Apr  3 09:28 B.CreativePleasure
+drwxr-xr-x@ 10 Scott  staff  340 Apr  3 09:10 C.TheArtOfWork
+drwxr-xr-x@ 11 Scott  staff  374 Mar 10 12:40 D.HistoricalMemory
+drwxr-xr-x@ 12 Scott  staff  408 Apr  3 10:09 E.DataBank
+drwxr-xr-x@ 19 Scott  staff  646 Apr  3 09:14 F.BambooBasket
+drwxr-xr-x@  5 Scott  staff  170 Mar  9 12:34 G.Other
+-rw-r--r--@  1 Scott  staff    0 Apr  3 07:58 Icon
+-rw-rw-r--@  1 Scott  staff  312 Apr  3 16:18 README.md
+-rw-rw-r--   1 Scott  staff    0 Apr  3 16:57 ex01.txt
+</pre></div>
+</div>
+<p>输出结果已经在这个文件里面了，这就是重定向的特性，允许我们来重定义标准输出送到哪里，在‘&gt;’符号后面接个文件名即可。这点是非常实用的，比如你处理完数据后，肯定希望保存到一个文件里面。另外要注意一点，‘&gt;’会格式化原有文件的内容，所以如果你是添加内容，请采用‘&gt;&gt;’。</p>
+</div>
+</div>
+<div class="section" id="id6">
+<h2>1.4. 处理数据常用命令<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id7">
+<h3>行过滤<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<p>若拿到一个很大的数据后，你肯定不想立马查看所有数据，一没必要，而打开慢，而是想做下行过滤，看看一小部分。常用的行过滤命令有<code class="docutils literal"><span class="pre">head、tail、seq</span></code>。</p>
+<p>看前10行数据：</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>➜  ~ head user_service_time.txt
+bid service_time    weekday hour    lasttime
+17283201    2016-1-27 8:30:00   3   8   3.0
+17283201    2016-1-29 9:00:00   5   9   3.0
+17283201    2016-2-22 17:00:00  1   17  3.0
+17283201    2016-2-25 16:00:00  4   16  3.0
+17283201    2016-2-29 16:30:00  1   16  3.0
+17283201    2016-3-2 9:00:00    3   9   3.0
+17283201    2014-9-19 9:00:07   5   9
+17283201    2014-11-3 13:00:00  1   13
+17283201    2014-11-22 15:00:00 6   15  3
+</pre></div>
+</div>
+<p>查看前5行：</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>head -5 filename
+</pre></div>
+</div>
+<p>前 n 行：</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>head -n filename
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">tail</span></code> 则跟 <code class="docutils literal"><span class="pre">head</span></code> 刚好相反，查看的是尾行。若需要指定某些行则可用
+<code class="docutils literal"><span class="pre">sed</span></code> 或 <code class="docutils literal"><span class="pre">awk</span></code>，如指定
+4-6行，可用<code class="docutils literal"><span class="pre">sed</span> <span class="pre">-n</span> <span class="pre">'4,</span> <span class="pre">6p'</span> <span class="pre">filename</span></code>，我这里为了好看，用 <code class="docutils literal"><span class="pre">nl</span></code>
+命令先把行号打印出来。</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>➜  ~ nl user_service_time.txt | sed -n &#39;4, 6p&#39;
+     4  17283201    2016-2-22 17:00:00  1   17  3.0
+     5  17283201    2016-2-25 16:00:00  4   16  3.0
+     6  17283201    2016-2-29 16:30:00  1   16  3.0
+# 查看奇数行
+➜  ~ nl user_service_time.txt | head |  awk &#39;NR%2&#39;
+     1  bid service_time    weekday hour    lasttime
+     3  17283201    2016-1-29 9:00:00   5   9   3.0
+     5  17283201    2016-2-25 16:00:00  4   16  3.0
+     7  17283201    2016-3-2 9:00:00    3   9   3.0
+     9  17283201    2014-11-3 13:00:00  1   13
+# 偶数行
+➜  ~ nl user_service_time.txt | head |  awk &#39;(NR+1)%2&#39;
+     2  17283201    2016-1-27 8:30:00   3   8   3.0
+     4  17283201    2016-2-22 17:00:00  1   17  3.0
+     6  17283201    2016-2-29 16:30:00  1   16  3.0
+     8  17283201    2014-9-19 9:00:07   5   9
+    10  17283201    2014-11-22 15:00:00 6   15  3
+</pre></div>
+</div>
+</div>
+<div class="section" id="id8">
+<h3>列提取<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<p>行提取很简单，那么列提取应该如何做呢？</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span># 把所有缩进符号改为逗号(英文）， 再重定向成 csv 文件, .txt 文件可用 cat，excel 文件则需 in2csv
+cat user_service_time.txt | tr &#39;/t&#39; &#39;,&#39; &gt; user_service_time.csv
+
+# 看看前 3 行，有哪些列
+➜  ~ head -3 user_service_time.csv | csvlook
+|-----------+--------------------+---------+------+-----------|
+|  bid      | service_time       | weekday | hour | lasttime  |
+|-----------+--------------------+---------+------+-----------|
+|  17283201 |  2016-1-27 8:30:00 |  3      |  8   |  3.0      |
+|  17283201 |  2016-1-29 9:00:00 |  5      |  9   |  3.0      |
+|-----------+--------------------+---------+------+-----------|
+# 得知总共有 5 列提取后 3 列 的前 10 行看看
+➜  ~ &lt; user_service_time.csv csvcut -c 3-5 | head | csvlook
+|----------+------+-----------|
+|  weekday | hour | lasttime  |
+|----------+------+-----------|
+|   3      |  8   |  3.0      |
+|   5      |  9   |  3.0      |
+|   1      |  17  |  3.0      |
+|   4      |  16  |  3.0      |
+|   1      |  16  |  3.0      |
+|   3      |  9   |  3.0      |
+|   5      |  9   |           |
+|   1      |  13  |           |
+|   6      |  15  |  3        |
+|----------+------+-----------|
+# 也可以用 -C 来忽略某些行，如忽略 3-5 列的前5行。
+➜  ~ &lt; user_service_time.csv csvcut -C 3-5 | head -5 | csvlook
+|-----------+----------------------|
+|  bid      | service_time         |
+|-----------+----------------------|
+|  17283201 |  2016-1-27 8:30:00   |
+|  17283201 |  2016-1-29 9:00:00   |
+|  17283201 |  2016-2-22 17:00:00  |
+|  17283201 |  2016-2-25 16:00:00  |
+|-----------+----------------------|
+</pre></div>
+</div>
+</div>
+<div class="section" id="grep">
+<h3>grep 查找<a class="headerlink" href="#grep" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span></span># 基本用法是 grep data filename
+➜  ~ head user_service_time.txt | grep 29
+17283201    2016-1-29 9:00:00   5   9   3.0
+17283201    2016-2-29 16:30:00  1   16  3.0
+</pre></div>
+</div>
+</div>
+<div class="section" id="wc">
+<h3>wc 基本统计<a class="headerlink" href="#wc" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>统计行数 wc -l file</li>
+<li>统计单词数 wc -w file</li>
+<li>统计字符数 wc -c file</li>
+</ul>
+<div class="highlight-python"><div class="highlight"><pre><span></span>➜  ~ wc -l user_service_time.txt
+    1244 user_service_time.txt
+➜  ~ &lt; user_service_time.txt | grep 2016-2 | wc -l
+      55
+</pre></div>
+</div>
+</div>
+<div class="section" id="sort">
+<h3>sort 排序<a class="headerlink" href="#sort" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>-n 按数字进行排序</li>
+<li>-d 按字典序进行排序</li>
+<li>-r 逆序排序</li>
+<li>-k N 指定按第N列排序</li>
+</ul>
+<div class="highlight-python"><div class="highlight"><pre><span></span># 以第 1 列数字反向排序
+➜  ~ &lt; user_service_time.csv | sort -nrk 1 | head -4 | csvlook
+|-----------------+-------------------+---+---+----|
+|  29101041557001 | 2016-3-6 8:30:00  | 7 | 8 | 4  |
+|-----------------+-------------------+---+---+----|
+|  29101041557001 | 2016-3-13 8:30:00 | 7 | 8 | 4  |
+|  29101041557001 | 2016-2-28 8:30:00 | 7 | 8 | 4  |
+|  29101041557001 | 2016-2-21 8:30:00 | 7 | 8 | 4  |
+|-----------------+-------------------+---+---+----|
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id9">
+<h2>1.5. 其他<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal"><span class="pre">iconv</span></code> <code class="docutils literal"><span class="pre">cut</span></code> <code class="docutils literal"><span class="pre">past</span></code> <code class="docutils literal"><span class="pre">uniq</span></code>
+等工具也是极好的，只不过用的略少，具体的数据分析则用 Pandas 更方便些。其他的，想到再添加。</p>
+<p class="rubric">Footnotes</p>
+<table class="docutils footnote" frame="void" id="f1" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id3">[1]</a></td><td>一个打包好 Python 科学计算常用包的平台工具，安装它，也就拥有了Python、NumPy、SciPy、Matplotlib、IPython、Jupyter 等</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="02_jupyter.html" class="btn btn-neutral float-right" title="2. Jupyter 的安装和使用" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="入门篇" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Scott Ming.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
