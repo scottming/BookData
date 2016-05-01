@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>3. 数值计算（Numpy） &mdash; BookData 0.1 documentation</title>
+  <title>数值计算（Numpy） &mdash; BookData 0.1 documentation</title>
   
 
   
@@ -24,19 +24,16 @@
 
   
   
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   
 
   
 
   
-    <link rel="top" title="BookData 0.1 documentation" href="../index.html"/>
-        <link rel="up" title="入门篇" href="index.html"/>
-        <link rel="next" title="4. 数据绘图（Matplotlib）" href="04_matplotlib.html"/>
-        <link rel="prev" title="2. Jupyter 的安装和使用" href="02_jupyter.html"/> 
+    <link rel="top" title="BookData 0.1 documentation" href="../../index.html"/> 
 
   
-  <script src="../_static/js/modernizr.min.js"></script>
+  <script src="../../_static/js/modernizr.min.js"></script>
 
 </head>
 
@@ -51,7 +48,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home"> BookData
+            <a href="../../index.html" class="icon icon-home"> BookData
           
 
           
@@ -68,7 +65,7 @@
 
           
 <div role="search">
-  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
@@ -82,25 +79,10 @@
           
             
             
-                <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">入门篇</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="01_linux.html">1. Linux 基础</a></li>
-<li class="toctree-l2"><a class="reference internal" href="02_jupyter.html">2. Jupyter 的安装和使用</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">3. 数值计算（Numpy）</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#数组创建">3.1. 数组创建</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#ndarray-对象属性">3.2. ndarray 对象属性</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#数组间运算">3.3. 数组间运算</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#索引和切片">3.4. 索引和切片</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#利用数组做数据处理">3.5. 利用数组做数据处理</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#其他通用函数">3.6. 其他通用函数</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="04_matplotlib.html">4. 数据绘图（Matplotlib）</a></li>
-<li class="toctree-l2"><a class="reference internal" href="05_seaborn.html">5. 数据绘图（Seaborn)</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../base/index.html">基础篇</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tool/index.html">工具篇</a></li>
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">入门篇</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../base/index.html">基础篇</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tool/index.html">工具篇</a></li>
 </ul>
 
             
@@ -114,7 +96,7 @@
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../index.html">BookData</a>
+        <a href="../../index.html">BookData</a>
       </nav>
 
 
@@ -129,15 +111,13 @@
 
 <div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href="../index.html">Docs</a> &raquo;</li>
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
       
-          <li><a href="index.html">入门篇</a> &raquo;</li>
-      
-    <li>3. 数值计算（Numpy）</li>
+    <li>数值计算（Numpy）</li>
       <li class="wy-breadcrumbs-aside">
         
           
-            <a href="../_sources/beginning/03_numpy.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/beginning/.ipynb_checkpoints/03_numpy-checkpoint.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -280,9 +260,9 @@ div.nboutput  > :nth-child(2).stderr {
 .ansi-bold { font-weight: bold; }
 </style>
 <div class="section" id="数值计算（Numpy）">
-<h1>3. 数值计算（Numpy）<a class="headerlink" href="#数值计算（Numpy）" title="Permalink to this headline">¶</a></h1>
+<h1>数值计算（Numpy）<a class="headerlink" href="#数值计算（Numpy）" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="数组创建">
-<h2>3.1. 数组创建<a class="headerlink" href="#数组创建" title="Permalink to this headline">¶</a></h2>
+<h2>数组创建<a class="headerlink" href="#数组创建" title="Permalink to this headline">¶</a></h2>
 <p>数组的创建方式有很多，不过比较简单和方便的方式有以下三种</p>
 <p><strong>直接创建</strong></p>
 <div class="nbinput nblast container">
@@ -417,7 +397,7 @@ True，而且 dropna() 方法删不掉。想创建空的 Series ，可以使用
 Series(np.nan,index=???) 这样。</div></blockquote>
 </div>
 <div class="section" id="ndarray-对象属性">
-<h2>3.2. ndarray 对象属性<a class="headerlink" href="#ndarray-对象属性" title="Permalink to this headline">¶</a></h2>
+<h2>ndarray 对象属性<a class="headerlink" href="#ndarray-对象属性" title="Permalink to this headline">¶</a></h2>
 <p><strong>.reshape(shape)</strong> 改变数组维度</p>
 <div class="nbinput container">
 <div class="highlight-none"><div class="highlight"><pre>
@@ -832,7 +812,7 @@ b
 </table>
 </div>
 <div class="section" id="数组间运算">
-<h2>3.3. 数组间运算<a class="headerlink" href="#数组间运算" title="Permalink to this headline">¶</a></h2>
+<h2>数组间运算<a class="headerlink" href="#数组间运算" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput nblast container">
 <div class="highlight-none"><div class="highlight"><pre>
 <span></span>In [24]:
@@ -888,7 +868,7 @@ b = np.ones_like(a)
 </div>
 </div>
 <div class="section" id="索引和切片">
-<h2>3.4. 索引和切片<a class="headerlink" href="#索引和切片" title="Permalink to this headline">¶</a></h2>
+<h2>索引和切片<a class="headerlink" href="#索引和切片" title="Permalink to this headline">¶</a></h2>
 <p><strong>基本索引</strong></p>
 <div class="nbinput container">
 <div class="highlight-none"><div class="highlight"><pre>
@@ -1356,7 +1336,7 @@ mask
 </div>
 </div>
 <div class="section" id="利用数组做数据处理">
-<h2>3.5. 利用数组做数据处理<a class="headerlink" href="#利用数组做数据处理" title="Permalink to this headline">¶</a></h2>
+<h2>利用数组做数据处理<a class="headerlink" href="#利用数组做数据处理" title="Permalink to this headline">¶</a></h2>
 <p>将条件逻辑表述为数组运算, np.where
 是一个极其有用的三元函数，它其实是一个条件运算函数，即 foo if cond else
 bar</p>
@@ -1539,7 +1519,7 @@ arr
 <p>  └ 这个代码的意思其实就是 &gt;0 则 2，else -2</p>
 </div>
 <div class="section" id="其他通用函数">
-<h2>3.6. 其他通用函数<a class="headerlink" href="#其他通用函数" title="Permalink to this headline">¶</a></h2>
+<h2>其他通用函数<a class="headerlink" href="#其他通用函数" title="Permalink to this headline">¶</a></h2>
 <p><strong>一元函数</strong></p>
 <table border="1" class="docutils">
 <colgroup>
@@ -1657,15 +1637,6 @@ arr
           </div>
           <footer>
   
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="04_matplotlib.html" class="btn btn-neutral float-right" title="4. 数据绘图（Matplotlib）" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="02_jupyter.html" class="btn btn-neutral" title="2. Jupyter 的安装和使用" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
-    </div>
-  
 
   <hr/>
 
@@ -1692,23 +1663,23 @@ arr
 
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
+            URL_ROOT:'../../',
             VERSION:'0.1',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true
         };
     </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
       <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 
   
   
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
   
 
   

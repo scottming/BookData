@@ -32,7 +32,7 @@
   
     <link rel="top" title="BookData 0.1 documentation" href="../index.html"/>
         <link rel="up" title="入门篇" href="index.html"/>
-        <link rel="next" title="3. 数值计算（Numpy）" href="03_numpy.html"/>
+        <link rel="next" title="3. Numpy（数值计算）" href="03_numpy.html"/>
         <link rel="prev" title="1. Linux 基础" href="01_linux.html"/> 
 
   
@@ -102,7 +102,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#id8">2.6. 转换</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="03_numpy.html">3. 数值计算（Numpy）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_numpy.html">3. Numpy（数值计算）</a></li>
 <li class="toctree-l2"><a class="reference internal" href="04_matplotlib.html">4. 数据绘图（Matplotlib）</a></li>
 <li class="toctree-l2"><a class="reference internal" href="05_seaborn.html">5. 数据绘图（Seaborn)</a></li>
 </ul>
@@ -155,7 +155,139 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="jupyter">
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput,
+div.nbinput > div,
+div.nbinput div[class^=highlight],
+div.nbinput div[class^=highlight] pre,
+div.nboutput,
+div.nboutput > div,
+div.nboutput div[class^=highlight],
+div.nboutput div[class^=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput div[class^=highlight] pre {
+    line-height: unset;
+}
+
+/* input/output containers */
+div.nbinput,
+div.nboutput {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+}
+
+/* input container */
+div.nbinput {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput > :first-child pre {
+    color: #303F9F;
+}
+
+/* output prompt */
+div.nboutput > :first-child pre {
+    color: #D84315;
+}
+
+/* all prompts */
+div.nbinput > :first-child[class^=highlight],
+div.nboutput > :first-child[class^=highlight],
+div.nboutput > :first-child {
+    min-width: 11ex;
+    padding-top: 0.4em;
+    padding-right: 0.4em;
+    text-align: right;
+    flex: 0;
+}
+
+/* input/output area */
+div.nbinput > :nth-child(2)[class^=highlight],
+div.nboutput > :nth-child(2),
+div.nboutput > :nth-child(2)[class^=highlight] {
+    padding: 0.4em;
+    -webkit-flex: 1;
+    flex: 1;
+}
+
+/* input area */
+div.nbinput > :nth-child(2)[class^=highlight] {
+    border: 1px solid #cfcfcf;
+    border-radius: 2px;
+    background: #f7f7f7;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.pngmath center alignment in output cells */
+div.nboutput div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput  > :nth-child(2).stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-bold { font-weight: bold; }
+</style>
+<div class="section" id="jupyter">
 <h1>2. Jupyter 的安装和使用<a class="headerlink" href="#jupyter" title="Permalink to this headline">¶</a></h1>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -259,27 +391,27 @@ Jupyter 的快捷，用 Jupyter 写报告之类基本上不需要鼠标了。</p
 </div>
 <div class="section" id="id6">
 <h2>2.4. 查看对象信息<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
-<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 </pre></div>
 </div>
 <p>按 <code class="docutils literal"><span class="pre">tab</span></code> 键查看提示信息</p>
-<div class="code python highlight-python"><div class="highlight"><pre><span></span>np.&lt;tab&gt;
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.&lt;</span><span class="n">tab</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <p>查找 <code class="docutils literal"><span class="pre">numpy</span></code> 模块下，名称含有 <code class="docutils literal"><span class="pre">cos</span></code> 的对象</p>
-<div class="code python highlight-python"><div class="highlight"><pre><span></span>np.*cos*?
+<div class="highlight-python"><div class="highlight"><pre><span></span>np.*cos*?
 </pre></div>
 </div>
 <p>提供 numpy 模块的帮助信息</p>
-<div class="code python highlight-python"><div class="highlight"><pre><span></span>np?
+<div class="highlight-python"><div class="highlight"><pre><span></span>np?
 </pre></div>
 </div>
 <p>提供 numpy 模块更详细的帮助信息</p>
-<div class="code python highlight-python"><div class="highlight"><pre><span></span>np??
+<div class="highlight-python"><div class="highlight"><pre><span></span>np??
 </pre></div>
 </div>
 <p>查看 docstring</p>
-<div class="code python highlight-python"><div class="highlight"><pre><span></span>%pdoc np
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">pdoc</span> <span class="n">np</span>
 </pre></div>
 </div>
 </div>
@@ -289,7 +421,7 @@ Jupyter 的快捷，用 Jupyter 写报告之类基本上不需要鼠标了。</p
 <code class="docutils literal"><span class="pre">ipython</span> <span class="pre">--pylab</span></code>，画图用的；测试程序运行时间则只需把 <code class="docutils literal"><span class="pre">%time</span></code>
 放在前面。</p>
 <p>更多魔术命令可在 Jupyter Notebook 里键入：</p>
-<div class="code python highlight-python"><div class="highlight"><pre><span></span>%lsmagic
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">lsmagic</span>
 </pre></div>
 </div>
 </div>
@@ -322,7 +454,7 @@ pdf，对中文的支持不好。必须先装 LaTex，LaTex 则需先把字体�
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="03_numpy.html" class="btn btn-neutral float-right" title="3. 数值计算（Numpy）" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="03_numpy.html" class="btn btn-neutral float-right" title="3. Numpy（数值计算）" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="01_linux.html" class="btn btn-neutral" title="1. Linux 基础" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -365,6 +497,7 @@ pdf，对中文的支持不好。必须先装 LaTex，LaTex 则需先把字体�
       <script type="text/javascript" src="../_static/jquery.js"></script>
       <script type="text/javascript" src="../_static/underscore.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 
