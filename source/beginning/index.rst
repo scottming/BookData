@@ -13,6 +13,6 @@
 
     01_linux
     02_jupyter
-    03_numpy.ipynb
+    03_numpy
     04_matplotlib
     05_seaborn
