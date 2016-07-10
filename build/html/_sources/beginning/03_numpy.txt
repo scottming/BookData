@@ -1,5 +1,1627 @@
-Test 
-=====
-
-Just test
-yes
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# 数值计算（Numpy）"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## 数组创建\n",
+    "\n",
+    "数组的创建方式有很多，较便捷的方式有以下三种"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "**直接创建**"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": [
+    "import numpy as np"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([1, 2, 3, 4, 5])"
+      ]
+     },
+     "execution_count": 2,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "a = np.array([1, 2, 3, 4, 5])\n",
+    "a"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "**类 range**"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])"
+      ]
+     },
+     "execution_count": 3,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "a = np.arange(10)\n",
+    "a"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([1, 3, 5, 7, 9])"
+      ]
+     },
+     "execution_count": 4,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "a = np.arange(1, 10, 2)\n",
+    "a"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "**创建带尾巴的**"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([  0.,  10.])"
+      ]
+     },
+     "execution_count": 5,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "a = np.linspace(0, 10, 2)\n",
+    "a"
+   ]
+  },
+  {
+   "cell_type": "raw",
+   "metadata": {
+    "raw_mimetype": "text/restructuredtext"
+   },
+   "source": [
+    "**更多便捷创建函数**\n",
+    "\n",
+    "+----------------------+-------------------------------------------------------+\n",
+    "| 函数                 | 功能                                                  |\n",
+    "+======================+=======================================================+\n",
+    "| asarray              | 将输入转换为 ndarray，若输入本身是 ndarray 就不复制   |\n",
+    "+----------------------+-------------------------------------------------------+\n",
+    "| ones、ones\\_like     | 根据指定形状和 dtype 创建一个全 1 数组                |\n",
+    "+----------------------+-------------------------------------------------------+\n",
+    "| zeros、zeros\\_like   | 根据指定形状和 dtype 创建一个全 0 数组                |\n",
+    "+----------------------+-------------------------------------------------------+\n",
+    "| empty、empty\\_like   | 创建新数组，但只分配内存空间不赋值                    |\n",
+    "+----------------------+-------------------------------------------------------+\n",
+    "| eye、identity        | 创建一个正方的N×N单位矩阵（对角线为1，其余为0         |\n",
+    "+----------------------+-------------------------------------------------------+\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "> 在 pandas 中尽量不要使用 np.empty()，这个函数创建的数组里面是有值的，除非你确定创建的这个数组能被完全赋值，否则后面运算起来很麻烦，这些“空值”的布尔类型是 True，而且 dropna() 方法删不掉。想创建空的 Series ，可以使用 Series(np.nan,index=???) 这样。"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## ndarray 对象属性"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "**.reshape(shape)** 改变数组维度"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([ 0.,  1.,  2.,  3.,  4.,  5.,  6.,  7.])"
+      ]
+     },
+     "execution_count": 6,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "b = np.linspace(0, 7, 8)\n",
+    "b"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": false
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[ 0.,  1.,  2.,  3.],\n",
+       "       [ 4.,  5.,  6.,  7.]])"
+      ]
+     },
+     "execution_count": 7,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "b = np.linspace(0, 7, 8).reshape(2, 4)\n",
+    "b"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[[0, 1],\n",
+       "        [2, 3]],\n",
+       "\n",
+       "       [[4, 5],\n",
+       "        [6, 7]]])"
+      ]
+     },
+     "execution_count": 8,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "b = np.arange(0, 8).reshape(2, 2, 2)\n",
+    "b"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "**.astype(dtype)** 改变数组格式"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": false
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "int64\n"
+     ]
+    },
+    {
+     "data": {
+      "text/plain": [
+       "array([[[0, 1],\n",
+       "        [2, 3]],\n",
+       "\n",
+       "       [[4, 5],\n",
+       "        [6, 7]]])"
+      ]
+     },
+     "execution_count": 9,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "print b.dtype\n",
+    "b"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[[ 0.,  1.],\n",
+       "        [ 2.,  3.]],\n",
+       "\n",
+       "       [[ 4.,  5.],\n",
+       "        [ 6.,  7.]]])"
+      ]
+     },
+     "execution_count": 10,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "b.astype(float)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "**.transpose(\\*axes)** 转置, transpose 的属性一直没搞懂"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[0, 1, 2, 3],\n",
+       "       [4, 5, 6, 7]])"
+      ]
+     },
+     "execution_count": 11,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "b = np.arange(8).reshape(2, 4)\n",
+    "b"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 12,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[0, 4],\n",
+       "       [1, 5],\n",
+       "       [2, 6],\n",
+       "       [3, 7]])"
+      ]
+     },
+     "execution_count": 12,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "b.T"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 13,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[0, 4],\n",
+       "       [1, 5],\n",
+       "       [2, 6],\n",
+       "       [3, 7]])"
+      ]
+     },
+     "execution_count": 13,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "b.transpose()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "**.sort** 排序"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 14,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": [
+    "a = np.array([[1,4],[3,1]])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 15,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[1, 4],\n",
+       "       [1, 3]])"
+      ]
+     },
+     "execution_count": 15,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "np.sort(a)                # sort along the last axis"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 16,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([1, 1, 3, 4])"
+      ]
+     },
+     "execution_count": 16,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "np.sort(a, axis=None)     # sort the flattened array"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 17,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[1, 1],\n",
+       "       [3, 4]])"
+      ]
+     },
+     "execution_count": 17,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "np.sort(a, axis=0)        # sort along the first axis"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "**stats** 基本统计"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 18,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": [
+    "arr = np.arange(12).reshape(3,4)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 19,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[ 0,  1,  2,  3],\n",
+       "       [ 4,  5,  6,  7],\n",
+       "       [ 8,  9, 10, 11]])"
+      ]
+     },
+     "execution_count": 19,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "arr"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 20,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "66"
+      ]
+     },
+     "execution_count": 20,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "arr.sum()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 21,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "66"
+      ]
+     },
+     "execution_count": 21,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "np.sum(arr)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 22,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([ 4.,  5.,  6.,  7.])"
+      ]
+     },
+     "execution_count": 22,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "arr.mean(0) # 列均值"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 23,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([ 1.5,  5.5,  9.5])"
+      ]
+     },
+     "execution_count": 23,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "arr.mean(1) # 行均值"
+   ]
+  },
+  {
+   "cell_type": "raw",
+   "metadata": {
+    "raw_mimetype": "text/restructuredtext"
+   },
+   "source": [
+    "更多统计方法\n",
+    "\n",
+    "+------------------+------------------------+\n",
+    "| sum              | 求和                   |\n",
+    "+------------------+------------------------+\n",
+    "| mean             | 均值                   |\n",
+    "+------------------+------------------------+\n",
+    "| std，var         | 标准差和方差           |\n",
+    "+------------------+------------------------+\n",
+    "| min，max         | 最小值和最大值         |\n",
+    "+------------------+------------------------+\n",
+    "| argmin，argmax   | 最小值和最大值的索引   |\n",
+    "+------------------+------------------------+\n",
+    "| cumsum           | 累积和                 |\n",
+    "+------------------+------------------------+\n",
+    "| cumprod          | 累积积                 |\n",
+    "+------------------+------------------------+"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## 数组间运算"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 24,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [],
+   "source": [
+    "a = np.arange(8).reshape(2, 4)\n",
+    "b = np.ones_like(a)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 25,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[1, 2, 3, 4],\n",
+       "       [5, 6, 7, 8]])"
+      ]
+     },
+     "execution_count": 25,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "a + b"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 26,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[ 0,  2,  4,  6],\n",
+       "       [ 8, 10, 12, 14]])"
+      ]
+     },
+     "execution_count": 26,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "a * 2"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## 索引和切片"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "**基本索引**"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 27,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])"
+      ]
+     },
+     "execution_count": 27,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "foo = np.arange(10)\n",
+    "foo"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 28,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": [
+    "bar = foo[:5].copy() # 若没有 copy，则 bar 的改变会影响 foo"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 29,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([0, 1, 2, 3, 4])"
+      ]
+     },
+     "execution_count": 29,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "bar"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 30,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": [
+    "bar[:] = 1"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 31,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([1, 1, 1, 1, 1])"
+      ]
+     },
+     "execution_count": 31,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "bar"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 32,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])"
+      ]
+     },
+     "execution_count": 32,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "foo"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "**二维和三维数组如何索引？**"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 33,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[1, 2, 3],\n",
+       "       [4, 5, 6],\n",
+       "       [7, 8, 9]])"
+      ]
+     },
+     "execution_count": 33,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "arr2d = np.array([[1, 2, 3],[4, 5, 6],[7, 8, 9]])\n",
+    "arr2d"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 34,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "7"
+      ]
+     },
+     "execution_count": 34,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "arr2d[2, 0]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 35,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": [
+    "arr3d = np.array([[[1, 2, 3],[4, 5, 6]],\n",
+    "                  [[7, 8, 9],[10, 11, 12]]])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 36,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[1, 2, 3],\n",
+       "       [4, 5, 6]])"
+      ]
+     },
+     "execution_count": 36,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "arr3d[0]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 37,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "6"
+      ]
+     },
+     "execution_count": 37,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "arr3d[0, 1, 2]"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "**切片** 从第 0 轴开始的"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 38,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[1, 2, 3],\n",
+       "       [4, 5, 6],\n",
+       "       [7, 8, 9]])"
+      ]
+     },
+     "execution_count": 38,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "arr2d"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 39,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "(3, 3)"
+      ]
+     },
+     "execution_count": 39,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "arr2d.shape"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 40,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[1, 2, 3]])"
+      ]
+     },
+     "execution_count": 40,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "arr2d[:1]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 41,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": false
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[4, 5, 6],\n",
+       "       [7, 8, 9]])"
+      ]
+     },
+     "execution_count": 41,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "arr2d[1:4] # 理论上第0轴没有4这个基数"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 42,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[1],\n",
+       "       [4]])"
+      ]
+     },
+     "execution_count": 42,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "arr2d[:2, :1]"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "**布尔型索引**"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 43,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[ 0.51659011, -0.14527543,  0.73750985, -0.07181445],\n",
+       "       [-0.26857463,  0.34883972,  0.07129706,  0.95455506],\n",
+       "       [ 0.43307006, -0.04072156, -1.32443926,  0.1124177 ],\n",
+       "       [ 1.39517115, -0.54127346, -0.70176892, -0.21847743],\n",
+       "       [ 2.69939163,  0.9403898 , -0.0578206 ,  0.50806596],\n",
+       "       [-0.41641312, -0.45169815,  0.31717456, -0.34085142],\n",
+       "       [ 0.44102963,  0.96447336, -2.92258682, -1.22429012]])"
+      ]
+     },
+     "execution_count": 43,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "from numpy.random import randn\n",
+    "data = randn(7, 4) # 生成 7*4 个均值为 0，标准差为 1 的数组\n",
+    "data"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 44,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([ True, False, False,  True, False, False, False], dtype=bool)"
+      ]
+     },
+     "execution_count": 44,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "names = np.array(['Bob', 'Joe', 'Will', 'Bob', 'Will', 'Joe', 'Joe'] )\n",
+    "names == 'Bob'"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "当两个轴长度一致时，可以用布尔型的数组切片，比如此例切的是 axis 0"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 45,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": false
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[ 0.51659011, -0.14527543,  0.73750985, -0.07181445],\n",
+       "       [ 1.39517115, -0.54127346, -0.70176892, -0.21847743]])"
+      ]
+     },
+     "execution_count": 45,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "data[names == 'Bob']"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 46,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[ 0.73750985, -0.07181445],\n",
+       "       [-0.70176892, -0.21847743]])"
+      ]
+     },
+     "execution_count": 46,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "data[names == 'Bob', 2:]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 47,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[-0.26857463,  0.34883972,  0.07129706,  0.95455506],\n",
+       "       [ 0.43307006, -0.04072156, -1.32443926,  0.1124177 ],\n",
+       "       [ 2.69939163,  0.9403898 , -0.0578206 ,  0.50806596],\n",
+       "       [-0.41641312, -0.45169815,  0.31717456, -0.34085142],\n",
+       "       [ 0.44102963,  0.96447336, -2.92258682, -1.22429012]])"
+      ]
+     },
+     "execution_count": 47,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "data[~(names == 'Bob')]"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "布尔型数组求并集"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 48,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([ True, False,  True,  True,  True, False, False], dtype=bool)"
+      ]
+     },
+     "execution_count": 48,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "mask = (names == \"Bob\") | (names == \"Will\")\n",
+    "mask"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 49,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[ 0.51659011, -0.14527543,  0.73750985, -0.07181445],\n",
+       "       [ 0.43307006, -0.04072156, -1.32443926,  0.1124177 ],\n",
+       "       [ 1.39517115, -0.54127346, -0.70176892, -0.21847743],\n",
+       "       [ 2.69939163,  0.9403898 , -0.0578206 ,  0.50806596]])"
+      ]
+     },
+     "execution_count": 49,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "data[mask]"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## 利用数组做数据处理"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "将条件逻辑表述为数组运算, np.where 是一个极其有用的三元函数，它其实是一个条件运算函数，即 foo if cond else bar"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 50,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": [
+    "xarr = np.arange(1.1, 1.6, 0.1)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 51,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([ 1.1,  1.2,  1.3,  1.4,  1.5])"
+      ]
+     },
+     "execution_count": 51,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "xarr"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 52,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": [
+    "yarr = np.arange(2.1, 2.6, 0.1)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 53,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([ 2.1,  2.2,  2.3,  2.4,  2.5])"
+      ]
+     },
+     "execution_count": 53,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "yarr"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 54,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": [
+    "cond = np.array([True, False, True, True, False])"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "根据 cond 的值选取 xarr 和 yarr 的值"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 55,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": [
+    "result = [(x if c else y)\n",
+    "         for x, y, c in zip(xarr, yarr, cond)]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 56,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "[1.1000000000000001,\n",
+       " 2.2000000000000002,\n",
+       " 1.3000000000000003,\n",
+       " 1.4000000000000004,\n",
+       " 2.5000000000000004]"
+      ]
+     },
+     "execution_count": 56,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "result"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "不够简洁，可用 where 改写"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 57,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([ 1.1,  2.2,  1.3,  1.4,  2.5])"
+      ]
+     },
+     "execution_count": 57,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "result = np.where(cond, xarr, yarr)\n",
+    "result"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "np.where 的第二个和第三个参数不必是数组，他们都是标量值"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 58,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[ 2.0086379 , -0.33799069,  0.48232499,  0.00343801],\n",
+       "       [-0.54010599,  1.63779772,  1.22284334, -1.34602676],\n",
+       "       [ 0.80309605, -0.82099082, -0.8703366 ,  0.20060704],\n",
+       "       [ 1.10812415, -0.01419402, -0.30237458,  1.30298964]])"
+      ]
+     },
+     "execution_count": 58,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "arr = randn(4,4)\n",
+    "arr"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 59,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[ 2, -2,  2,  2],\n",
+       "       [-2,  2,  2, -2],\n",
+       "       [ 2, -2, -2,  2],\n",
+       "       [ 2, -2, -2,  2]])"
+      ]
+     },
+     "execution_count": 59,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "np.where(arr > 0, 2, -2) # 正值设置为 2，负值设置为 -2"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "&emsp;&emsp;└ 这个代码的意思其实就是 >0 则 2，else -2"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## 其他通用函数"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "**一元函数**"
+   ]
+  },
+  {
+   "cell_type": "raw",
+   "metadata": {
+    "raw_mimetype": "text/restructuredtext"
+   },
+   "source": [
+    "+-----------------------------------+---------------------------------------------------------+\n",
+    "| 函数名                            | 功用                                                    |\n",
+    "+===================================+=========================================================+\n",
+    "| abs，fabs                         | 整数、浮点、复数的绝对值，对于非复数，可用更快的 fabs   |\n",
+    "+-----------------------------------+---------------------------------------------------------+\n",
+    "| sqrt                              | 平方根，等于 arr\\*\\*0.5                                 |\n",
+    "+-----------------------------------+---------------------------------------------------------+\n",
+    "| square                            | 平方，等于 arr\\*\\*2                                     |\n",
+    "+-----------------------------------+---------------------------------------------------------+\n",
+    "| exp                               | 以 e 为底的指数函数                                     |\n",
+    "+-----------------------------------+---------------------------------------------------------+\n",
+    "| log，log10，log2，log1p           | 以 e 为底的对数函数                                     |\n",
+    "+-----------------------------------+---------------------------------------------------------+\n",
+    "| sign                              | 计算各元素的正负号，1（正），0（零），-1（负）          |\n",
+    "+-----------------------------------+---------------------------------------------------------+\n",
+    "| ceil                              | 计算大于等于该值的最小整数                              |\n",
+    "+-----------------------------------+---------------------------------------------------------+\n",
+    "| floor                             | 计算小于等于该值的最大整数                              |\n",
+    "+-----------------------------------+---------------------------------------------------------+\n",
+    "| rint                              | round int，四舍五入到整数                               |\n",
+    "+-----------------------------------+---------------------------------------------------------+\n",
+    "| modf                              | 将数组的整数和小数部分以两个独立数组的形式返回          |\n",
+    "+-----------------------------------+---------------------------------------------------------+\n",
+    "| isnan                             | 返回一个 “哪些值是 NaN” 的布尔型数组                    |\n",
+    "+-----------------------------------+---------------------------------------------------------+\n",
+    "| isfinite，isinf                   | 返回是否是有穷（无穷）的布尔型数组                      |\n",
+    "+-----------------------------------+---------------------------------------------------------+\n",
+    "| cos，cosh，sin，sinh，tan，tanh   | 普通和双曲型三角函数                                    |\n",
+    "+-----------------------------------+---------------------------------------------------------+\n",
+    "| arccos，arccosh…等同上            | 反三角函数                                              |\n",
+    "+-----------------------------------+---------------------------------------------------------+\n",
+    "| logical\\_not                      | 计算个元素 not x 的真值，等于 -arr                      |\n",
+    "+-----------------------------------+---------------------------------------------------------+\n",
+    "| unique                            | 计算元素唯一值并返回排序后的结果                        |\n",
+    "+-----------------------------------+---------------------------------------------------------+"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "**二元函数**"
+   ]
+  },
+  {
+   "cell_type": "raw",
+   "metadata": {
+    "raw_mimetype": "text/restructuredtext"
+   },
+   "source": [
+    "+--------------------------------------------------+--------------------------------------+\n",
+    "| 函数名                                           | 功用                                 |\n",
+    "+==================================================+======================================+\n",
+    "| add                                              | 加法，+                              |\n",
+    "+--------------------------------------------------+--------------------------------------+\n",
+    "| subtract                                         | 减法，-                              |\n",
+    "+--------------------------------------------------+--------------------------------------+\n",
+    "| multiply                                         | 乘法，\\*                             |\n",
+    "+--------------------------------------------------+--------------------------------------+\n",
+    "| divide，floor\\_divide                            | 除法和地板除，/ 和 //                |\n",
+    "+--------------------------------------------------+--------------------------------------+\n",
+    "| power                                            | 乘方，\\*\\*                           |\n",
+    "+--------------------------------------------------+--------------------------------------+\n",
+    "| maximum，fmax                                    | 元素级最大值，fmax 将忽略 NaN        |\n",
+    "+--------------------------------------------------+--------------------------------------+\n",
+    "| minimum，fmin                                    | 同上                                 |\n",
+    "+--------------------------------------------------+--------------------------------------+\n",
+    "| mod                                              | 取模，%                              |\n",
+    "+--------------------------------------------------+--------------------------------------+\n",
+    "| copysign                                         | 将第二数组元素的符号复制给第一数组   |\n",
+    "+--------------------------------------------------+--------------------------------------+\n",
+    "| greater(\\_equal)，less(\\*equal)，(not\\*) equal   | 字面意义，返回布尔数组               |\n",
+    "+--------------------------------------------------+--------------------------------------+\n",
+    "| logical\\_and，logical\\_or，logical\\_xor          | 字面意义，返回布尔数组               |\n",
+    "+--------------------------------------------------+--------------------------------------+"
+   ]
+  }
+ ],
+ "metadata": {
+  "celltoolbar": "Raw Cell Format",
+  "kernelspec": {
+   "display_name": "Python 2",
+   "language": "python",
+   "name": "python2"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 2
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython2",
+   "version": "2.7.11"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 0
+}

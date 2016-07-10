@@ -14,5 +14,5 @@
     01_linux
     02_jupyter
     03_numpy.ipynb
-    04_matplotlib
+    04_matplotlib.ipynb
     05_seaborn

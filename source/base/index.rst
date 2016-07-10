@@ -9,7 +9,7 @@
     :maxdepth: 1
     :numbered: 2    
 
-    01_pandas
+    01_pandas.ipynb
     02_stats
     03_scipy
     04_statsmodel

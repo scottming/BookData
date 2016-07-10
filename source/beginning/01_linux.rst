@@ -311,4 +311,4 @@ sort 排序
 
 .. rubric:: Footnotes
 
-.. [#f1] 一个打包好 Python 科学计算常用包的平台工具，安装它，也就拥有了Python、NumPy、SciPy、Matplotlib、IPython、Jupyter 等
+.. [#f1] 一个打包好 Python 科学计算常用包的平台工具，安装它，也就拥有了Python、NumPy、SciPy、Matplotlib、IPython、Jupyter 等。
