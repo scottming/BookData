@@ -9,6 +9,9 @@ function plotData(x, y)
 %               the "xlabel" and "ylabel" commands. Assume the 
 %               population and revenue data have been passed in
 %               as the x and y arguments of this function.
+plot(x, y, 'rx', 'MarkerSize', 10);
+ylabel('profit in $10,000s');
+xlabel('Population of City in 10,000s');
 %
 % Hint: You can use the 'rx' option with plot to have the markers
 %       appear as red crosses. Furthermore, you can make the
