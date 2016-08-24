@@ -99,7 +99,7 @@
 <li class="toctree-l2"><a class="reference internal" href="05_sklearn.html">5. 机器学习初步（SKlearn）</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../tool/index.html">工具篇</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">工具篇</a></li>
 </ul>
 
             
@@ -204,7 +204,7 @@ div.nboutput > :first-child pre {
 div.nbinput > :first-child[class^=highlight],
 div.nboutput > :first-child[class^=highlight],
 div.nboutput > :first-child {
-    min-width: 11ex;
+    min-width: 9ex;
     padding-top: 0.4em;
     padding-right: 0.4em;
     text-align: right;
@@ -322,11 +322,11 @@ div.nboutput  > :nth-child(2).stderr {
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>%matplotlib inline
-import matplotlib.pyplot as plt
-import numpy as np
-import pandas as pd
-from pandas import Series, DataFrame
+<span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">pandas</span> <span class="kn">import</span> <span class="n">Series</span><span class="p">,</span> <span class="n">DataFrame</span>
 </pre></div>
 </div>
 </div>
@@ -338,8 +338,8 @@ from pandas import Series, DataFrame
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>from IPython.display import Image
-Image(filename=&#39;../../image/DataFrame.png&#39;, width=400)
+<span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;../../image/DataFrame.png&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">400</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -360,10 +360,10 @@ Image(filename=&#39;../../image/DataFrame.png&#39;, width=400)
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>s1 = Series(range(0,4)) # -&gt; 0, 1, 2, 3
-s2 = Series(range(1,5)) # -&gt; 1, 2, 3, 4
-s3 = s1 + s2 # -&gt; 1, 3, 5, 7
-s4 = Series([&#39;a&#39;,&#39;b&#39;])*3 # -&gt; &#39;aaa&#39;,&#39;bbb&#39;
+<span></span><span class="n">s1</span> <span class="o">=</span> <span class="n">Series</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span> <span class="c1"># -&gt; 0, 1, 2, 3</span>
+<span class="n">s2</span> <span class="o">=</span> <span class="n">Series</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span> <span class="c1"># -&gt; 1, 2, 3, 4</span>
+<span class="n">s3</span> <span class="o">=</span> <span class="n">s1</span> <span class="o">+</span> <span class="n">s2</span> <span class="c1"># -&gt; 1, 3, 5, 7</span>
+<span class="n">s4</span> <span class="o">=</span> <span class="n">Series</span><span class="p">([</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">])</span><span class="o">*</span><span class="mi">3</span> <span class="c1"># -&gt; &#39;aaa&#39;,&#39;bbb&#39;</span>
 </pre></div>
 </div>
 </div>
@@ -374,11 +374,11 @@ s4 = Series([&#39;a&#39;,&#39;b&#39;])*3 # -&gt; &#39;aaa&#39;,&#39;bbb&#39;
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span># 获取索引
-df = DataFrame(s1)
-idx = s1.index
-idx = df.columns # the column index
-idx = df.index # the row index
+<span></span><span class="c1"># 获取索引</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">DataFrame</span><span class="p">(</span><span class="n">s1</span><span class="p">)</span>
+<span class="n">idx</span> <span class="o">=</span> <span class="n">s1</span><span class="o">.</span><span class="n">index</span>
+<span class="n">idx</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="c1"># the column index</span>
+<span class="n">idx</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span> <span class="c1"># the row index</span>
 </pre></div>
 </div>
 </div>
@@ -388,11 +388,11 @@ idx = df.index # the row index
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span># 索引的一些特性
-b = idx.is_monotonic_decreasing
-b = idx.is_monotonic_increasing
-b = idx.has_duplicates
-i = idx.nlevels # multi-level indexe
+<span></span><span class="c1"># 索引的一些特性</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">idx</span><span class="o">.</span><span class="n">is_monotonic_decreasing</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">idx</span><span class="o">.</span><span class="n">is_monotonic_increasing</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">idx</span><span class="o">.</span><span class="n">has_duplicates</span>
+<span class="n">i</span> <span class="o">=</span> <span class="n">idx</span><span class="o">.</span><span class="n">nlevels</span> <span class="c1"># multi-level indexe</span>
 </pre></div>
 </div>
 </div>
@@ -402,11 +402,11 @@ i = idx.nlevels # multi-level indexe
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span># 索引的一些方法
-a = idx.values # get as numpy array
-l = idx.tolist() # get as a python list
-# idx = idx.astype(dtype) # change data type
-# b = idx.equals(other) # check for equality 看看是否是相同的索引
+<span></span><span class="c1"># 索引的一些方法</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">idx</span><span class="o">.</span><span class="n">values</span> <span class="c1"># get as numpy array</span>
+<span class="n">l</span> <span class="o">=</span> <span class="n">idx</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span> <span class="c1"># get as a python list</span>
+<span class="c1"># idx = idx.astype(dtype) # change data type</span>
+<span class="c1"># b = idx.equals(other) # check for equality 看看是否是相同的索引</span>
 </pre></div>
 </div>
 </div>
@@ -416,12 +416,12 @@ l = idx.tolist() # get as a python list
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span># union of two indexes 合并两个索引
-# idx = idx.union(other)
+<span></span><span class="c1"># union of two indexes 合并两个索引</span>
+<span class="c1"># idx = idx.union(other)</span>
 
-idx1 = pd.Index([1, 2, 3, 4])
-idx2 = pd.Index([3, 4, 5, 6])
-idx1.union(idx2)
+<span class="n">idx1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Index</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="n">idx2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Index</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+<span class="n">idx1</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">idx2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -441,9 +441,9 @@ idx1.union(idx2)
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>i = idx.nunique() # number unique labels
-label = idx.min() # minimum label
-label = idx.max() # maximum label
+<span></span><span class="n">i</span> <span class="o">=</span> <span class="n">idx</span><span class="o">.</span><span class="n">nunique</span><span class="p">()</span> <span class="c1"># number unique labels</span>
+<span class="n">label</span> <span class="o">=</span> <span class="n">idx</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="c1"># minimum label</span>
+<span class="n">label</span> <span class="o">=</span> <span class="n">idx</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="c1"># maximum label</span>
 </pre></div>
 </div>
 </div>
@@ -458,7 +458,7 @@ label = idx.max() # maximum label
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>df = DataFrame(np.random.randn(10, 4), columns=[&#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;D&#39;])
+<span></span><span class="n">df</span> <span class="o">=</span> <span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -469,7 +469,7 @@ label = idx.max() # maximum label
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>df.info()
+<span></span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -495,8 +495,8 @@ memory usage: 392.0 bytes
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>n=4
-dfh = df.head(n) # 看前 n 行
+<span></span><span class="n">n</span><span class="o">=</span><span class="mi">4</span>
+<span class="n">dfh</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="c1"># 看前 n 行</span>
 </pre></div>
 </div>
 </div>
@@ -506,7 +506,7 @@ dfh = df.head(n) # 看前 n 行
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>dft = df.tail(n) # 看后 n 行
+<span></span><span class="n">dft</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="c1"># 看后 n 行</span>
 </pre></div>
 </div>
 </div>
@@ -516,7 +516,7 @@ dfh = df.head(n) # 看前 n 行
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>dfs = df.describe() # 各类统计信息
+<span></span><span class="n">dfs</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span> <span class="c1"># 各类统计信息</span>
 </pre></div>
 </div>
 </div>
@@ -526,7 +526,7 @@ dfh = df.head(n) # 看前 n 行
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>top_left_corner_df = df.iloc[:5, :5]
+<span></span><span class="n">top_left_corner_df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">5</span><span class="p">,</span> <span class="p">:</span><span class="mi">5</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -536,7 +536,7 @@ dfh = df.head(n) # 看前 n 行
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>dfT = df.T # transpose rows and cols
+<span></span><span class="n">dfT</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">T</span> <span class="c1"># transpose rows and cols</span>
 </pre></div>
 </div>
 </div>
@@ -547,8 +547,8 @@ dfh = df.head(n) # 看前 n 行
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>l = df.axes # list row and col indexes
-l
+<span></span><span class="n">l</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">axes</span> <span class="c1"># list row and col indexes</span>
+<span class="n">l</span>
 </pre></div>
 </div>
 </div>
@@ -569,7 +569,7 @@ l
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>(r, c) = df.axes # from above
+<span></span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">axes</span> <span class="c1"># from above</span>
 </pre></div>
 </div>
 </div>
@@ -579,8 +579,8 @@ l
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>s = df.dtypes # Series column data types
-s
+<span></span><span class="n">s</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">dtypes</span> <span class="c1"># Series column data types</span>
+<span class="n">s</span>
 </pre></div>
 </div>
 </div>
@@ -604,8 +604,8 @@ dtype: object
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>b = df.empty # True for empty DataFrame
-b
+<span></span><span class="n">b</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">empty</span> <span class="c1"># True for empty DataFrame</span>
+<span class="n">b</span>
 </pre></div>
 </div>
 </div>
@@ -625,8 +625,8 @@ b
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>i = df.ndim # number of axes (2)
-i
+<span></span><span class="n">i</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">ndim</span> <span class="c1"># number of axes (2)</span>
+<span class="n">i</span>
 </pre></div>
 </div>
 </div>
@@ -646,8 +646,8 @@ i
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>t = df.shape # (row-count, column-count)
-t
+<span></span><span class="n">t</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">shape</span> <span class="c1"># (row-count, column-count)</span>
+<span class="n">t</span>
 </pre></div>
 </div>
 </div>
@@ -667,8 +667,8 @@ t
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>(r, c) = df.shape # from above
-(r, c)
+<span></span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">shape</span> <span class="c1"># from above</span>
+<span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -688,8 +688,8 @@ t
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>i = df.size # row-count * column-count
-i
+<span></span><span class="n">i</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">size</span> <span class="c1"># row-count * column-count</span>
+<span class="n">i</span>
 </pre></div>
 </div>
 </div>
@@ -709,7 +709,7 @@ i
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>a = df.values # get a numpy array for df
+<span></span><span class="n">a</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">values</span> <span class="c1"># get a numpy array for df</span>
 </pre></div>
 </div>
 </div>
@@ -720,7 +720,7 @@ i
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>df = DataFrame([1, 23, 3, 5, 2])
+<span></span><span class="n">df</span> <span class="o">=</span> <span class="n">DataFrame</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -730,10 +730,10 @@ i
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>dfc = df.copy() # copy a DataFrame
-dfr = df.rank() # rank each col (default) 把每个值的地位列出了
-dfs = df.sort() # sort each col (default)
-# dfc = df.astype(dtype) # type conversion
+<span></span><span class="n">dfc</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span> <span class="c1"># copy a DataFrame</span>
+<span class="n">dfr</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">rank</span><span class="p">()</span> <span class="c1"># rank each col (default) 把每个值的地位列出了</span>
+<span class="n">dfs</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span> <span class="c1"># sort each col (default)</span>
+<span class="c1"># dfc = df.astype(dtype) # type conversion</span>
 </pre></div>
 </div>
 </div>
@@ -752,14 +752,14 @@ dfs = df.sort() # sort each col (default)
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span># 下面的两个方法没怎么搞懂
-df.iteritems()# (col-index, Series) pairs
-df.iterrows() # (row-index, Series) pairs
-# example ... iterating over columns
-for (name, series) in df.iteritems():
-    print(&#39;Col name: &#39; + str(name))
-    print(&#39;First value: &#39; +
-        str(series.iat[0]) + &#39;\n&#39;)
+<span></span><span class="c1"># 下面的两个方法没怎么搞懂</span>
+<span class="n">df</span><span class="o">.</span><span class="n">iteritems</span><span class="p">()</span><span class="c1"># (col-index, Series) pairs</span>
+<span class="n">df</span><span class="o">.</span><span class="n">iterrows</span><span class="p">()</span> <span class="c1"># (row-index, Series) pairs</span>
+<span class="c1"># example ... iterating over columns</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">series</span><span class="p">)</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Col name: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">name</span><span class="p">))</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;First value: &#39;</span> <span class="o">+</span>
+        <span class="nb">str</span><span class="p">(</span><span class="n">series</span><span class="o">.</span><span class="n">iat</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -845,10 +845,10 @@ First value: 1
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>df = DataFrame(np.random.randn(10, 4), columns=[&#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;D&#39;])
-idx = df.columns # get col index
-label = df.columns[0] # 1st col label
-lst = df.columns.tolist() # get as a list
+<span></span><span class="n">df</span> <span class="o">=</span> <span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">])</span>
+<span class="n">idx</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="c1"># get col index</span>
+<span class="n">label</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># 1st col label</span>
+<span class="n">lst</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span> <span class="c1"># get as a list</span>
 </pre></div>
 </div>
 </div>
@@ -858,7 +858,7 @@ lst = df.columns.tolist() # get as a list
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>lst
+<span></span><span class="n">lst</span>
 </pre></div>
 </div>
 </div>
@@ -878,7 +878,7 @@ lst = df.columns.tolist() # get as a list
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>label
+<span></span><span class="n">label</span>
 </pre></div>
 </div>
 </div>
@@ -898,7 +898,7 @@ lst = df.columns.tolist() # get as a list
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>idx
+<span></span><span class="n">idx</span>
 </pre></div>
 </div>
 </div>
@@ -919,8 +919,8 @@ lst = df.columns.tolist() # get as a list
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span># df.rename(columns={&#39;old&#39;:&#39;new&#39;}, inplace=True)
-# df = df.rename(columns={&#39;a&#39;:1,&#39;b&#39;:&#39;x&#39;})
+<span></span><span class="c1"># df.rename(columns={&#39;old&#39;:&#39;new&#39;}, inplace=True)</span>
+<span class="c1"># df = df.rename(columns={&#39;a&#39;:1,&#39;b&#39;:&#39;x&#39;})</span>
 </pre></div>
 </div>
 </div>
@@ -931,13 +931,13 @@ lst = df.columns.tolist() # get as a list
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>s = df[&#39;C&#39;] # select col to Series
-df = df[[&#39;C&#39;]] # select col to df
-df = df[[&#39;A&#39;,&#39;B&#39;]] # select 2 or more
-df = df[[&#39;C&#39;, &#39;B&#39;, &#39;A&#39;]]# change order 改变排序了
-s = df[df.columns[0]] # select by number
-f = df[df.columns[[0, 3, 4]] # by number
-s = df.pop(&#39;C&#39;) # get col &amp; drop from df == df[&#39;C&#39;]
+<span></span><span class="n">s</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;C&#39;</span><span class="p">]</span> <span class="c1"># select col to Series</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;C&#39;</span><span class="p">]]</span> <span class="c1"># select col to df</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="s1">&#39;B&#39;</span><span class="p">]]</span> <span class="c1"># select 2 or more</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">]]</span><span class="c1"># change order 改变排序了</span>
+<span class="n">s</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="c1"># select by number</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]]</span> <span class="c1"># by number</span>
+<span class="n">s</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;C&#39;</span><span class="p">)</span> <span class="c1"># get col &amp; drop from df == df[&#39;C&#39;]</span>
 </pre></div>
 </div>
 </div>
@@ -948,9 +948,9 @@ s = df.pop(&#39;C&#39;) # get col &amp; drop from df == df[&#39;C&#39;]
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>s = df.A # same as s = df[&#39;A&#39;],
-# 但不能用 python 特性创建新的 columns
-# df[&#39;new_col&#39;] = df.a / df.b
+<span></span><span class="n">s</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">A</span> <span class="c1"># same as s = df[&#39;A&#39;],</span>
+<span class="c1"># 但不能用 python 特性创建新的 columns</span>
+<span class="c1"># df[&#39;new_col&#39;] = df.a / df.b</span>
 </pre></div>
 </div>
 </div>
@@ -962,10 +962,10 @@ s = df.pop(&#39;C&#39;) # get col &amp; drop from df == df[&#39;C&#39;]
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>df[&#39;new_col&#39;] = range(len(df))
-df[&#39;new_col&#39;] = np.repeat(np.nan,len(df))
-df[&#39;random&#39;] = np.random.rand(len(df))
-df[&#39;index_as_col&#39;] = df.index
+<span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;new_col&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">))</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;new_col&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">))</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;random&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">))</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;index_as_col&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span>
 </pre></div>
 </div>
 </div>
@@ -975,7 +975,7 @@ df[&#39;index_as_col&#39;] = df.index
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>df.head(2)
+<span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1033,9 +1033,9 @@ df1[[&#8216;b&#8217;,&#8217;c&#8217;]] = df2[[&#8216;e&#8217;,&#8217;f&#8217;]] 
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span># 符合 &gt;0 条件的保持原值，其他 =0
-df[&#39;A&#39;] = df[&#39;A&#39;].where(df[&#39;A&#39;]&gt;0, other=0)
-# df[&#39;d&#39;]=df[&#39;a&#39;].where(df.b!=0,other=df.c)
+<span></span><span class="c1"># 符合 &gt;0 条件的保持原值，其他 =0</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">,</span> <span class="n">other</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="c1"># df[&#39;d&#39;]=df[&#39;a&#39;].where(df.b!=0,other=df.c)</span>
 </pre></div>
 </div>
 </div>
@@ -1056,8 +1056,8 @@ df[&#8216;col&#8217;].value_counts()</p>
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>df[&#39;B&#39;].idxmax()
-df[&#39;B&#39;].idxmin()
+<span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;B&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">idxmax</span><span class="p">()</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;B&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">idxmin</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1085,7 +1085,7 @@ window=4)</p>
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>df = df.mul(s, axis=0) # on matched rows,相当于 * other Series 每行都与之相乘
+<span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># on matched rows,相当于 * other Series 每行都与之相乘</span>
 </pre></div>
 </div>
 </div>
@@ -1095,7 +1095,7 @@ window=4)</p>
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>df.columns.get_loc(&#39;B&#39;)
+<span></span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="s1">&#39;B&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1115,7 +1115,7 @@ window=4)</p>
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>df = df.iloc[:, 0:2] # exclusive
+<span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span> <span class="c1"># exclusive</span>
 </pre></div>
 </div>
 </div>
@@ -1126,7 +1126,7 @@ window=4)</p>
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>df
+<span></span><span class="n">df</span>
 </pre></div>
 </div>
 </div>
@@ -1194,8 +1194,8 @@ window=4)</p>
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>for i in [&#39;pop&#39;, &#39;state&#39;]:
-    print df.columns.get_loc(i)
+<span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;pop&#39;</span><span class="p">,</span> <span class="s1">&#39;state&#39;</span><span class="p">]:</span>
+    <span class="k">print</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1214,7 +1214,7 @@ window=4)</p>
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>Series(df.columns)
+<span></span><span class="n">Series</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1242,9 +1242,9 @@ dtype: object
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>idx = df.index # get row index
-label = df.index[0] # 1st row label
-lst = df.index.tolist() # get as a list
+<span></span><span class="n">idx</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span> <span class="c1"># get row index</span>
+<span class="n">label</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># 1st row label</span>
+<span class="n">lst</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span> <span class="c1"># get as a list</span>
 </pre></div>
 </div>
 </div>
@@ -1255,13 +1255,13 @@ lst = df.index.tolist() # get as a list
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>df.index = idx # new ad hoc index
-df.index = range(len(df)) # set with list
-df = df.reset_index() # replace old w new
-# note: old index stored as a col in df
-df = df.reindex(index=range(len(df)))
-df = df.set_index(keys=[&#39;r1&#39;,&#39;r2&#39;,&#39;etc&#39;])
-df.rename(index={&#39;old&#39;:&#39;new&#39;},inplace=True)
+<span></span><span class="n">df</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">idx</span> <span class="c1"># new ad hoc index</span>
+<span class="n">df</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">))</span> <span class="c1"># set with list</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span> <span class="c1"># replace old w new</span>
+<span class="c1"># note: old index stored as a col in df</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)))</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;r1&#39;</span><span class="p">,</span><span class="s1">&#39;r2&#39;</span><span class="p">,</span><span class="s1">&#39;etc&#39;</span><span class="p">])</span>
+<span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;old&#39;</span><span class="p">:</span><span class="s1">&#39;new&#39;</span><span class="p">},</span><span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1277,9 +1277,9 @@ df.drop([&#8216;row1&#8217;,&#8217;row2&#8217;]) # multi-row</p>
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span># fake up some data
-data = {1:[1,2,3], 2:[4,1,9], 3:[1,8,27]}
-df = pd.DataFrame(data)
+<span></span><span class="c1"># fake up some data</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">:[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="mi">2</span><span class="p">:[</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">9</span><span class="p">],</span> <span class="mi">3</span><span class="p">:[</span><span class="mi">1</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">27</span><span class="p">]}</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1289,9 +1289,9 @@ df = pd.DataFrame(data)
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span># multi-column isin
-lf = {1:[1, 3], 3:[8, 27]} # look for
-f = df[df[list(lf)].isin(lf).all(axis=1)] # 这里看不太懂
+<span></span><span class="c1"># multi-column isin</span>
+<span class="n">lf</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">:[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="mi">3</span><span class="p">:[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">27</span><span class="p">]}</span> <span class="c1"># look for</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">lf</span><span class="p">)]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">lf</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)]</span> <span class="c1"># 这里看不太懂</span>
 </pre></div>
 </div>
 </div>
@@ -1315,8 +1315,8 @@ df_obj.sort_values(by=[&#39;&#39;,&#39;&#39;])同上
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>df0 = DataFrame({&#39;x&#39;: [1, 2, 3], &#39;y&#39;: [3, 4, 5]}, index=[3, 2, 1])
-df1 = DataFrame([[1, 2, 3,], [3, 4, 5], [6, 7, 8]], index=[3, 2, 1])
+<span></span><span class="n">df0</span> <span class="o">=</span> <span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]},</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">df1</span> <span class="o">=</span> <span class="n">DataFrame</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">]],</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -1326,7 +1326,7 @@ df1 = DataFrame([[1, 2, 3,], [3, 4, 5], [6, 7, 8]], index=[3, 2, 1])
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>df0
+<span></span><span class="n">df0</span>
 </pre></div>
 </div>
 </div>
@@ -1371,7 +1371,7 @@ df1 = DataFrame([[1, 2, 3,], [3, 4, 5], [6, 7, 8]], index=[3, 2, 1])
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>df0[1:2]
+<span></span><span class="n">df0</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -1406,7 +1406,7 @@ df1 = DataFrame([[1, 2, 3,], [3, 4, 5], [6, 7, 8]], index=[3, 2, 1])
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>df1
+<span></span><span class="n">df1</span>
 </pre></div>
 </div>
 </div>
@@ -1455,7 +1455,7 @@ df1 = DataFrame([[1, 2, 3,], [3, 4, 5], [6, 7, 8]], index=[3, 2, 1])
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>df1[0]
+<span></span><span class="n">df1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -1478,7 +1478,7 @@ Name: 0, dtype: int64
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>df1[0:2]
+<span></span><span class="n">df1</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -1521,7 +1521,7 @@ Name: 0, dtype: int64
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>df1.ix[:, 0:2]
+<span></span><span class="n">df1</span><span class="o">.</span><span class="n">ix</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -1570,7 +1570,7 @@ Name: 0, dtype: int64
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>df0[[&#39;x&#39;,&#39;y&#39;]]
+<span></span><span class="n">df0</span><span class="p">[[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">]]</span>
 </pre></div>
 </div>
 </div>
@@ -1619,8 +1619,8 @@ Name: 0, dtype: int64
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>foo = DataFrame([4.5, 7.2, -5.3, 3.6], index=[&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;])
-bar = DataFrame([4.5, 7.2, -5.3, 3.6], index=range(4))
+<span></span><span class="n">foo</span> <span class="o">=</span> <span class="n">DataFrame</span><span class="p">([</span><span class="mf">4.5</span><span class="p">,</span> <span class="mf">7.2</span><span class="p">,</span> <span class="o">-</span><span class="mf">5.3</span><span class="p">,</span> <span class="mf">3.6</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">])</span>
+<span class="n">bar</span> <span class="o">=</span> <span class="n">DataFrame</span><span class="p">([</span><span class="mf">4.5</span><span class="p">,</span> <span class="mf">7.2</span><span class="p">,</span> <span class="o">-</span><span class="mf">5.3</span><span class="p">,</span> <span class="mf">3.6</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -1630,9 +1630,9 @@ bar = DataFrame([4.5, 7.2, -5.3, 3.6], index=range(4))
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>print(foo)
-print &#39;------&#39;
-print(bar)
+<span></span><span class="k">print</span><span class="p">(</span><span class="n">foo</span><span class="p">)</span>
+<span class="k">print</span> <span class="s1">&#39;------&#39;</span>
+<span class="k">print</span><span class="p">(</span><span class="n">bar</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1660,11 +1660,11 @@ d  3.6
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>print foo[:2]
-print &#39;------&#39;
-print bar[:2]
-print &#39;------&#39;
-print foo[:&#39;c&#39;]
+<span></span><span class="k">print</span> <span class="n">foo</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span>
+<span class="k">print</span> <span class="s1">&#39;------&#39;</span>
+<span class="k">print</span> <span class="n">bar</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span>
+<span class="k">print</span> <span class="s1">&#39;------&#39;</span>
+<span class="k">print</span> <span class="n">foo</span><span class="p">[:</span><span class="s1">&#39;c&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -1694,12 +1694,12 @@ c -5.3
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>data = {&#39;state&#39;:[&#39;Ohino&#39;,&#39;Ohino&#39;,&#39;Ohino&#39;,&#39;Nevada&#39;,&#39;Nevada&#39;],
-        &#39;year&#39;:[2000,2001,2002,2001,2002],
-        &#39;pop&#39;:[1.5,1.7,3.6,2.4,2.9]}
+<span></span><span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;state&#39;</span><span class="p">:[</span><span class="s1">&#39;Ohino&#39;</span><span class="p">,</span><span class="s1">&#39;Ohino&#39;</span><span class="p">,</span><span class="s1">&#39;Ohino&#39;</span><span class="p">,</span><span class="s1">&#39;Nevada&#39;</span><span class="p">,</span><span class="s1">&#39;Nevada&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;year&#39;</span><span class="p">:[</span><span class="mi">2000</span><span class="p">,</span><span class="mi">2001</span><span class="p">,</span><span class="mi">2002</span><span class="p">,</span><span class="mi">2001</span><span class="p">,</span><span class="mi">2002</span><span class="p">],</span>
+        <span class="s1">&#39;pop&#39;</span><span class="p">:[</span><span class="mf">1.5</span><span class="p">,</span><span class="mf">1.7</span><span class="p">,</span><span class="mf">3.6</span><span class="p">,</span><span class="mf">2.4</span><span class="p">,</span><span class="mf">2.9</span><span class="p">]}</span>
 
-df = DataFrame(data,index=[&#39;one&#39;,&#39;two&#39;,&#39;three&#39;,&#39;four&#39;,&#39;five&#39;],
-               columns=[&#39;year&#39;,&#39;state&#39;,&#39;pop&#39;,&#39;debt&#39;])
+<span class="n">df</span> <span class="o">=</span> <span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;one&#39;</span><span class="p">,</span><span class="s1">&#39;two&#39;</span><span class="p">,</span><span class="s1">&#39;three&#39;</span><span class="p">,</span><span class="s1">&#39;four&#39;</span><span class="p">,</span><span class="s1">&#39;five&#39;</span><span class="p">],</span>
+               <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">,</span><span class="s1">&#39;state&#39;</span><span class="p">,</span><span class="s1">&#39;pop&#39;</span><span class="p">,</span><span class="s1">&#39;debt&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -1709,7 +1709,7 @@ df = DataFrame(data,index=[&#39;one&#39;,&#39;two&#39;,&#39;three&#39;,&#39;four
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>df
+<span></span><span class="n">df</span>
 </pre></div>
 </div>
 </div>
@@ -1776,7 +1776,7 @@ df = DataFrame(data,index=[&#39;one&#39;,&#39;two&#39;,&#39;three&#39;,&#39;four
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>df.ix[:, &#39;state&#39;:&#39;pop&#39;]
+<span></span><span class="n">df</span><span class="o">.</span><span class="n">ix</span><span class="p">[:,</span> <span class="s1">&#39;state&#39;</span><span class="p">:</span><span class="s1">&#39;pop&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -1831,7 +1831,7 @@ df = DataFrame(data,index=[&#39;one&#39;,&#39;two&#39;,&#39;three&#39;,&#39;four
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>df.ix[1] # 切的是行，所以说 ix 默认切的行， 也就是 axis=0
+<span></span><span class="n">df</span><span class="o">.</span><span class="n">ix</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># 切的是行，所以说 ix 默认切的行， 也就是 axis=0</span>
 </pre></div>
 </div>
 </div>
@@ -1862,8 +1862,8 @@ Name: two, dtype: object
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>print(type(df[&#39;year&#39;]))
-print(type(df[[&#39;year&#39;]]))
+<span></span><span class="k">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]))</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;year&#39;</span><span class="p">]]))</span>
 </pre></div>
 </div>
 </div>
@@ -1882,8 +1882,8 @@ print(type(df[[&#39;year&#39;]]))
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span># df[&#39;one&#39;] # 会报错，没办法这样索引,这是行
-df[[&#39;year&#39;, &#39;state&#39;]] # 可运行
+<span></span><span class="c1"># df[&#39;one&#39;] # 会报错，没办法这样索引,这是行</span>
+<span class="n">df</span><span class="p">[[</span><span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;state&#39;</span><span class="p">]]</span> <span class="c1"># 可运行</span>
 </pre></div>
 </div>
 </div>
@@ -1938,7 +1938,7 @@ df[[&#39;year&#39;, &#39;state&#39;]] # 可运行
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>df[0:1] # 切第一行，直接 df[0] 是会报错的。而 ix 不会。
+<span></span><span class="n">df</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># 切第一行，直接 df[0] 是会报错的。而 ix 不会。</span>
 </pre></div>
 </div>
 </div>
@@ -1977,7 +1977,7 @@ df[[&#39;year&#39;, &#39;state&#39;]] # 可运行
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>df[&#39;one&#39;:&#39;two&#39;] # 所以他也是可以整数切，也能标签切
+<span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;one&#39;</span><span class="p">:</span><span class="s1">&#39;two&#39;</span><span class="p">]</span> <span class="c1"># 所以他也是可以整数切，也能标签切</span>
 </pre></div>
 </div>
 </div>
@@ -2023,8 +2023,8 @@ df[[&#39;year&#39;, &#39;state&#39;]] # 可运行
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>print(df.columns.tolist())
-print(df.index.tolist())
+<span></span><span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
@@ -2043,7 +2043,7 @@ print(df.index.tolist())
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>df.loc[:, &#39;year&#39;:&#39;state&#39;]
+<span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;year&#39;</span><span class="p">:</span><span class="s1">&#39;state&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -2098,7 +2098,7 @@ print(df.index.tolist())
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>df.iloc[:, 1:2]
+<span></span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -2152,8 +2152,8 @@ print(df.index.tolist())
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span># df.loc[1:2] 用 label 的去切整数，自然会出错
-# df.iloc[&#39;two&#39;:&#39;three&#39;] 也会出错
+<span></span><span class="c1"># df.loc[1:2] 用 label 的去切整数，自然会出错</span>
+<span class="c1"># df.iloc[&#39;two&#39;:&#39;three&#39;] 也会出错</span>
 </pre></div>
 </div>
 </div>
@@ -2163,7 +2163,7 @@ print(df.index.tolist())
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>df.loc[&#39;two&#39;:&#39;three&#39;]
+<span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;two&#39;</span><span class="p">:</span><span class="s1">&#39;three&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -2209,7 +2209,7 @@ print(df.index.tolist())
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>df.iloc[1:2]
+<span></span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -2253,7 +2253,7 @@ print(df.index.tolist())
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span># 待补：当标签和整数冲突时
+<span></span><span class="c1"># 待补：当标签和整数冲突时</span>
 </pre></div>
 </div>
 </div>
@@ -2263,7 +2263,7 @@ print(df.index.tolist())
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>df2.info() # 说明，ix在这种非整数的整数标签上，他的切片跟loc一样，是基于标签的，而另外两个刚好相反。
+<span></span><span class="n">df2</span><span class="o">.</span><span class="n">info</span><span class="p">()</span> <span class="c1"># 说明，ix在这种非整数的整数标签上，他的切片跟loc一样，是基于标签的，而另外两个刚好相反。</span>
 </pre></div>
 </div>
 </div>

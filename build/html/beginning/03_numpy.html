@@ -100,7 +100,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../base/index.html">基础篇</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tool/index.html">工具篇</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">工具篇</a></li>
 </ul>
 
             
@@ -205,7 +205,7 @@ div.nboutput > :first-child pre {
 div.nbinput > :first-child[class^=highlight],
 div.nboutput > :first-child[class^=highlight],
 div.nboutput > :first-child {
-    min-width: 11ex;
+    min-width: 9ex;
     padding-top: 0.4em;
     padding-right: 0.4em;
     text-align: right;
@@ -324,7 +324,7 @@ div.nboutput  > :nth-child(2).stderr {
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>import numpy as np
+<span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 </pre></div>
 </div>
 </div>
@@ -334,8 +334,8 @@ div.nboutput  > :nth-child(2).stderr {
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>a = np.array([1, 2, 3, 4, 5])
-a
+<span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="n">a</span>
 </pre></div>
 </div>
 </div>
@@ -356,8 +356,8 @@ a
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>a = np.arange(10)
-a
+<span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">a</span>
 </pre></div>
 </div>
 </div>
@@ -377,8 +377,8 @@ a
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>a = np.arange(1, 10, 2)
-a
+<span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">a</span>
 </pre></div>
 </div>
 </div>
@@ -399,8 +399,8 @@ a
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>a = np.linspace(0, 10, 2)
-a
+<span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">a</span>
 </pre></div>
 </div>
 </div>
@@ -458,8 +458,8 @@ Series(np.nan,index=???) 这样。</div></blockquote>
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>b = np.linspace(0, 7, 8)
-b
+<span></span><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+<span class="n">b</span>
 </pre></div>
 </div>
 </div>
@@ -479,8 +479,8 @@ b
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>b = np.linspace(0, 7, 8).reshape(2, 4)
-b
+<span></span><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">b</span>
 </pre></div>
 </div>
 </div>
@@ -501,8 +501,8 @@ b
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>b = np.arange(0, 8).reshape(2, 2, 2)
-b
+<span></span><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">b</span>
 </pre></div>
 </div>
 </div>
@@ -527,8 +527,8 @@ b
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>print b.dtype
-b
+<span></span><span class="k">print</span> <span class="n">b</span><span class="o">.</span><span class="n">dtype</span>
+<span class="n">b</span>
 </pre></div>
 </div>
 </div>
@@ -560,7 +560,7 @@ int64
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>b.astype(float)
+<span></span><span class="n">b</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -585,8 +585,8 @@ int64
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>b = np.arange(8).reshape(2, 4)
-b
+<span></span><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">b</span>
 </pre></div>
 </div>
 </div>
@@ -607,7 +607,7 @@ b
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>b.T
+<span></span><span class="n">b</span><span class="o">.</span><span class="n">T</span>
 </pre></div>
 </div>
 </div>
@@ -630,7 +630,7 @@ b
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>b.transpose()
+<span></span><span class="n">b</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -654,7 +654,7 @@ b
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>a = np.array([[1,4],[3,1]])
+<span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">]])</span>
 </pre></div>
 </div>
 </div>
@@ -664,7 +664,7 @@ b
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>np.sort(a)                # sort along the last axis
+<span></span><span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>                <span class="c1"># sort along the last axis</span>
 </pre></div>
 </div>
 </div>
@@ -685,7 +685,7 @@ b
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>np.sort(a, axis=None)     # sort the flattened array
+<span></span><span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>     <span class="c1"># sort the flattened array</span>
 </pre></div>
 </div>
 </div>
@@ -705,7 +705,7 @@ b
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>np.sort(a, axis=0)        # sort along the first axis
+<span></span><span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>        <span class="c1"># sort along the first axis</span>
 </pre></div>
 </div>
 </div>
@@ -727,7 +727,7 @@ b
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>arr = np.arange(12).reshape(3,4)
+<span></span><span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -737,7 +737,7 @@ b
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>arr
+<span></span><span class="n">arr</span>
 </pre></div>
 </div>
 </div>
@@ -759,7 +759,7 @@ b
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>arr.sum()
+<span></span><span class="n">arr</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -779,7 +779,7 @@ b
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>np.sum(arr)
+<span></span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -799,7 +799,7 @@ b
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>arr.mean(0) # 列均值
+<span></span><span class="n">arr</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># 列均值</span>
 </pre></div>
 </div>
 </div>
@@ -819,7 +819,7 @@ b
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>arr.mean(1) # 行均值
+<span></span><span class="n">arr</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># 行均值</span>
 </pre></div>
 </div>
 </div>
@@ -872,8 +872,8 @@ b
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>a = np.arange(8).reshape(2, 4)
-b = np.ones_like(a)
+<span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -883,7 +883,7 @@ b = np.ones_like(a)
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>a + b
+<span></span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
 </pre></div>
 </div>
 </div>
@@ -904,7 +904,7 @@ b = np.ones_like(a)
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>a * 2
+<span></span><span class="n">a</span> <span class="o">*</span> <span class="mi">2</span>
 </pre></div>
 </div>
 </div>
@@ -929,8 +929,8 @@ b = np.ones_like(a)
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>foo = np.arange(10)
-foo
+<span></span><span class="n">foo</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">foo</span>
 </pre></div>
 </div>
 </div>
@@ -950,7 +950,7 @@ foo
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>bar = foo[:5].copy() # 若没有 copy，则 bar 的改变会影响 foo
+<span></span><span class="n">bar</span> <span class="o">=</span> <span class="n">foo</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span> <span class="c1"># 若没有 copy，则 bar 的改变会影响 foo</span>
 </pre></div>
 </div>
 </div>
@@ -960,7 +960,7 @@ foo
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>bar
+<span></span><span class="n">bar</span>
 </pre></div>
 </div>
 </div>
@@ -980,7 +980,7 @@ foo
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>bar[:] = 1
+<span></span><span class="n">bar</span><span class="p">[:]</span> <span class="o">=</span> <span class="mi">1</span>
 </pre></div>
 </div>
 </div>
@@ -990,7 +990,7 @@ foo
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>bar
+<span></span><span class="n">bar</span>
 </pre></div>
 </div>
 </div>
@@ -1010,7 +1010,7 @@ foo
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>foo
+<span></span><span class="n">foo</span>
 </pre></div>
 </div>
 </div>
@@ -1031,8 +1031,8 @@ foo
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>arr2d = np.array([[1, 2, 3],[4, 5, 6],[7, 8, 9]])
-arr2d
+<span></span><span class="n">arr2d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]])</span>
+<span class="n">arr2d</span>
 </pre></div>
 </div>
 </div>
@@ -1054,7 +1054,7 @@ arr2d
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>arr2d[2, 0]
+<span></span><span class="n">arr2d</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -1074,8 +1074,8 @@ arr2d
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>arr3d = np.array([[[1, 2, 3],[4, 5, 6]],
-                  [[7, 8, 9],[10, 11, 12]]])
+<span></span><span class="n">arr3d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]],</span>
+                  <span class="p">[[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">],[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">]]])</span>
 </pre></div>
 </div>
 </div>
@@ -1085,7 +1085,7 @@ arr2d
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>arr3d[0]
+<span></span><span class="n">arr3d</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -1106,7 +1106,7 @@ arr2d
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>arr3d[0, 1, 2]
+<span></span><span class="n">arr3d</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -1127,7 +1127,7 @@ arr2d
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>arr2d
+<span></span><span class="n">arr2d</span>
 </pre></div>
 </div>
 </div>
@@ -1149,7 +1149,7 @@ arr2d
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>arr2d.shape
+<span></span><span class="n">arr2d</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 </div>
 </div>
@@ -1169,7 +1169,7 @@ arr2d
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>arr2d[:1]
+<span></span><span class="n">arr2d</span><span class="p">[:</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -1189,7 +1189,7 @@ arr2d
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>arr2d[1:4] # 理论上第0轴没有4这个基数
+<span></span><span class="n">arr2d</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span> <span class="c1"># 理论上第0轴没有4这个基数</span>
 </pre></div>
 </div>
 </div>
@@ -1210,7 +1210,7 @@ arr2d
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>arr2d[:2, :1]
+<span></span><span class="n">arr2d</span><span class="p">[:</span><span class="mi">2</span><span class="p">,</span> <span class="p">:</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -1232,9 +1232,9 @@ arr2d
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>from numpy.random import randn
-data = randn(7, 4) # 生成 7*4 个均值为 0，标准差为 1 的数组
-data
+<span></span><span class="kn">from</span> <span class="nn">numpy.random</span> <span class="kn">import</span> <span class="n">randn</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">randn</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="c1"># 生成 7*4 个均值为 0，标准差为 1 的数组</span>
+<span class="n">data</span>
 </pre></div>
 </div>
 </div>
@@ -1260,8 +1260,8 @@ data
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>names = np.array([&#39;Bob&#39;, &#39;Joe&#39;, &#39;Will&#39;, &#39;Bob&#39;, &#39;Will&#39;, &#39;Joe&#39;, &#39;Joe&#39;] )
-names == &#39;Bob&#39;
+<span></span><span class="n">names</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="s1">&#39;Bob&#39;</span><span class="p">,</span> <span class="s1">&#39;Joe&#39;</span><span class="p">,</span> <span class="s1">&#39;Will&#39;</span><span class="p">,</span> <span class="s1">&#39;Bob&#39;</span><span class="p">,</span> <span class="s1">&#39;Will&#39;</span><span class="p">,</span> <span class="s1">&#39;Joe&#39;</span><span class="p">,</span> <span class="s1">&#39;Joe&#39;</span><span class="p">]</span> <span class="p">)</span>
+<span class="n">names</span> <span class="o">==</span> <span class="s1">&#39;Bob&#39;</span>
 </pre></div>
 </div>
 </div>
@@ -1282,7 +1282,7 @@ names == &#39;Bob&#39;
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>data[names == &#39;Bob&#39;]
+<span></span><span class="n">data</span><span class="p">[</span><span class="n">names</span> <span class="o">==</span> <span class="s1">&#39;Bob&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -1303,7 +1303,7 @@ names == &#39;Bob&#39;
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>data[names == &#39;Bob&#39;, 2:]
+<span></span><span class="n">data</span><span class="p">[</span><span class="n">names</span> <span class="o">==</span> <span class="s1">&#39;Bob&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">:]</span>
 </pre></div>
 </div>
 </div>
@@ -1324,7 +1324,7 @@ names == &#39;Bob&#39;
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>data[~(names == &#39;Bob&#39;)]
+<span></span><span class="n">data</span><span class="p">[</span><span class="o">~</span><span class="p">(</span><span class="n">names</span> <span class="o">==</span> <span class="s1">&#39;Bob&#39;</span><span class="p">)]</span>
 </pre></div>
 </div>
 </div>
@@ -1349,8 +1349,8 @@ names == &#39;Bob&#39;
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>mask = (names == &quot;Bob&quot;) | (names == &quot;Will&quot;)
-mask
+<span></span><span class="n">mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">names</span> <span class="o">==</span> <span class="s2">&quot;Bob&quot;</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">names</span> <span class="o">==</span> <span class="s2">&quot;Will&quot;</span><span class="p">)</span>
+<span class="n">mask</span>
 </pre></div>
 </div>
 </div>
@@ -1370,7 +1370,7 @@ mask
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>data[mask]
+<span></span><span class="n">data</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -1399,7 +1399,7 @@ bar</p>
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>xarr = np.arange(1.1, 1.6, 0.1)
+<span></span><span class="n">xarr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">1.1</span><span class="p">,</span> <span class="mf">1.6</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1409,7 +1409,7 @@ bar</p>
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>xarr
+<span></span><span class="n">xarr</span>
 </pre></div>
 </div>
 </div>
@@ -1429,7 +1429,7 @@ bar</p>
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>yarr = np.arange(2.1, 2.6, 0.1)
+<span></span><span class="n">yarr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">2.1</span><span class="p">,</span> <span class="mf">2.6</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1439,7 +1439,7 @@ bar</p>
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>yarr
+<span></span><span class="n">yarr</span>
 </pre></div>
 </div>
 </div>
@@ -1459,7 +1459,7 @@ bar</p>
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>cond = np.array([True, False, True, True, False])
+<span></span><span class="n">cond</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="bp">True</span><span class="p">,</span> <span class="bp">False</span><span class="p">,</span> <span class="bp">True</span><span class="p">,</span> <span class="bp">True</span><span class="p">,</span> <span class="bp">False</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -1470,8 +1470,8 @@ bar</p>
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>result = [(x if c else y)
-         for x, y, c in zip(xarr, yarr, cond)]
+<span></span><span class="n">result</span> <span class="o">=</span> <span class="p">[(</span><span class="n">x</span> <span class="k">if</span> <span class="n">c</span> <span class="k">else</span> <span class="n">y</span><span class="p">)</span>
+         <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">xarr</span><span class="p">,</span> <span class="n">yarr</span><span class="p">,</span> <span class="n">cond</span><span class="p">)]</span>
 </pre></div>
 </div>
 </div>
@@ -1481,7 +1481,7 @@ bar</p>
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>result
+<span></span><span class="n">result</span>
 </pre></div>
 </div>
 </div>
@@ -1506,8 +1506,8 @@ bar</p>
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>result = np.where(cond, xarr, yarr)
-result
+<span></span><span class="n">result</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">cond</span><span class="p">,</span> <span class="n">xarr</span><span class="p">,</span> <span class="n">yarr</span><span class="p">)</span>
+<span class="n">result</span>
 </pre></div>
 </div>
 </div>
@@ -1528,8 +1528,8 @@ result
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>arr = randn(4,4)
-arr
+<span></span><span class="n">arr</span> <span class="o">=</span> <span class="n">randn</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">arr</span>
 </pre></div>
 </div>
 </div>
@@ -1552,7 +1552,7 @@ arr
 </pre></div>
 </div>
 <div class="highlight-ipython2"><div class="highlight"><pre>
-<span></span>np.where(arr &gt; 0, 2, -2) # 正值设置为 2，负值设置为 -2
+<span></span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">arr</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># 正值设置为 2，负值设置为 -2</span>
 </pre></div>
 </div>
 </div>

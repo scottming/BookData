@@ -1,0 +1,1219 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Bonus Material - Softmax Regression &mdash; BookData 0.1 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="BookData 0.1 documentation" href="../../index.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> BookData
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../beginning/index.html">入门篇</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../base/index.html">基础篇</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/index.html">工具篇</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">BookData</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+    <li>Bonus Material - Softmax Regression</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/rasbt_py_ml_book/bonus/softmax-regression.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput,
+div.nbinput > div,
+div.nbinput div[class^=highlight],
+div.nbinput div[class^=highlight] pre,
+div.nboutput,
+div.nboutput > div,
+div.nboutput div[class^=highlight],
+div.nboutput div[class^=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput div[class^=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput,
+div.nboutput {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+}
+
+/* input container */
+div.nbinput {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput > :first-child pre {
+    color: #303F9F;
+}
+
+/* output prompt */
+div.nboutput > :first-child pre {
+    color: #D84315;
+}
+
+/* all prompts */
+div.nbinput > :first-child[class^=highlight],
+div.nboutput > :first-child[class^=highlight],
+div.nboutput > :first-child {
+    min-width: 9ex;
+    padding-top: 0.4em;
+    padding-right: 0.4em;
+    text-align: right;
+    flex: 0;
+}
+
+/* input/output area */
+div.nbinput > :nth-child(2)[class^=highlight],
+div.nboutput > :nth-child(2),
+div.nboutput > :nth-child(2)[class^=highlight] {
+    padding: 0.4em;
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+
+/* input area */
+div.nbinput > :nth-child(2)[class^=highlight] {
+    border: 1px solid #cfcfcf;
+    border-radius: 2px;
+    background: #f7f7f7;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.pngmath center alignment in output cells */
+div.nboutput div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput  > :nth-child(2).stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-bold { font-weight: bold; }
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+/* nice headers on first paragraph of info/warning boxes */
+.admonition .first {
+    margin: -12px;
+    padding: 6px 12px;
+    margin-bottom: 12px;
+    color: #fff;
+    line-height: 1;
+    display: block;
+}
+.admonition.warning .first {
+    background: #f0b37e;
+}
+.admonition.note .first {
+    background: #6ab0de;
+}
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+</style>
+<p><a class="reference external" href="http://sebastianraschka.com">Sebastian Raschka</a>, 2016</p>
+<p><a class="reference external" href="https://github.com/rasbt/python-machine-learning-book">https://github.com/rasbt/python-machine-learning-book</a></p>
+<p>Note that the optional watermark extension is a small IPython notebook
+plugin that I developed to make the code reproducible. You can just skip
+the following line(s).</p>
+<div class="nbinput container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>In [1]:
+</pre></div>
+</div>
+<div class="highlight-ipython3"><div class="highlight"><pre>
+<span></span><span class="o">%</span><span class="k">load_ext</span> watermark
+<span class="o">%</span><span class="k">watermark</span> -a &#39;Sebastian Raschka&#39; -u -d -v -p matplotlib,numpy,scipy
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast container">
+<div class="container">
+</div>
+<div class="container">
+<div class="highlight"><pre>
+Sebastian Raschka
+last updated: 2016-06-05
+
+CPython 3.5.1
+IPython 4.2.0
+
+matplotlib 1.5.1
+numpy 1.11.0
+scipy 0.17.0
+</pre></div></div>
+</div>
+<div class="nbinput nblast container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>In [2]:
+</pre></div>
+</div>
+<div class="highlight-ipython3"><div class="highlight"><pre>
+<span></span><span class="c1"># to install watermark just uncomment the following line:</span>
+<span class="c1">#%install_ext https://raw.githubusercontent.com/rasbt/watermark/master/watermark.py</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>In [3]:
+</pre></div>
+</div>
+<div class="highlight-ipython3"><div class="highlight"><pre>
+<span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+<div class="section" id="Bonus-Material---Softmax-Regression">
+<h1>Bonus Material - Softmax Regression<a class="headerlink" href="#Bonus-Material---Softmax-Regression" title="Permalink to this headline">¶</a></h1>
+<p><em>Softmax Regression</em> (synonyms: <em>Multinomial Logistic</em>, <em>Maximum Entropy
+Classifier</em>, or just <em>Multi-class Logistic Regression</em>) is a
+generalization of logistic regression that we can use for multi-class
+classification (under the assumption that the classes are mutually
+exclusive). In contrast, we use the (standard) <em>Logistic Regression</em>
+model in binary classification tasks.</p>
+<p>Below is a schematic of a <em>Logistic Regression</em> model that we discussed
+in Chapter 3.</p>
+<div class="figure">
+<img alt="" src="../../_images/logistic_regression_schematic_2.png" />
+</div>
+<p>In <em>Softmax Regression</em> (SMR), we replace the sigmoid logistic function
+by the so-called <em>softmax</em> function <span class="math">\(\phi_{softmax}(\cdot)\)</span>.</p>
+<div class="math">
+\[P(y=j \mid z^{(i)}) = \phi_{softmax}(z^{(i)}) = \frac{e^{z^{(i)}}}{\sum_{j=0}^{k} e^{z_{k}^{(i)}}},\]</div>
+<p>where we define the net input <em>z</em> as</p>
+<div class="math">
+\[z = w_1x_1 + ... + w_mx_m  + b= \sum_{l=0}^{m} w_l x_l + b= \mathbf{w}^T\mathbf{x} + b.\]</div>
+<div class="line-block">
+<div class="line">(<strong>w</strong> is the weight vector, <span class="math">\(\mathbf{x}\)</span> is the feature vector
+of 1 training sample, and <span class="math">\(b\)</span> is the bias unit.)</div>
+<div class="line">Now, this softmax function computes the probability that this training
+sample <span class="math">\(\mathbf{x}^{(i)}\)</span> belongs to class <span class="math">\(j\)</span> given the
+weight and net input <span class="math">\(z^{(i)}\)</span>. So, we compute the probability
+<span class="math">\(p(y = j \mid \mathbf{x^{(i)}; w}_j)\)</span> for each class label in
+<span class="math">\(j = 1, \ldots, k.\)</span>. Note the normalization term in the
+denominator which causes these class probabilities to sum up to one.</div>
+</div>
+<div class="figure">
+<img alt="" src="../../_images/softmax_schematic_1.png" />
+</div>
+<p>To illustrate the concept of softmax, let us walk through a concrete
+example. Let&#8217;s assume we have a training set consisting of 4 samples
+from 3 different classes (0, 1, and 2)</p>
+<ul class="simple">
+<li><span class="math">\(x_0 \rightarrow \text{class }0\)</span></li>
+<li><span class="math">\(x_1 \rightarrow \text{class }1\)</span></li>
+<li><span class="math">\(x_2 \rightarrow \text{class }2\)</span></li>
+<li><span class="math">\(x_3 \rightarrow \text{class }2\)</span></li>
+</ul>
+<div class="nbinput nblast container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>In [4]:
+</pre></div>
+</div>
+<div class="highlight-ipython3"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<p>First, we want to encode the class labels into a format that we can more
+easily work with; we apply one-hot encoding:</p>
+<div class="nbinput container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>In [5]:
+</pre></div>
+</div>
+<div class="highlight-ipython3"><div class="highlight"><pre>
+<span></span><span class="n">y_enc</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="n">y</span><span class="p">[:,</span> <span class="kc">None</span><span class="p">])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;one-hot encoding:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">y_enc</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast container">
+<div class="container">
+</div>
+<div class="container">
+<div class="highlight"><pre>
+one-hot encoding:
+ [[ 1.  0.  0.]
+ [ 0.  1.  0.]
+ [ 0.  0.  1.]
+ [ 0.  0.  1.]]
+</pre></div></div>
+</div>
+<p>A sample that belongs to class 0 (the first row) has a 1 in the first
+cell, a sample that belongs to class 2 has a 1 in the second cell of its
+row, and so forth.</p>
+<p>Next, let us define the feature matrix of our 4 training samples. Here,
+we assume that our dataset consists of 2 features; thus, we create a 4x2
+dimensional matrix of our samples and features. Similarly, we create a
+2x3 dimensional weight matrix (one row per feature and one column for
+each class).</p>
+<div class="nbinput container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>In [6]:
+</pre></div>
+</div>
+<div class="highlight-ipython3"><div class="highlight"><pre>
+<span></span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span>
+              <span class="p">[</span><span class="mf">1.1</span><span class="p">,</span> <span class="mf">2.3</span><span class="p">],</span>
+              <span class="p">[</span><span class="o">-</span><span class="mf">1.1</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.3</span><span class="p">],</span>
+              <span class="p">[</span><span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.5</span><span class="p">]])</span>
+
+<span class="n">W</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">],</span>
+              <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">]])</span>
+
+<span class="n">bias</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Inputs X:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Weights W:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">W</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">bias:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">bias</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast container">
+<div class="container">
+</div>
+<div class="container">
+<div class="highlight"><pre>
+Inputs X:
+ [[ 0.1  0.5]
+ [ 1.1  2.3]
+ [-1.1 -2.3]
+ [-1.5 -2.5]]
+
+Weights W:
+ [[ 0.1  0.2  0.3]
+ [ 0.1  0.2  0.3]]
+
+bias:
+ [ 0.01  0.1   0.1 ]
+</pre></div></div>
+</div>
+<p>To compute the net input, we multiply the 4x2 matrix feature matrix
+<code class="docutils literal"><span class="pre">X</span></code> with the 2x3 (n_features x n_classes) weight matrix <code class="docutils literal"><span class="pre">W</span></code>, which
+yields a 4x3 output matrix (n_samples x n_classes) to which we then
+add the bias unit:</p>
+<div class="math">
+\[\mathbf{Z} = \mathbf{X}\mathbf{W} + \mathbf{b}.\]</div>
+<div class="nbinput container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>In [7]:
+</pre></div>
+</div>
+<div class="highlight-ipython3"><div class="highlight"><pre>
+<span></span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span>
+              <span class="p">[</span><span class="mf">1.1</span><span class="p">,</span> <span class="mf">2.3</span><span class="p">],</span>
+              <span class="p">[</span><span class="o">-</span><span class="mf">1.1</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.3</span><span class="p">],</span>
+              <span class="p">[</span><span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.5</span><span class="p">]])</span>
+
+<span class="n">W</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">],</span>
+              <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">]])</span>
+
+<span class="n">bias</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Inputs X:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Weights W:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">W</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">bias:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">bias</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast container">
+<div class="container">
+</div>
+<div class="container">
+<div class="highlight"><pre>
+Inputs X:
+ [[ 0.1  0.5]
+ [ 1.1  2.3]
+ [-1.1 -2.3]
+ [-1.5 -2.5]]
+
+Weights W:
+ [[ 0.1  0.2  0.3]
+ [ 0.1  0.2  0.3]]
+
+bias:
+ [ 0.01  0.1   0.1 ]
+</pre></div></div>
+</div>
+<div class="nbinput container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>In [8]:
+</pre></div>
+</div>
+<div class="highlight-ipython3"><div class="highlight"><pre>
+<span></span><span class="k">def</span> <span class="nf">net_input</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">W</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">W</span><span class="p">)</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span>
+
+<span class="n">net_in</span> <span class="o">=</span> <span class="n">net_input</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">W</span><span class="p">,</span> <span class="n">bias</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;net input:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">net_in</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast container">
+<div class="container">
+</div>
+<div class="container">
+<div class="highlight"><pre>
+net input:
+ [[ 0.07  0.22  0.28]
+ [ 0.35  0.78  1.12]
+ [-0.33 -0.58 -0.92]
+ [-0.39 -0.7  -1.1 ]]
+</pre></div></div>
+</div>
+<p>Now, it&#8217;s time to compute the softmax activation that we discussed
+earlier:</p>
+<div class="math">
+\[P(y=j \mid z^{(i)}) = \phi_{softmax}(z^{(i)}) = \frac{e^{z^{(i)}}}{\sum_{j=0}^{k} e^{z_{k}^{(i)}}}.\]</div>
+<div class="nbinput container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>In [9]:
+</pre></div>
+</div>
+<div class="highlight-ipython3"><div class="highlight"><pre>
+<span></span><span class="k">def</span> <span class="nf">softmax</span><span class="p">(</span><span class="n">z</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">z</span><span class="o">.</span><span class="n">T</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">z</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">T</span>
+
+<span class="n">smax</span> <span class="o">=</span> <span class="n">softmax</span><span class="p">(</span><span class="n">net_in</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;softmax:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">smax</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast container">
+<div class="container">
+</div>
+<div class="container">
+<div class="highlight"><pre>
+softmax:
+ [[ 0.29450637  0.34216758  0.36332605]
+ [ 0.21290077  0.32728332  0.45981591]
+ [ 0.42860913  0.33380113  0.23758974]
+ [ 0.44941979  0.32962558  0.22095463]]
+</pre></div></div>
+</div>
+<div class="line-block">
+<div class="line">As we can see, the values for each sample (row) nicely sum up to 1
+now. E.g., we can say that the first sample</div>
+<div class="line"><code class="docutils literal"><span class="pre">[</span> <span class="pre">0.29450637</span>&#160; <span class="pre">0.34216758</span>&#160; <span class="pre">0.36332605]</span></code> has a 29.45% probability to
+belong to class 0.</div>
+</div>
+<p>Now, in order to turn these probabilities back into class labels, we
+could simply take the argmax-index position of each row:</p>
+<div class="line-block">
+<div class="line">[[ 0.29450637 0.34216758 <strong>0.36332605</strong>] -&gt; 2</div>
+<div class="line">[ 0.21290077 0.32728332 <strong>0.45981591</strong>] -&gt; 2</div>
+<div class="line">[ <strong>0.42860913</strong> 0.33380113 0.23758974] -&gt; 0</div>
+<div class="line">[ <strong>0.44941979</strong> 0.32962558 0.22095463]] -&gt; 0</div>
+</div>
+<div class="nbinput container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>In [10]:
+</pre></div>
+</div>
+<div class="highlight-ipython3"><div class="highlight"><pre>
+<span></span><span class="k">def</span> <span class="nf">to_classlabel</span><span class="p">(</span><span class="n">z</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">z</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;predicted class labels: &#39;</span><span class="p">,</span> <span class="n">to_classlabel</span><span class="p">(</span><span class="n">smax</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast container">
+<div class="container">
+</div>
+<div class="container">
+<div class="highlight"><pre>
+predicted class labels:  [2 2 0 0]
+</pre></div></div>
+</div>
+<p>As we can see, our predictions are terribly wrong, since the correct
+class labels are <code class="docutils literal"><span class="pre">[0,</span> <span class="pre">1,</span> <span class="pre">2,</span> <span class="pre">2]</span></code>. Now, in order to train our logistic
+model (e.g., via an optimization algorithm such as gradient descent), we
+need to define a cost function <span class="math">\(J(\cdot)\)</span> that we want to
+minimize:</p>
+<div class="math">
+\[J(\mathbf{W}; \mathbf{b}) = \frac{1}{n} \sum_{i=1}^{n} H(T_i, O_i),\]</div>
+<p>which is the average of all cross-entropies over our <span class="math">\(n\)</span> training
+samples. The cross-entropy function is defined as</p>
+<div class="math">
+\[H(T_i, O_i) = -\sum_m T_i \cdot log(O_i).\]</div>
+<p>Here the <span class="math">\(T\)</span> stands for &#8220;target&#8221; (i.e., the <em>true</em> class labels)
+and the <span class="math">\(O\)</span> stands for output &#8211; the computed <em>probability</em> via
+softmax; <strong>not</strong> the predicted class label.</p>
+<div class="nbinput container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>In [11]:
+</pre></div>
+</div>
+<div class="highlight-ipython3"><div class="highlight"><pre>
+<span></span><span class="k">def</span> <span class="nf">cross_entropy</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">y_target</span><span class="p">):</span>
+    <span class="k">return</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">output</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">y_target</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">xent</span> <span class="o">=</span> <span class="n">cross_entropy</span><span class="p">(</span><span class="n">smax</span><span class="p">,</span> <span class="n">y_enc</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Cross Entropy:&#39;</span><span class="p">,</span> <span class="n">xent</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast container">
+<div class="container">
+</div>
+<div class="container">
+<div class="highlight"><pre>
+Cross Entropy: [ 1.22245465  1.11692907  1.43720989  1.50979788]
+</pre></div></div>
+</div>
+<div class="nbinput container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>In [12]:
+</pre></div>
+</div>
+<div class="highlight-ipython3"><div class="highlight"><pre>
+<span></span><span class="k">def</span> <span class="nf">cost</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">y_target</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">cross_entropy</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">y_target</span><span class="p">))</span>
+
+<span class="n">J_cost</span> <span class="o">=</span> <span class="n">cost</span><span class="p">(</span><span class="n">smax</span><span class="p">,</span> <span class="n">y_enc</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Cost: &#39;</span><span class="p">,</span> <span class="n">J_cost</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast container">
+<div class="container">
+</div>
+<div class="container">
+<div class="highlight"><pre>
+Cost:  1.32159787159
+</pre></div></div>
+</div>
+<p>In order to learn our softmax model &#8211; determining the weight
+coefficients &#8211; via gradient descent, we then need to compute the
+derivative</p>
+<div class="math">
+\[\nabla \mathbf{w}_j \, J(\mathbf{W}; \mathbf{b}).\]</div>
+<p>I don&#8217;t want to walk through the tedious details here, but this cost
+derivative turns out to be simply:</p>
+<div class="math">
+\[\nabla \mathbf{w}_j \, J(\mathbf{W}; \mathbf{b}) = \frac{1}{n} \sum^{n}_{i=0} \big[\mathbf{x}^{(i)}\ \big(O_i - T_i \big) \big]\]</div>
+<p>We can then use the cost derivate to update the weights in opposite
+direction of the cost gradient with learning rate <span class="math">\(\eta\)</span>:</p>
+<div class="math">
+\[\mathbf{w}_j := \mathbf{w}_j - \eta \nabla \mathbf{w}_j \, J(\mathbf{W}; \mathbf{b})\]</div>
+<p>for each class</p>
+<div class="math">
+\[j \in \{0, 1, ..., k\}\]</div>
+<p>(note that <span class="math">\(\mathbf{w}_j\)</span> is the weight vector for the class
+<span class="math">\(y=j\)</span>), and we update the bias units</p>
+<div class="math">
+\[\mathbf{b}_j := \mathbf{b}_j   - \eta \bigg[ \frac{1}{n} \sum^{n}_{i=0} \big(O_i - T_i  \big) \bigg].\]</div>
+<p>As a penalty against complexity, an approach to reduce the variance of
+our model and decrease the degree of overfitting by adding additional
+bias, we can further add a regularization term such as the L2 term with
+the regularization parameter <span class="math">\(\lambda\)</span>:</p>
+<p>L2: <span class="math">\(\frac{\lambda}{2} ||\mathbf{w}||_{2}^{2}\)</span>,</p>
+<p>where</p>
+<div class="math">
+\[||\mathbf{w}||_{2}^{2} = \sum^{m}_{l=0} \sum^{k}_{j=0} w_{i, j}\]</div>
+<p>so that our cost function becomes</p>
+<div class="math">
+\[J(\mathbf{W}; \mathbf{b}) = \frac{1}{n} \sum_{i=1}^{n} H(T_i, O_i) + \frac{\lambda}{2} ||\mathbf{w}||_{2}^{2}\]</div>
+<p>and we define the &#8220;regularized&#8221; weight update as</p>
+<div class="math">
+\[\mathbf{w}_j := \mathbf{w}_j -  \eta \big[\nabla \mathbf{w}_j \, J(\mathbf{W}) + \lambda \mathbf{w}_j \big].\]</div>
+<p>(Please note that we don&#8217;t regularize the bias term.)</p>
+</div>
+<div class="section" id="SoftmaxRegression-Code">
+<h1>SoftmaxRegression Code<a class="headerlink" href="#SoftmaxRegression-Code" title="Permalink to this headline">¶</a></h1>
+<p>Bringing the concepts together, we could come up with an implementation
+as follows:</p>
+<div class="nbinput nblast container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>In [13]:
+</pre></div>
+</div>
+<div class="highlight-ipython3"><div class="highlight"><pre>
+<span></span><span class="c1"># Sebastian Raschka 2016</span>
+<span class="c1"># Implementation of the mulitnomial logistic regression algorithm for</span>
+<span class="c1"># classification.</span>
+
+<span class="c1"># Author: Sebastian Raschka &lt;sebastianraschka.com&gt;</span>
+<span class="c1">#</span>
+<span class="c1"># License: BSD 3 clause</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">time</span> <span class="k">import</span> <span class="n">time</span>
+<span class="c1">#from .._base import _BaseClassifier</span>
+<span class="c1">#from .._base import _BaseMultiClass</span>
+
+
+<span class="k">class</span> <span class="nc">SoftmaxRegression</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;Softmax regression classifier.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ------------</span>
+<span class="sd">    eta : float (default: 0.01)</span>
+<span class="sd">        Learning rate (between 0.0 and 1.0)</span>
+<span class="sd">    epochs : int (default: 50)</span>
+<span class="sd">        Passes over the training dataset.</span>
+<span class="sd">        Prior to each epoch, the dataset is shuffled</span>
+<span class="sd">        if `minibatches &gt; 1` to prevent cycles in stochastic gradient descent.</span>
+<span class="sd">    l2 : float</span>
+<span class="sd">        Regularization parameter for L2 regularization.</span>
+<span class="sd">        No regularization if l2=0.0.</span>
+<span class="sd">    minibatches : int (default: 1)</span>
+<span class="sd">        The number of minibatches for gradient-based optimization.</span>
+<span class="sd">        If 1: Gradient Descent learning</span>
+<span class="sd">        If len(y): Stochastic Gradient Descent (SGD) online learning</span>
+<span class="sd">        If 1 &lt; minibatches &lt; len(y): SGD Minibatch learning</span>
+<span class="sd">    n_classes : int (default: None)</span>
+<span class="sd">        A positive integer to declare the number of class labels</span>
+<span class="sd">        if not all class labels are present in a partial training set.</span>
+<span class="sd">        Gets the number of class labels automatically if None.</span>
+<span class="sd">    random_seed : int (default: None)</span>
+<span class="sd">        Set random state for shuffling and initializing the weights.</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    -----------</span>
+<span class="sd">    w_ : 2d-array, shape={n_features, 1}</span>
+<span class="sd">      Model weights after fitting.</span>
+<span class="sd">    b_ : 1d-array, shape={1,}</span>
+<span class="sd">      Bias unit after fitting.</span>
+<span class="sd">    cost_ : list</span>
+<span class="sd">        List of floats, the average cross_entropy for each epoch.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">eta</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+                 <span class="n">l2</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+                 <span class="n">minibatches</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                 <span class="n">n_classes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">random_seed</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">eta</span> <span class="o">=</span> <span class="n">eta</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">epochs</span> <span class="o">=</span> <span class="n">epochs</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">l2</span> <span class="o">=</span> <span class="n">l2</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">minibatches</span> <span class="o">=</span> <span class="n">minibatches</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_classes</span> <span class="o">=</span> <span class="n">n_classes</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">random_seed</span> <span class="o">=</span> <span class="n">random_seed</span>
+
+    <span class="k">def</span> <span class="nf">_fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">init_params</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">init_params</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_classes</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">n_classes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_n_features</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">b_</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">w_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_init_params</span><span class="p">(</span>
+                <span class="n">weights_shape</span><span class="o">=</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_n_features</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_classes</span><span class="p">),</span>
+                <span class="n">bias_shape</span><span class="o">=</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_classes</span><span class="p">,),</span>
+                <span class="n">random_seed</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">random_seed</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cost_</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="n">y_enc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_one_hot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">n_labels</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">n_classes</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">epochs</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_yield_minibatches_idx</span><span class="p">(</span>
+                    <span class="n">n_batches</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">minibatches</span><span class="p">,</span>
+                    <span class="n">data_ary</span><span class="o">=</span><span class="n">y</span><span class="p">,</span>
+                    <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+                <span class="c1"># givens:</span>
+                <span class="c1"># w_ -&gt; n_feat x n_classes</span>
+                <span class="c1"># b_  -&gt; n_classes</span>
+
+                <span class="c1"># net_input, softmax and diff -&gt; n_samples x n_classes:</span>
+                <span class="n">net</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_net_input</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">w_</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">b_</span><span class="p">)</span>
+                <span class="n">softm</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_softmax</span><span class="p">(</span><span class="n">net</span><span class="p">)</span>
+                <span class="n">diff</span> <span class="o">=</span> <span class="n">softm</span> <span class="o">-</span> <span class="n">y_enc</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+                <span class="n">mse</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">diff</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+                <span class="c1"># gradient -&gt; n_features x n_classes</span>
+                <span class="n">grad</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">diff</span><span class="p">)</span>
+
+                <span class="c1"># update in opp. direction of the cost gradient</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">w_</span> <span class="o">-=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">eta</span> <span class="o">*</span> <span class="n">grad</span> <span class="o">+</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">eta</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">l2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">w_</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">b_</span> <span class="o">-=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">eta</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">diff</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+
+            <span class="c1"># compute cost of the whole epoch</span>
+            <span class="n">net</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_net_input</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">w_</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">b_</span><span class="p">)</span>
+            <span class="n">softm</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_softmax</span><span class="p">(</span><span class="n">net</span><span class="p">)</span>
+            <span class="n">cross_ent</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cross_entropy</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="n">softm</span><span class="p">,</span> <span class="n">y_target</span><span class="o">=</span><span class="n">y_enc</span><span class="p">)</span>
+            <span class="n">cost</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cost</span><span class="p">(</span><span class="n">cross_ent</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cost_</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cost</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">init_params</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Learn model from training data.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        X : {array-like, sparse matrix}, shape = [n_samples, n_features]</span>
+<span class="sd">            Training vectors, where n_samples is the number of samples and</span>
+<span class="sd">            n_features is the number of features.</span>
+<span class="sd">        y : array-like, shape = [n_samples]</span>
+<span class="sd">            Target values.</span>
+<span class="sd">        init_params : bool (default: True)</span>
+<span class="sd">            Re-initializes model parametersprior to fitting.</span>
+<span class="sd">            Set False to continue training with weights from</span>
+<span class="sd">            a previous model fitting.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        self : object</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">random_seed</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">random_seed</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_fit</span><span class="p">(</span><span class="n">X</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">init_params</span><span class="o">=</span><span class="n">init_params</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_is_fitted</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="k">def</span> <span class="nf">_predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
+        <span class="n">probas</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_to_classlabels</span><span class="p">(</span><span class="n">probas</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Predict targets from X.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        X : {array-like, sparse matrix}, shape = [n_samples, n_features]</span>
+<span class="sd">            Training vectors, where n_samples is the number of samples and</span>
+<span class="sd">            n_features is the number of features.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        ----------</span>
+<span class="sd">        target_values : array-like, shape = [n_samples]</span>
+<span class="sd">          Predicted target values.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_fitted</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s1">&#39;Model is not fitted, yet.&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">predict_proba</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Predict class probabilities of X from the net input.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        X : {array-like, sparse matrix}, shape = [n_samples, n_features]</span>
+<span class="sd">            Training vectors, where n_samples is the number of samples and</span>
+<span class="sd">            n_features is the number of features.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        ----------</span>
+<span class="sd">        Class probabilties : array-like, shape= [n_samples, n_classes]</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">net</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_net_input</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">w_</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">b_</span><span class="p">)</span>
+        <span class="n">softm</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_softmax</span><span class="p">(</span><span class="n">net</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">softm</span>
+
+    <span class="k">def</span> <span class="nf">_net_input</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">W</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">W</span><span class="p">)</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_softmax</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">z</span><span class="o">.</span><span class="n">T</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">z</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">T</span>
+
+    <span class="k">def</span> <span class="nf">_cross_entropy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">output</span><span class="p">,</span> <span class="n">y_target</span><span class="p">):</span>
+        <span class="k">return</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">output</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">y_target</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_cost</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cross_entropy</span><span class="p">):</span>
+        <span class="n">L2_term</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">l2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">w_</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="n">cross_entropy</span> <span class="o">=</span> <span class="n">cross_entropy</span> <span class="o">+</span> <span class="n">L2_term</span>
+        <span class="k">return</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">cross_entropy</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_to_classlabels</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">z</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_init_params</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">weights_shape</span><span class="p">,</span> <span class="n">bias_shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,),</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;float64&#39;</span><span class="p">,</span>
+                     <span class="n">scale</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">random_seed</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialize weight coefficients.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">random_seed</span><span class="p">:</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">random_seed</span><span class="p">)</span>
+        <span class="n">w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">scale</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">weights_shape</span><span class="p">)</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">bias_shape</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">b</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">dtype</span><span class="p">),</span> <span class="n">w</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">dtype</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_one_hot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">n_labels</span><span class="p">,</span> <span class="n">dtype</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Returns a matrix where each sample in y is represented</span>
+<span class="sd">           as a row, and each column represents the class label in</span>
+<span class="sd">           the one-hot encoding scheme.</span>
+
+<span class="sd">        Example:</span>
+
+<span class="sd">            y = np.array([0, 1, 2, 3, 4, 2])</span>
+<span class="sd">            mc = _BaseMultiClass()</span>
+<span class="sd">            mc._one_hot(y=y, n_labels=5, dtype=&#39;float&#39;)</span>
+
+<span class="sd">            np.array([[1., 0., 0., 0., 0.],</span>
+<span class="sd">                      [0., 1., 0., 0., 0.],</span>
+<span class="sd">                      [0., 0., 1., 0., 0.],</span>
+<span class="sd">                      [0., 0., 0., 1., 0.],</span>
+<span class="sd">                      [0., 0., 0., 0., 1.],</span>
+<span class="sd">                      [0., 0., 1., 0., 0.]])</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">mat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> <span class="n">n_labels</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">y</span><span class="p">):</span>
+            <span class="n">mat</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">val</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="n">mat</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">dtype</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_yield_minibatches_idx</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_batches</span><span class="p">,</span> <span class="n">data_ary</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+            <span class="n">indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">data_ary</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+            <span class="k">if</span> <span class="n">shuffle</span><span class="p">:</span>
+                <span class="n">indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">permutation</span><span class="p">(</span><span class="n">indices</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">n_batches</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">remainder</span> <span class="o">=</span> <span class="n">data_ary</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">%</span> <span class="n">n_batches</span>
+
+                <span class="k">if</span> <span class="n">remainder</span><span class="p">:</span>
+                    <span class="n">minis</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array_split</span><span class="p">(</span><span class="n">indices</span><span class="p">[:</span><span class="o">-</span><span class="n">remainder</span><span class="p">],</span> <span class="n">n_batches</span><span class="p">)</span>
+                    <span class="n">minis</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">minis</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span>
+                                                <span class="n">indices</span><span class="p">[</span><span class="o">-</span><span class="n">remainder</span><span class="p">:]),</span>
+                                               <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">minis</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array_split</span><span class="p">(</span><span class="n">indices</span><span class="p">,</span> <span class="n">n_batches</span><span class="p">)</span>
+
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">minis</span> <span class="o">=</span> <span class="p">(</span><span class="n">indices</span><span class="p">,)</span>
+
+            <span class="k">for</span> <span class="n">idx_batch</span> <span class="ow">in</span> <span class="n">minis</span><span class="p">:</span>
+                <span class="k">yield</span> <span class="n">idx_batch</span>
+
+    <span class="k">def</span> <span class="nf">_shuffle_arrays</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arrays</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Shuffle arrays in unison.&quot;&quot;&quot;</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">permutation</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">arrays</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">ary</span><span class="p">[</span><span class="n">r</span><span class="p">]</span> <span class="k">for</span> <span class="n">ary</span> <span class="ow">in</span> <span class="n">arrays</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="Example-1---Gradient-Descent">
+<h2>Example 1 - Gradient Descent<a class="headerlink" href="#Example-1---Gradient-Descent" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>In [14]:
+</pre></div>
+</div>
+<div class="highlight-ipython3"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">mlxtend.data</span> <span class="k">import</span> <span class="n">iris_data</span>
+<span class="kn">from</span> <span class="nn">mlxtend.evaluate</span> <span class="k">import</span> <span class="n">plot_decision_regions</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Loading Data</span>
+
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">iris_data</span><span class="p">()</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">]]</span> <span class="c1"># sepal length and petal width</span>
+
+<span class="c1"># standardize</span>
+<span class="n">X</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">X</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">X</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span> <span class="o">/</span> <span class="n">X</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+<span class="n">X</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">X</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">X</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span> <span class="o">/</span> <span class="n">X</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+
+<span class="n">lr</span> <span class="o">=</span> <span class="n">SoftmaxRegression</span><span class="p">(</span><span class="n">eta</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">minibatches</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">random_seed</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">lr</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="n">plot_decision_regions</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">clf</span><span class="o">=</span><span class="n">lr</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Softmax Regression - Gradient Descent&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">lr</span><span class="o">.</span><span class="n">cost_</span><span class="p">)),</span> <span class="n">lr</span><span class="o">.</span><span class="n">cost_</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Iterations&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Cost&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput container">
+<div class="container">
+</div>
+<div class="container">
+<img alt="../../_images/rasbt_py_ml_book_bonus_softmax-regression_35_0.png" src="../../_images/rasbt_py_ml_book_bonus_softmax-regression_35_0.png" />
+</div>
+</div>
+<div class="nboutput nblast container">
+<div class="container">
+</div>
+<div class="container">
+<img alt="../../_images/rasbt_py_ml_book_bonus_softmax-regression_35_1.png" src="../../_images/rasbt_py_ml_book_bonus_softmax-regression_35_1.png" />
+</div>
+</div>
+<p>Continue training for another 800 epochs by calling the <code class="docutils literal"><span class="pre">fit</span></code> method
+with <code class="docutils literal"><span class="pre">init_params=False</span></code>.</p>
+<div class="nbinput container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>In [15]:
+</pre></div>
+</div>
+<div class="highlight-ipython3"><div class="highlight"><pre>
+<span></span><span class="n">lr</span><span class="o">.</span><span class="n">epochs</span> <span class="o">=</span> <span class="mi">800</span>
+
+<span class="n">lr</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">init_params</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">plot_decision_regions</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">clf</span><span class="o">=</span><span class="n">lr</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Softmax Regression - Stochastic Gradient Descent&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">lr</span><span class="o">.</span><span class="n">cost_</span><span class="p">)),</span> <span class="n">lr</span><span class="o">.</span><span class="n">cost_</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Iterations&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Cost&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput container">
+<div class="container">
+</div>
+<div class="container">
+<img alt="../../_images/rasbt_py_ml_book_bonus_softmax-regression_37_0.png" src="../../_images/rasbt_py_ml_book_bonus_softmax-regression_37_0.png" />
+</div>
+</div>
+<div class="nboutput nblast container">
+<div class="container">
+</div>
+<div class="container">
+<img alt="../../_images/rasbt_py_ml_book_bonus_softmax-regression_37_1.png" src="../../_images/rasbt_py_ml_book_bonus_softmax-regression_37_1.png" />
+</div>
+</div>
+<div class="section" id="Predicting-Class-Labels">
+<h3>Predicting Class Labels<a class="headerlink" href="#Predicting-Class-Labels" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>In [16]:
+</pre></div>
+</div>
+<div class="highlight-ipython3"><div class="highlight"><pre>
+<span></span><span class="n">y_pred</span> <span class="o">=</span> <span class="n">lr</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Last 3 Class Labels: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">y_pred</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">:])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast container">
+<div class="container">
+</div>
+<div class="container">
+<div class="highlight"><pre>
+Last 3 Class Labels: [2 2 2]
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="Predicting-Class-Probabilities">
+<h3>Predicting Class Probabilities<a class="headerlink" href="#Predicting-Class-Probabilities" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>In [17]:
+</pre></div>
+</div>
+<div class="highlight-ipython3"><div class="highlight"><pre>
+<span></span><span class="n">y_pred</span> <span class="o">=</span> <span class="n">lr</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Last 3 Class Labels:</span><span class="se">\n</span><span class="s1"> </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">y_pred</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">:])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast container">
+<div class="container">
+</div>
+<div class="container">
+<div class="highlight"><pre>
+Last 3 Class Labels:
+ [[  1.22579350e-09   1.22074818e-02   9.87792517e-01]
+ [  1.84962350e-12   3.99742930e-04   9.99600257e-01]
+ [  3.10919973e-07   1.37047172e-01   8.62952517e-01]]
+</pre></div></div>
+</div>
+</div>
+</div>
+<div class="section" id="Example-2---Stochastic-Gradient-Descent">
+<h2>Example 2 - Stochastic Gradient Descent<a class="headerlink" href="#Example-2---Stochastic-Gradient-Descent" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>In [18]:
+</pre></div>
+</div>
+<div class="highlight-ipython3"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">mlxtend.data</span> <span class="k">import</span> <span class="n">iris_data</span>
+<span class="kn">from</span> <span class="nn">mlxtend.evaluate</span> <span class="k">import</span> <span class="n">plot_decision_regions</span>
+<span class="kn">from</span> <span class="nn">mlxtend.classifier</span> <span class="k">import</span> <span class="n">SoftmaxRegression</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Loading Data</span>
+
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">iris_data</span><span class="p">()</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">]]</span> <span class="c1"># sepal length and petal width</span>
+
+<span class="c1"># standardize</span>
+<span class="n">X</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">X</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">X</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span> <span class="o">/</span> <span class="n">X</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+<span class="n">X</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">X</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">X</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span> <span class="o">/</span> <span class="n">X</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+
+<span class="n">lr</span> <span class="o">=</span> <span class="n">SoftmaxRegression</span><span class="p">(</span><span class="n">eta</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">minibatches</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> <span class="n">random_seed</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">lr</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="n">plot_decision_regions</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">clf</span><span class="o">=</span><span class="n">lr</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Softmax Regression - Stochastic Gradient Descent&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">lr</span><span class="o">.</span><span class="n">cost_</span><span class="p">)),</span> <span class="n">lr</span><span class="o">.</span><span class="n">cost_</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Iterations&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Cost&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput container">
+<div class="container">
+</div>
+<div class="container">
+<img alt="../../_images/rasbt_py_ml_book_bonus_softmax-regression_43_0.png" src="../../_images/rasbt_py_ml_book_bonus_softmax-regression_43_0.png" />
+</div>
+</div>
+<div class="nboutput nblast container">
+<div class="container">
+</div>
+<div class="container">
+<img alt="../../_images/rasbt_py_ml_book_bonus_softmax-regression_43_1.png" src="../../_images/rasbt_py_ml_book_bonus_softmax-regression_43_1.png" />
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Scott Ming.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,1937 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Python Machine Learning - Code Examples &mdash; BookData 0.1 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="BookData 0.1 documentation" href="../../index.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> BookData
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../beginning/index.html">入门篇</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../base/index.html">基础篇</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/index.html">工具篇</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">BookData</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+    <li>Python Machine Learning - Code Examples</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/rasbt_py_ml_book/ch12/ch12.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput,
+div.nbinput > div,
+div.nbinput div[class^=highlight],
+div.nbinput div[class^=highlight] pre,
+div.nboutput,
+div.nboutput > div,
+div.nboutput div[class^=highlight],
+div.nboutput div[class^=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput div[class^=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput,
+div.nboutput {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+}
+
+/* input container */
+div.nbinput {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput > :first-child pre {
+    color: #303F9F;
+}
+
+/* output prompt */
+div.nboutput > :first-child pre {
+    color: #D84315;
+}
+
+/* all prompts */
+div.nbinput > :first-child[class^=highlight],
+div.nboutput > :first-child[class^=highlight],
+div.nboutput > :first-child {
+    min-width: 9ex;
+    padding-top: 0.4em;
+    padding-right: 0.4em;
+    text-align: right;
+    flex: 0;
+}
+
+/* input/output area */
+div.nbinput > :nth-child(2)[class^=highlight],
+div.nboutput > :nth-child(2),
+div.nboutput > :nth-child(2)[class^=highlight] {
+    padding: 0.4em;
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+
+/* input area */
+div.nbinput > :nth-child(2)[class^=highlight] {
+    border: 1px solid #cfcfcf;
+    border-radius: 2px;
+    background: #f7f7f7;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.pngmath center alignment in output cells */
+div.nboutput div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput  > :nth-child(2).stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-bold { font-weight: bold; }
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+/* nice headers on first paragraph of info/warning boxes */
+.admonition .first {
+    margin: -12px;
+    padding: 6px 12px;
+    margin-bottom: 12px;
+    color: #fff;
+    line-height: 1;
+    display: block;
+}
+.admonition.warning .first {
+    background: #f0b37e;
+}
+.admonition.note .first {
+    background: #6ab0de;
+}
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+</style>
+<p>Copyright (c) 2015, 2016 <a class="reference external" href="sebastianraschka.com">Sebastian Raschka</a></p>
+<p><a class="reference external" href="https://github.com/rasbt/python-machine-learning-book">https://github.com/rasbt/python-machine-learning-book</a></p>
+<p><a class="reference external" href="https://github.com/rasbt/python-machine-learning-book/blob/master/LICENSE.txt">MIT
+License</a></p>
+<div class="section" id="Python-Machine-Learning---Code-Examples">
+<h1>Python Machine Learning - Code Examples<a class="headerlink" href="#Python-Machine-Learning---Code-Examples" title="Permalink to this headline">¶</a></h1>
+</div>
+<div class="section" id="Chapter-12---Training-Artificial-Neural-Networks-for-Image-Recognition">
+<h1>Chapter 12 - Training Artificial Neural Networks for Image Recognition<a class="headerlink" href="#Chapter-12---Training-Artificial-Neural-Networks-for-Image-Recognition" title="Permalink to this headline">¶</a></h1>
+<p>Note that the optional watermark extension is a small IPython notebook
+plugin that I developed to make the code reproducible. You can just skip
+the following line(s).</p>
+<div class="nbinput container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>In [1]:
+</pre></div>
+</div>
+<div class="highlight-ipython3"><div class="highlight"><pre>
+<span></span><span class="o">%</span><span class="k">load_ext</span> watermark
+<span class="o">%</span><span class="k">watermark</span> -a &#39;Sebastian Raschka&#39; -u -d -v -p numpy,scipy,matplotlib
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast container">
+<div class="container">
+</div>
+<div class="container">
+<div class="highlight"><pre>
+Sebastian Raschka
+last updated: 2016-05-28
+
+CPython 3.5.1
+IPython 4.2.0
+
+numpy 1.11.0
+scipy 0.17.0
+matplotlib 1.5.1
+</pre></div></div>
+</div>
+<p><em>The use of ``watermark`` is optional. You can install this IPython
+extension via &#8220;``pip install watermark``&#8221;. For more information, please
+see: https://github.com/rasbt/watermark.</em></p>
+<div class="section" id="Overview">
+<h2>Overview<a class="headerlink" href="#Overview" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="#Modeling-complex-functions-with-artificial-neural-networks">Modeling complex functions with artificial neural
+networks</a></li>
+<li><a class="reference external" href="#Single-layer-neural-network-recap">Single-layer neural network
+recap</a></li>
+<li><a class="reference external" href="#Introducing-the-multi-layer-neural-network-architecture">Introducing the multi-layer neural network
+architecture</a></li>
+<li><a class="reference external" href="#Activating-a-neural-network-via-forward-propagation">Activating a neural network via forward
+propagation</a></li>
+<li><a class="reference external" href="#Classifying-handwritten-digits">Classifying handwritten digits</a></li>
+<li><a class="reference external" href="#Obtaining-the-MNIST-dataset">Obtaining the MNIST dataset</a></li>
+<li><a class="reference external" href="#Implementing-a-multi-layer-perceptron">Implementing a multi-layer
+perceptron</a></li>
+<li><a class="reference external" href="#Training-an-artificial-neural-network">Training an artificial neural
+network</a></li>
+<li><a class="reference external" href="#Computing-the-logistic-cost-function">Computing the logistic cost
+function</a></li>
+<li><a class="reference external" href="#Training-neural-networks-via-backpropagation">Training neural networks via
+backpropagation</a></li>
+<li><a class="reference external" href="#Developing-your-intuition-for-backpropagation">Developing your intuition for
+backpropagation</a></li>
+<li><a class="reference external" href="#Debugging-neural-networks-with-gradient-checking">Debugging neural networks with gradient
+checking</a></li>
+<li><a class="reference external" href="#Convergence-in-neural-networks">Convergence in neural networks</a></li>
+<li><a class="reference external" href="#Other-neural-network-architectures">Other neural network
+architectures</a></li>
+<li><a class="reference external" href="#Convolutional-Neural-Networks">Convolutional Neural Networks</a></li>
+<li><a class="reference external" href="#Recurrent-Neural-Networks">Recurrent Neural Networks</a></li>
+<li><a class="reference external" href="#A-few-last-words-about-neural-network-implementation">A few last words about neural network
+implementation</a></li>
+<li><a class="reference external" href="#Summary">Summary</a></li>
+</ul>
+<div class="nbinput nblast container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>In [2]:
+</pre></div>
+</div>
+<div class="highlight-ipython3"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="k">import</span> <span class="n">Image</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>In [3]:
+</pre></div>
+</div>
+<div class="highlight-ipython3"><div class="highlight"><pre>
+<span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="Modeling-complex-functions-with-artificial-neural-networks">
+<h1>Modeling complex functions with artificial neural networks<a class="headerlink" href="#Modeling-complex-functions-with-artificial-neural-networks" title="Permalink to this headline">¶</a></h1>
+<p>...</p>
+<div class="nbinput container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>In [4]:
+</pre></div>
+</div>
+<div class="highlight-ipython3"><div class="highlight"><pre>
+<span></span><span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;./images/12_01.png&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">600</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>Out[4]:
+</pre></div>
+</div>
+<div class="container">
+<img alt="../../_images/rasbt_py_ml_book_ch12_ch12_14_0.png" src="../../_images/rasbt_py_ml_book_ch12_ch12_14_0.png" />
+</div>
+</div>
+<div class="nbinput container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>In [5]:
+</pre></div>
+</div>
+<div class="highlight-ipython3"><div class="highlight"><pre>
+<span></span><span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;./images/12_02.png&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">400</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>Out[5]:
+</pre></div>
+</div>
+<div class="container">
+<img alt="../../_images/rasbt_py_ml_book_ch12_ch12_17_0.png" src="../../_images/rasbt_py_ml_book_ch12_ch12_17_0.png" />
+</div>
+</div>
+<div class="nbinput container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>In [6]:
+</pre></div>
+</div>
+<div class="highlight-ipython3"><div class="highlight"><pre>
+<span></span><span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;./images/12_03.png&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>Out[6]:
+</pre></div>
+</div>
+<div class="container">
+<img alt="../../_images/rasbt_py_ml_book_ch12_ch12_18_0.png" src="../../_images/rasbt_py_ml_book_ch12_ch12_18_0.png" />
+</div>
+</div>
+<div class="nbinput container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>In [7]:
+</pre></div>
+</div>
+<div class="highlight-ipython3"><div class="highlight"><pre>
+<span></span><span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;./images/12_04.png&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>Out[7]:
+</pre></div>
+</div>
+<div class="container">
+<img alt="../../_images/rasbt_py_ml_book_ch12_ch12_21_0.png" src="../../_images/rasbt_py_ml_book_ch12_ch12_21_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="Classifying-handwritten-digits">
+<h1>Classifying handwritten digits<a class="headerlink" href="#Classifying-handwritten-digits" title="Permalink to this headline">¶</a></h1>
+<p>...</p>
+<p>The MNIST dataset is publicly available at
+<a class="reference external" href="http://yann.lecun.com/exdb/mnist/">http://yann.lecun.com/exdb/mnist/</a> and consists of the following four
+parts:</p>
+<ul class="simple">
+<li>Training set images: train-images-idx3-ubyte.gz (9.9 MB, 47 MB
+unzipped, 60,000 samples)</li>
+<li>Training set labels: train-labels-idx1-ubyte.gz (29 KB, 60 KB
+unzipped, 60,000 labels)</li>
+<li>Test set images: t10k-images-idx3-ubyte.gz (1.6 MB, 7.8 MB, 10,000
+samples)</li>
+<li>Test set labels: t10k-labels-idx1-ubyte.gz (5 KB, 10 KB unzipped,
+10,000 labels)</li>
+</ul>
+<p>In this section, we will only be working with a subset of MNIST, thus,
+we only need to download the training set images and training set
+labels. After downloading the files, I recommend unzipping the files
+using the Unix/Linux gzip tool from the terminal for efficiency, e.g.,
+using the command</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">gzip</span> <span class="o">*</span><span class="n">ubyte</span><span class="o">.</span><span class="n">gz</span> <span class="o">-</span><span class="n">d</span>
+</pre></div>
+</div>
+<p>in your local MNIST download directory, or, using your favorite
+unzipping tool if you are working with a machine running on Microsoft
+Windows. The images are stored in byte form, and using the following
+function, we will read them into NumPy arrays that we will use to train
+our MLP.</p>
+<div class="nbinput nblast container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>In [8]:
+</pre></div>
+</div>
+<div class="highlight-ipython3"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">struct</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="k">def</span> <span class="nf">load_mnist</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;train&#39;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Load MNIST data from `path`&quot;&quot;&quot;</span>
+    <span class="n">labels_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span>
+                               <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">-labels-idx1-ubyte&#39;</span> <span class="o">%</span> <span class="n">kind</span><span class="p">)</span>
+    <span class="n">images_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span>
+                               <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">-images-idx3-ubyte&#39;</span> <span class="o">%</span> <span class="n">kind</span><span class="p">)</span>
+
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">labels_path</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">lbpath</span><span class="p">:</span>
+        <span class="n">magic</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="n">struct</span><span class="o">.</span><span class="n">unpack</span><span class="p">(</span><span class="s1">&#39;&gt;II&#39;</span><span class="p">,</span>
+                                 <span class="n">lbpath</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">8</span><span class="p">))</span>
+        <span class="n">labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fromfile</span><span class="p">(</span><span class="n">lbpath</span><span class="p">,</span>
+                             <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">images_path</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">imgpath</span><span class="p">:</span>
+        <span class="n">magic</span><span class="p">,</span> <span class="n">num</span><span class="p">,</span> <span class="n">rows</span><span class="p">,</span> <span class="n">cols</span> <span class="o">=</span> <span class="n">struct</span><span class="o">.</span><span class="n">unpack</span><span class="p">(</span><span class="s2">&quot;&gt;IIII&quot;</span><span class="p">,</span>
+                                               <span class="n">imgpath</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">16</span><span class="p">))</span>
+        <span class="n">images</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fromfile</span><span class="p">(</span><span class="n">imgpath</span><span class="p">,</span>
+                             <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">labels</span><span class="p">),</span> <span class="mi">784</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">images</span><span class="p">,</span> <span class="n">labels</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>In [9]:
+</pre></div>
+</div>
+<div class="highlight-ipython3"><div class="highlight"><pre>
+<span></span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span> <span class="o">=</span> <span class="n">load_mnist</span><span class="p">(</span><span class="s1">&#39;mnist/&#39;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;train&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Rows: </span><span class="si">%d</span><span class="s1">, columns: </span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast container">
+<div class="container">
+</div>
+<div class="container">
+<div class="highlight"><pre>
+Rows: 60000, columns: 784
+</pre></div></div>
+</div>
+<div class="nbinput container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>In [10]:
+</pre></div>
+</div>
+<div class="highlight-ipython3"><div class="highlight"><pre>
+<span></span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">load_mnist</span><span class="p">(</span><span class="s1">&#39;mnist/&#39;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;t10k&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Rows: </span><span class="si">%d</span><span class="s1">, columns: </span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">X_test</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">X_test</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast container">
+<div class="container">
+</div>
+<div class="container">
+<div class="highlight"><pre>
+Rows: 10000, columns: 784
+</pre></div></div>
+</div>
+<p>Visualize the first digit of each class:</p>
+<div class="nbinput container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>In [11]:
+</pre></div>
+</div>
+<div class="highlight-ipython3"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">,)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">X_train</span><span class="p">[</span><span class="n">y_train</span> <span class="o">==</span> <span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Greys&#39;</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s1">&#39;nearest&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([])</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="c1"># plt.savefig(&#39;./figures/mnist_all.png&#39;, dpi=300)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast container">
+<div class="container">
+</div>
+<div class="container">
+<img alt="../../_images/rasbt_py_ml_book_ch12_ch12_31_0.png" src="../../_images/rasbt_py_ml_book_ch12_ch12_31_0.png" />
+</div>
+</div>
+<p>Visualize 25 different versions of &#8220;7&#8221;:</p>
+<div class="nbinput container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>In [12]:
+</pre></div>
+</div>
+<div class="highlight-ipython3"><div class="highlight"><pre>
+<span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">,)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">25</span><span class="p">):</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">X_train</span><span class="p">[</span><span class="n">y_train</span> <span class="o">==</span> <span class="mi">7</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Greys&#39;</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s1">&#39;nearest&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([])</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="c1"># plt.savefig(&#39;./figures/mnist_7.png&#39;, dpi=300)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast container">
+<div class="container">
+</div>
+<div class="container">
+<img alt="../../_images/rasbt_py_ml_book_ch12_ch12_33_0.png" src="../../_images/rasbt_py_ml_book_ch12_ch12_33_0.png" />
+</div>
+</div>
+<p>Uncomment the following lines to optionally save the data in CSV format.
+However, note that those CSV files will take up a substantial amount of
+storage space:</p>
+<ul class="simple">
+<li>train_img.csv 1.1 GB (gigabytes)</li>
+<li>train_labels.csv 1.4 MB (megabytes)</li>
+<li>test_img.csv 187.0 MB</li>
+<li>test_labels 144 KB (kilobytes)</li>
+</ul>
+<div class="nbinput nblast container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>In [13]:
+</pre></div>
+</div>
+<div class="highlight-ipython3"><div class="highlight"><pre>
+<span></span><span class="c1"># np.savetxt(&#39;train_img.csv&#39;, X_train, fmt=&#39;%i&#39;, delimiter=&#39;,&#39;)</span>
+<span class="c1"># np.savetxt(&#39;train_labels.csv&#39;, y_train, fmt=&#39;%i&#39;, delimiter=&#39;,&#39;)</span>
+<span class="c1"># X_train = np.genfromtxt(&#39;train_img.csv&#39;, dtype=int, delimiter=&#39;,&#39;)</span>
+<span class="c1"># y_train = np.genfromtxt(&#39;train_labels.csv&#39;, dtype=int, delimiter=&#39;,&#39;)</span>
+
+<span class="c1"># np.savetxt(&#39;test_img.csv&#39;, X_test, fmt=&#39;%i&#39;, delimiter=&#39;,&#39;)</span>
+<span class="c1"># np.savetxt(&#39;test_labels.csv&#39;, y_test, fmt=&#39;%i&#39;, delimiter=&#39;,&#39;)</span>
+<span class="c1"># X_test = np.genfromtxt(&#39;test_img.csv&#39;, dtype=int, delimiter=&#39;,&#39;)</span>
+<span class="c1"># y_test = np.genfromtxt(&#39;test_labels.csv&#39;, dtype=int, delimiter=&#39;,&#39;)</span>
+
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>In [14]:
+</pre></div>
+</div>
+<div class="highlight-ipython3"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy.special</span> <span class="k">import</span> <span class="n">expit</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+
+<span class="k">class</span> <span class="nc">NeuralNetMLP</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Feedforward neural network / Multi-layer perceptron classifier.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ------------</span>
+<span class="sd">    n_output : int</span>
+<span class="sd">        Number of output units, should be equal to the</span>
+<span class="sd">        number of unique class labels.</span>
+<span class="sd">    n_features : int</span>
+<span class="sd">        Number of features (dimensions) in the target dataset.</span>
+<span class="sd">        Should be equal to the number of columns in the X array.</span>
+<span class="sd">    n_hidden : int (default: 30)</span>
+<span class="sd">        Number of hidden units.</span>
+<span class="sd">    l1 : float (default: 0.0)</span>
+<span class="sd">        Lambda value for L1-regularization.</span>
+<span class="sd">        No regularization if l1=0.0 (default)</span>
+<span class="sd">    l2 : float (default: 0.0)</span>
+<span class="sd">        Lambda value for L2-regularization.</span>
+<span class="sd">        No regularization if l2=0.0 (default)</span>
+<span class="sd">    epochs : int (default: 500)</span>
+<span class="sd">        Number of passes over the training set.</span>
+<span class="sd">    eta : float (default: 0.001)</span>
+<span class="sd">        Learning rate.</span>
+<span class="sd">    alpha : float (default: 0.0)</span>
+<span class="sd">        Momentum constant. Factor multiplied with the</span>
+<span class="sd">        gradient of the previous epoch t-1 to improve</span>
+<span class="sd">        learning speed</span>
+<span class="sd">        w(t) := w(t) - (grad(t) + alpha*grad(t-1))</span>
+<span class="sd">    decrease_const : float (default: 0.0)</span>
+<span class="sd">        Decrease constant. Shrinks the learning rate</span>
+<span class="sd">        after each epoch via eta / (1 + epoch*decrease_const)</span>
+<span class="sd">    shuffle : bool (default: True)</span>
+<span class="sd">        Shuffles training data every epoch if True to prevent circles.</span>
+<span class="sd">    minibatches : int (default: 1)</span>
+<span class="sd">        Divides training data into k minibatches for efficiency.</span>
+<span class="sd">        Normal gradient descent learning if k=1 (default).</span>
+<span class="sd">    random_state : int (default: None)</span>
+<span class="sd">        Set random state for shuffling and initializing the weights.</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    -----------</span>
+<span class="sd">    cost_ : list</span>
+<span class="sd">      Sum of squared errors after each epoch.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_output</span><span class="p">,</span> <span class="n">n_features</span><span class="p">,</span> <span class="n">n_hidden</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>
+                 <span class="n">l1</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">l2</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">eta</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span>
+                 <span class="n">alpha</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">decrease_const</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                 <span class="n">minibatches</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+
+        <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">random_state</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_output</span> <span class="o">=</span> <span class="n">n_output</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_features</span> <span class="o">=</span> <span class="n">n_features</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_hidden</span> <span class="o">=</span> <span class="n">n_hidden</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">w1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">w2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_initialize_weights</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">l1</span> <span class="o">=</span> <span class="n">l1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">l2</span> <span class="o">=</span> <span class="n">l2</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">epochs</span> <span class="o">=</span> <span class="n">epochs</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">eta</span> <span class="o">=</span> <span class="n">eta</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span> <span class="o">=</span> <span class="n">alpha</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">decrease_const</span> <span class="o">=</span> <span class="n">decrease_const</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">shuffle</span> <span class="o">=</span> <span class="n">shuffle</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">minibatches</span> <span class="o">=</span> <span class="n">minibatches</span>
+
+    <span class="k">def</span> <span class="nf">_encode_labels</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Encode labels into one-hot representation</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ------------</span>
+<span class="sd">        y : array, shape = [n_samples]</span>
+<span class="sd">            Target values.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -----------</span>
+<span class="sd">        onehot : array, shape = (n_labels, n_samples)</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">onehot</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">k</span><span class="p">,</span> <span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+        <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">y</span><span class="p">):</span>
+            <span class="n">onehot</span><span class="p">[</span><span class="n">val</span><span class="p">,</span> <span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span>
+        <span class="k">return</span> <span class="n">onehot</span>
+
+    <span class="k">def</span> <span class="nf">_initialize_weights</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialize weights with small random numbers.&quot;&quot;&quot;</span>
+        <span class="n">w1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span>
+                               <span class="n">size</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">n_hidden</span><span class="o">*</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_features</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+        <span class="n">w1</span> <span class="o">=</span> <span class="n">w1</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_hidden</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_features</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">w2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span>
+                               <span class="n">size</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">n_output</span><span class="o">*</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_hidden</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+        <span class="n">w2</span> <span class="o">=</span> <span class="n">w2</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_output</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_hidden</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">w1</span><span class="p">,</span> <span class="n">w2</span>
+
+    <span class="k">def</span> <span class="nf">_sigmoid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Compute logistic function (sigmoid)</span>
+
+<span class="sd">        Uses scipy.special.expit to avoid overflow</span>
+<span class="sd">        error for very small input values z.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># return 1.0 / (1.0 + np.exp(-z))</span>
+        <span class="k">return</span> <span class="n">expit</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_sigmoid_gradient</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Compute gradient of the logistic function&quot;&quot;&quot;</span>
+        <span class="n">sg</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sigmoid</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">sg</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">sg</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_add_bias_unit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;column&#39;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Add bias unit (column or row of 1s) to array at index 0&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">how</span> <span class="o">==</span> <span class="s1">&#39;column&#39;</span><span class="p">:</span>
+            <span class="n">X_new</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+            <span class="n">X_new</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:]</span> <span class="o">=</span> <span class="n">X</span>
+        <span class="k">elif</span> <span class="n">how</span> <span class="o">==</span> <span class="s1">&#39;row&#39;</span><span class="p">:</span>
+            <span class="n">X_new</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+            <span class="n">X_new</span><span class="p">[</span><span class="mi">1</span><span class="p">:,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">X</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s1">&#39;`how` must be `column` or `row`&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">X_new</span>
+
+    <span class="k">def</span> <span class="nf">_feedforward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Compute feedforward step</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        -----------</span>
+<span class="sd">        X : array, shape = [n_samples, n_features]</span>
+<span class="sd">            Input layer with original features.</span>
+<span class="sd">        w1 : array, shape = [n_hidden_units, n_features]</span>
+<span class="sd">            Weight matrix for input layer -&gt; hidden layer.</span>
+<span class="sd">        w2 : array, shape = [n_output_units, n_hidden_units]</span>
+<span class="sd">            Weight matrix for hidden layer -&gt; output layer.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        ----------</span>
+<span class="sd">        a1 : array, shape = [n_samples, n_features+1]</span>
+<span class="sd">            Input values with bias unit.</span>
+<span class="sd">        z2 : array, shape = [n_hidden, n_samples]</span>
+<span class="sd">            Net input of hidden layer.</span>
+<span class="sd">        a2 : array, shape = [n_hidden+1, n_samples]</span>
+<span class="sd">            Activation of hidden layer.</span>
+<span class="sd">        z3 : array, shape = [n_output_units, n_samples]</span>
+<span class="sd">            Net input of output layer.</span>
+<span class="sd">        a3 : array, shape = [n_output_units, n_samples]</span>
+<span class="sd">            Activation of output layer.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">a1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_add_bias_unit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;column&#39;</span><span class="p">)</span>
+        <span class="n">z2</span> <span class="o">=</span> <span class="n">w1</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">a1</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+        <span class="n">a2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sigmoid</span><span class="p">(</span><span class="n">z2</span><span class="p">)</span>
+        <span class="n">a2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_add_bias_unit</span><span class="p">(</span><span class="n">a2</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;row&#39;</span><span class="p">)</span>
+        <span class="n">z3</span> <span class="o">=</span> <span class="n">w2</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">a2</span><span class="p">)</span>
+        <span class="n">a3</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sigmoid</span><span class="p">(</span><span class="n">z3</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">a1</span><span class="p">,</span> <span class="n">z2</span><span class="p">,</span> <span class="n">a2</span><span class="p">,</span> <span class="n">z3</span><span class="p">,</span> <span class="n">a3</span>
+
+    <span class="k">def</span> <span class="nf">_L2_reg</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lambda_</span><span class="p">,</span> <span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Compute L2-regularization cost&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">lambda_</span><span class="o">/</span><span class="mf">2.0</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">w1</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:]</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span>
+                                <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">w2</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:]</span> <span class="o">**</span> <span class="mi">2</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">_L1_reg</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lambda_</span><span class="p">,</span> <span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Compute L1-regularization cost&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">lambda_</span><span class="o">/</span><span class="mf">2.0</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">w1</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">+</span>
+                                <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">w2</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:])</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+
+    <span class="k">def</span> <span class="nf">_get_cost</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">y_enc</span><span class="p">,</span> <span class="n">output</span><span class="p">,</span> <span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Compute cost function.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        y_enc : array, shape = (n_labels, n_samples)</span>
+<span class="sd">            one-hot encoded class labels.</span>
+<span class="sd">        output : array, shape = [n_output_units, n_samples]</span>
+<span class="sd">            Activation of the output layer (feedforward)</span>
+<span class="sd">        w1 : array, shape = [n_hidden_units, n_features]</span>
+<span class="sd">            Weight matrix for input layer -&gt; hidden layer.</span>
+<span class="sd">        w2 : array, shape = [n_output_units, n_hidden_units]</span>
+<span class="sd">            Weight matrix for hidden layer -&gt; output layer.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        ---------</span>
+<span class="sd">        cost : float</span>
+<span class="sd">            Regularized cost.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">term1</span> <span class="o">=</span> <span class="o">-</span><span class="n">y_enc</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">output</span><span class="p">))</span>
+        <span class="n">term2</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">y_enc</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">output</span><span class="p">)</span>
+        <span class="n">cost</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">term1</span> <span class="o">-</span> <span class="n">term2</span><span class="p">)</span>
+        <span class="n">L1_term</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_L1_reg</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">l1</span><span class="p">,</span> <span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">)</span>
+        <span class="n">L2_term</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_L2_reg</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">l2</span><span class="p">,</span> <span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">)</span>
+        <span class="n">cost</span> <span class="o">=</span> <span class="n">cost</span> <span class="o">+</span> <span class="n">L1_term</span> <span class="o">+</span> <span class="n">L2_term</span>
+        <span class="k">return</span> <span class="n">cost</span>
+
+    <span class="k">def</span> <span class="nf">_get_gradient</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a1</span><span class="p">,</span> <span class="n">a2</span><span class="p">,</span> <span class="n">a3</span><span class="p">,</span> <span class="n">z2</span><span class="p">,</span> <span class="n">y_enc</span><span class="p">,</span> <span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; Compute gradient step using backpropagation.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ------------</span>
+<span class="sd">        a1 : array, shape = [n_samples, n_features+1]</span>
+<span class="sd">            Input values with bias unit.</span>
+<span class="sd">        a2 : array, shape = [n_hidden+1, n_samples]</span>
+<span class="sd">            Activation of hidden layer.</span>
+<span class="sd">        a3 : array, shape = [n_output_units, n_samples]</span>
+<span class="sd">            Activation of output layer.</span>
+<span class="sd">        z2 : array, shape = [n_hidden, n_samples]</span>
+<span class="sd">            Net input of hidden layer.</span>
+<span class="sd">        y_enc : array, shape = (n_labels, n_samples)</span>
+<span class="sd">            one-hot encoded class labels.</span>
+<span class="sd">        w1 : array, shape = [n_hidden_units, n_features]</span>
+<span class="sd">            Weight matrix for input layer -&gt; hidden layer.</span>
+<span class="sd">        w2 : array, shape = [n_output_units, n_hidden_units]</span>
+<span class="sd">            Weight matrix for hidden layer -&gt; output layer.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        ---------</span>
+<span class="sd">        grad1 : array, shape = [n_hidden_units, n_features]</span>
+<span class="sd">            Gradient of the weight matrix w1.</span>
+<span class="sd">        grad2 : array, shape = [n_output_units, n_hidden_units]</span>
+<span class="sd">            Gradient of the weight matrix w2.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># backpropagation</span>
+        <span class="n">sigma3</span> <span class="o">=</span> <span class="n">a3</span> <span class="o">-</span> <span class="n">y_enc</span>
+        <span class="n">z2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_add_bias_unit</span><span class="p">(</span><span class="n">z2</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;row&#39;</span><span class="p">)</span>
+        <span class="n">sigma2</span> <span class="o">=</span> <span class="n">w2</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">sigma3</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sigmoid_gradient</span><span class="p">(</span><span class="n">z2</span><span class="p">)</span>
+        <span class="n">sigma2</span> <span class="o">=</span> <span class="n">sigma2</span><span class="p">[</span><span class="mi">1</span><span class="p">:,</span> <span class="p">:]</span>
+        <span class="n">grad1</span> <span class="o">=</span> <span class="n">sigma2</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">a1</span><span class="p">)</span>
+        <span class="n">grad2</span> <span class="o">=</span> <span class="n">sigma3</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">a2</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+
+        <span class="c1"># regularize</span>
+        <span class="n">grad1</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:]</span> <span class="o">+=</span> <span class="p">(</span><span class="n">w1</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:]</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">l1</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">l2</span><span class="p">))</span>
+        <span class="n">grad2</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:]</span> <span class="o">+=</span> <span class="p">(</span><span class="n">w2</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:]</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">l1</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">l2</span><span class="p">))</span>
+
+        <span class="k">return</span> <span class="n">grad1</span><span class="p">,</span> <span class="n">grad2</span>
+
+    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Predict class labels</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        -----------</span>
+<span class="sd">        X : array, shape = [n_samples, n_features]</span>
+<span class="sd">            Input layer with original features.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">        ----------</span>
+<span class="sd">        y_pred : array, shape = [n_samples]</span>
+<span class="sd">            Predicted class labels.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s1">&#39;X must be a [n_samples, n_features] array.</span><span class="se">\n</span><span class="s1">&#39;</span>
+                                 <span class="s1">&#39;Use X[:,None] for 1-feature classification,&#39;</span>
+                                 <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">or X[[i]] for 1-sample classification&#39;</span><span class="p">)</span>
+
+        <span class="n">a1</span><span class="p">,</span> <span class="n">z2</span><span class="p">,</span> <span class="n">a2</span><span class="p">,</span> <span class="n">z3</span><span class="p">,</span> <span class="n">a3</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_feedforward</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">w1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">w2</span><span class="p">)</span>
+        <span class="n">y_pred</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">z3</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">y_pred</span>
+
+    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">print_progress</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; Learn weights from training data.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        -----------</span>
+<span class="sd">        X : array, shape = [n_samples, n_features]</span>
+<span class="sd">            Input layer with original features.</span>
+<span class="sd">        y : array, shape = [n_samples]</span>
+<span class="sd">            Target class labels.</span>
+<span class="sd">        print_progress : bool (default: False)</span>
+<span class="sd">            Prints progress as the number of epochs</span>
+<span class="sd">            to stderr.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">        ----------</span>
+<span class="sd">        self</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cost_</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">X_data</span><span class="p">,</span> <span class="n">y_data</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">copy</span><span class="p">(),</span> <span class="n">y</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">y_enc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_encode_labels</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_output</span><span class="p">)</span>
+
+        <span class="n">delta_w1_prev</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">w1</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+        <span class="n">delta_w2_prev</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">w2</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">epochs</span><span class="p">):</span>
+
+            <span class="c1"># adaptive learning rate</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">eta</span> <span class="o">/=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">decrease_const</span><span class="o">*</span><span class="n">i</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">print_progress</span><span class="p">:</span>
+                <span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\r</span><span class="s1">Epoch: </span><span class="si">%d</span><span class="s1">/</span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">epochs</span><span class="p">))</span>
+                <span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
+
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">shuffle</span><span class="p">:</span>
+                <span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">permutation</span><span class="p">(</span><span class="n">y_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+                <span class="n">X_data</span><span class="p">,</span> <span class="n">y_enc</span> <span class="o">=</span> <span class="n">X_data</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="n">y_enc</span><span class="p">[:,</span> <span class="n">idx</span><span class="p">]</span>
+
+            <span class="n">mini</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array_split</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">y_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="bp">self</span><span class="o">.</span><span class="n">minibatches</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="n">mini</span><span class="p">:</span>
+
+                <span class="c1"># feedforward</span>
+                <span class="n">a1</span><span class="p">,</span> <span class="n">z2</span><span class="p">,</span> <span class="n">a2</span><span class="p">,</span> <span class="n">z3</span><span class="p">,</span> <span class="n">a3</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_feedforward</span><span class="p">(</span><span class="n">X_data</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span>
+                                                       <span class="bp">self</span><span class="o">.</span><span class="n">w1</span><span class="p">,</span>
+                                                       <span class="bp">self</span><span class="o">.</span><span class="n">w2</span><span class="p">)</span>
+                <span class="n">cost</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_cost</span><span class="p">(</span><span class="n">y_enc</span><span class="o">=</span><span class="n">y_enc</span><span class="p">[:,</span> <span class="n">idx</span><span class="p">],</span>
+                                      <span class="n">output</span><span class="o">=</span><span class="n">a3</span><span class="p">,</span>
+                                      <span class="n">w1</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">w1</span><span class="p">,</span>
+                                      <span class="n">w2</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">w2</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">cost_</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cost</span><span class="p">)</span>
+
+                <span class="c1"># compute gradient via backpropagation</span>
+                <span class="n">grad1</span><span class="p">,</span> <span class="n">grad2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_gradient</span><span class="p">(</span><span class="n">a1</span><span class="o">=</span><span class="n">a1</span><span class="p">,</span> <span class="n">a2</span><span class="o">=</span><span class="n">a2</span><span class="p">,</span>
+                                                  <span class="n">a3</span><span class="o">=</span><span class="n">a3</span><span class="p">,</span> <span class="n">z2</span><span class="o">=</span><span class="n">z2</span><span class="p">,</span>
+                                                  <span class="n">y_enc</span><span class="o">=</span><span class="n">y_enc</span><span class="p">[:,</span> <span class="n">idx</span><span class="p">],</span>
+                                                  <span class="n">w1</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">w1</span><span class="p">,</span>
+                                                  <span class="n">w2</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">w2</span><span class="p">)</span>
+
+                <span class="n">delta_w1</span><span class="p">,</span> <span class="n">delta_w2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">eta</span> <span class="o">*</span> <span class="n">grad1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">eta</span> <span class="o">*</span> <span class="n">grad2</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">w1</span> <span class="o">-=</span> <span class="p">(</span><span class="n">delta_w1</span> <span class="o">+</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">alpha</span> <span class="o">*</span> <span class="n">delta_w1_prev</span><span class="p">))</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">w2</span> <span class="o">-=</span> <span class="p">(</span><span class="n">delta_w2</span> <span class="o">+</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">alpha</span> <span class="o">*</span> <span class="n">delta_w2_prev</span><span class="p">))</span>
+                <span class="n">delta_w1_prev</span><span class="p">,</span> <span class="n">delta_w2_prev</span> <span class="o">=</span> <span class="n">delta_w1</span><span class="p">,</span> <span class="n">delta_w2</span>
+
+        <span class="k">return</span> <span class="bp">self</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>In [15]:
+</pre></div>
+</div>
+<div class="highlight-ipython3"><div class="highlight"><pre>
+<span></span><span class="n">nn</span> <span class="o">=</span> <span class="n">NeuralNetMLP</span><span class="p">(</span><span class="n">n_output</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+                  <span class="n">n_features</span><span class="o">=</span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+                  <span class="n">n_hidden</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+                  <span class="n">l2</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+                  <span class="n">l1</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+                  <span class="n">epochs</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
+                  <span class="n">eta</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span>
+                  <span class="n">alpha</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span>
+                  <span class="n">decrease_const</span><span class="o">=</span><span class="mf">0.00001</span><span class="p">,</span>
+                  <span class="n">minibatches</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+                  <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                  <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>In [16]:
+</pre></div>
+</div>
+<div class="highlight-ipython3"><div class="highlight"><pre>
+<span></span><span class="n">nn</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">print_progress</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput container">
+<div class="container">
+</div>
+<div class="stderr container">
+<div class="highlight"><pre>
+Epoch: 1000/1000
+</pre></div></div>
+</div>
+<div class="nboutput nblast container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>Out[16]:
+</pre></div>
+</div>
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>&lt;__main__.NeuralNetMLP at 0x113abb780&gt;
+</pre></div>
+</div>
+</div>
+<div class="nbinput container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>In [17]:
+</pre></div>
+</div>
+<div class="highlight-ipython3"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">cost_</span><span class="p">)),</span> <span class="n">nn</span><span class="o">.</span><span class="n">cost_</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2000</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Cost&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Epochs * 50&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="c1"># plt.savefig(&#39;./figures/cost.png&#39;, dpi=300)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast container">
+<div class="container">
+</div>
+<div class="container">
+<img alt="../../_images/rasbt_py_ml_book_ch12_ch12_41_0.png" src="../../_images/rasbt_py_ml_book_ch12_ch12_41_0.png" />
+</div>
+</div>
+<div class="nbinput nblast container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>In [18]:
+</pre></div>
+</div>
+<div class="highlight-ipython3"><div class="highlight"><pre>
+<span></span><span class="n">batches</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array_split</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">cost_</span><span class="p">)),</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">cost_ary</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">cost_</span><span class="p">)</span>
+<span class="n">cost_avgs</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">cost_ary</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">batches</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>In [19]:
+</pre></div>
+</div>
+<div class="highlight-ipython3"><div class="highlight"><pre>
+<span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">cost_avgs</span><span class="p">)),</span> <span class="n">cost_avgs</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2000</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Cost&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Epochs&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="c1">#plt.savefig(&#39;./figures/cost2.png&#39;, dpi=300)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast container">
+<div class="container">
+</div>
+<div class="container">
+<img alt="../../_images/rasbt_py_ml_book_ch12_ch12_43_0.png" src="../../_images/rasbt_py_ml_book_ch12_ch12_43_0.png" />
+</div>
+</div>
+<div class="nbinput container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>In [20]:
+</pre></div>
+</div>
+<div class="highlight-ipython3"><div class="highlight"><pre>
+<span></span><span class="n">y_train_pred</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">version_info</span> <span class="o">&lt;</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">):</span>
+    <span class="n">acc</span> <span class="o">=</span> <span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">y_train</span> <span class="o">==</span> <span class="n">y_train_pred</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;float&#39;</span><span class="p">)</span> <span class="o">/</span>
+           <span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">acc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">y_train</span> <span class="o">==</span> <span class="n">y_train_pred</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">/</span> <span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Training accuracy: </span><span class="si">%.2f%%</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">acc</span> <span class="o">*</span> <span class="mi">100</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast container">
+<div class="container">
+</div>
+<div class="container">
+<div class="highlight"><pre>
+Training accuracy: 97.59%
+</pre></div></div>
+</div>
+<div class="nbinput container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>In [21]:
+</pre></div>
+</div>
+<div class="highlight-ipython3"><div class="highlight"><pre>
+<span></span><span class="n">y_test_pred</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">version_info</span> <span class="o">&lt;</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">):</span>
+    <span class="n">acc</span> <span class="o">=</span> <span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">y_test</span> <span class="o">==</span> <span class="n">y_test_pred</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;float&#39;</span><span class="p">)</span> <span class="o">/</span>
+           <span class="n">X_test</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">acc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">y_test</span> <span class="o">==</span> <span class="n">y_test_pred</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">/</span> <span class="n">X_test</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Test accuracy: </span><span class="si">%.2f%%</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">acc</span> <span class="o">*</span> <span class="mi">100</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast container">
+<div class="container">
+</div>
+<div class="container">
+<div class="highlight"><pre>
+Test accuracy: 95.62%
+</pre></div></div>
+</div>
+<div class="nbinput container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>In [22]:
+</pre></div>
+</div>
+<div class="highlight-ipython3"><div class="highlight"><pre>
+<span></span><span class="n">miscl_img</span> <span class="o">=</span> <span class="n">X_test</span><span class="p">[</span><span class="n">y_test</span> <span class="o">!=</span> <span class="n">y_test_pred</span><span class="p">][:</span><span class="mi">25</span><span class="p">]</span>
+<span class="n">correct_lab</span> <span class="o">=</span> <span class="n">y_test</span><span class="p">[</span><span class="n">y_test</span> <span class="o">!=</span> <span class="n">y_test_pred</span><span class="p">][:</span><span class="mi">25</span><span class="p">]</span>
+<span class="n">miscl_lab</span> <span class="o">=</span> <span class="n">y_test_pred</span><span class="p">[</span><span class="n">y_test</span> <span class="o">!=</span> <span class="n">y_test_pred</span><span class="p">][:</span><span class="mi">25</span><span class="p">]</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">,)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">25</span><span class="p">):</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">miscl_img</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Greys&#39;</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s1">&#39;nearest&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1">) t: </span><span class="si">%d</span><span class="s1"> p: </span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">correct_lab</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">miscl_lab</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([])</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="c1"># plt.savefig(&#39;./figures/mnist_miscl.png&#39;, dpi=300)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast container">
+<div class="container">
+</div>
+<div class="container">
+<img alt="../../_images/rasbt_py_ml_book_ch12_ch12_46_0.png" src="../../_images/rasbt_py_ml_book_ch12_ch12_46_0.png" />
+</div>
+</div>
+<div class="nbinput container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>In [23]:
+</pre></div>
+</div>
+<div class="highlight-ipython3"><div class="highlight"><pre>
+<span></span><span class="n">miscl_img</span> <span class="o">=</span> <span class="n">X_test</span><span class="p">[</span><span class="n">y_test</span> <span class="o">!=</span> <span class="n">y_test_pred</span><span class="p">][:</span><span class="mi">25</span><span class="p">]</span>
+<span class="n">correct_lab</span> <span class="o">=</span> <span class="n">y_test</span><span class="p">[</span><span class="n">y_test</span> <span class="o">!=</span> <span class="n">y_test_pred</span><span class="p">][:</span><span class="mi">25</span><span class="p">]</span>
+<span class="n">miscl_lab</span><span class="o">=</span> <span class="n">y_test_pred</span><span class="p">[</span><span class="n">y_test</span> <span class="o">!=</span> <span class="n">y_test_pred</span><span class="p">][:</span><span class="mi">25</span><span class="p">]</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">,)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">25</span><span class="p">):</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">miscl_img</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Greys&#39;</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s1">&#39;nearest&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1">) t: </span><span class="si">%d</span><span class="s1"> p: </span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">correct_lab</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">miscl_lab</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([])</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="c1"># plt.savefig(&#39;./figures/mnist_miscl.png&#39;, dpi=300)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast container">
+<div class="container">
+</div>
+<div class="container">
+<img alt="../../_images/rasbt_py_ml_book_ch12_ch12_47_0.png" src="../../_images/rasbt_py_ml_book_ch12_ch12_47_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="Training-an-artificial-neural-network">
+<h1>Training an artificial neural network<a class="headerlink" href="#Training-an-artificial-neural-network" title="Permalink to this headline">¶</a></h1>
+<p>...</p>
+<div class="nbinput container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>In [24]:
+</pre></div>
+</div>
+<div class="highlight-ipython3"><div class="highlight"><pre>
+<span></span><span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;./images/12_10.png&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>Out[24]:
+</pre></div>
+</div>
+<div class="container">
+<img alt="../../_images/rasbt_py_ml_book_ch12_ch12_52_0.png" src="../../_images/rasbt_py_ml_book_ch12_ch12_52_0.png" />
+</div>
+</div>
+<div class="nbinput container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>In [25]:
+</pre></div>
+</div>
+<div class="highlight-ipython3"><div class="highlight"><pre>
+<span></span><span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;./images/12_11.png&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">400</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>Out[25]:
+</pre></div>
+</div>
+<div class="container">
+<img alt="../../_images/rasbt_py_ml_book_ch12_ch12_55_0.png" src="../../_images/rasbt_py_ml_book_ch12_ch12_55_0.png" />
+</div>
+</div>
+<div class="nbinput container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>In [26]:
+</pre></div>
+</div>
+<div class="highlight-ipython3"><div class="highlight"><pre>
+<span></span><span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;./images/12_12.png&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>Out[26]:
+</pre></div>
+</div>
+<div class="container">
+<img alt="../../_images/rasbt_py_ml_book_ch12_ch12_56_0.png" src="../../_images/rasbt_py_ml_book_ch12_ch12_56_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="Developing-your-intuition-for-backpropagation">
+<h1>Developing your intuition for backpropagation<a class="headerlink" href="#Developing-your-intuition-for-backpropagation" title="Permalink to this headline">¶</a></h1>
+<p>...</p>
+</div>
+<div class="section" id="Debugging-neural-networks-with-gradient-checking">
+<h1>Debugging neural networks with gradient checking<a class="headerlink" href="#Debugging-neural-networks-with-gradient-checking" title="Permalink to this headline">¶</a></h1>
+<div class="nbinput container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>In [27]:
+</pre></div>
+</div>
+<div class="highlight-ipython3"><div class="highlight"><pre>
+<span></span><span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;./images/12_13.png&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>Out[27]:
+</pre></div>
+</div>
+<div class="container">
+<img alt="../../_images/rasbt_py_ml_book_ch12_ch12_61_0.png" src="../../_images/rasbt_py_ml_book_ch12_ch12_61_0.png" />
+</div>
+</div>
+<div class="nbinput container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>In [6]:
+</pre></div>
+</div>
+<div class="highlight-ipython3"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">scipy</span> <span class="k">import</span> <span class="n">__version__</span> <span class="k">as</span> <span class="n">scipy_ver</span>
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="k">import</span> <span class="n">__version__</span> <span class="k">as</span> <span class="n">numpy_ver</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The following code requires NumPy &gt;= 1.9.1. Your NumPy version is </span><span class="si">%s</span><span class="s1">.&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">numpy_ver</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The following code requires SciPy &gt;= 0.14.0. Your SciPy version is </span><span class="si">%s</span><span class="s1">. &#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">scipy_ver</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast container">
+<div class="container">
+</div>
+<div class="container">
+<div class="highlight"><pre>
+The following code requires NumPy &gt;= 1.9.1. Your NumPy version is 1.11.0.
+The following code requires SciPy &gt;= 0.14.0. Your SciPy version is 0.17.0.
+</pre></div></div>
+</div>
+<div class="nbinput nblast container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>In [5]:
+</pre></div>
+</div>
+<div class="highlight-ipython3"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy.special</span> <span class="k">import</span> <span class="n">expit</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+
+<span class="k">class</span> <span class="nc">MLPGradientCheck</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Feedforward neural network / Multi-layer perceptron classifier.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ------------</span>
+<span class="sd">    n_output : int</span>
+<span class="sd">        Number of output units, should be equal to the</span>
+<span class="sd">        number of unique class labels.</span>
+<span class="sd">    n_features : int</span>
+<span class="sd">        Number of features (dimensions) in the target dataset.</span>
+<span class="sd">        Should be equal to the number of columns in the X array.</span>
+<span class="sd">    n_hidden : int (default: 30)</span>
+<span class="sd">        Number of hidden units.</span>
+<span class="sd">    l1 : float (default: 0.0)</span>
+<span class="sd">        Lambda value for L1-regularization.</span>
+<span class="sd">        No regularization if l1=0.0 (default)</span>
+<span class="sd">    l2 : float (default: 0.0)</span>
+<span class="sd">        Lambda value for L2-regularization.</span>
+<span class="sd">        No regularization if l2=0.0 (default)</span>
+<span class="sd">    epochs : int (default: 500)</span>
+<span class="sd">        Number of passes over the training set.</span>
+<span class="sd">    eta : float (default: 0.001)</span>
+<span class="sd">        Learning rate.</span>
+<span class="sd">    alpha : float (default: 0.0)</span>
+<span class="sd">        Momentum constant. Factor multiplied with the</span>
+<span class="sd">        gradient of the previous epoch t-1 to improve</span>
+<span class="sd">        learning speed</span>
+<span class="sd">        w(t) := w(t) - (grad(t) + alpha*grad(t-1))</span>
+<span class="sd">    decrease_const : float (default: 0.0)</span>
+<span class="sd">        Decrease constant. Shrinks the learning rate</span>
+<span class="sd">        after each epoch via eta / (1 + epoch*decrease_const)</span>
+<span class="sd">    shuffle : bool (default: False)</span>
+<span class="sd">        Shuffles training data every epoch if True to prevent circles.</span>
+<span class="sd">    minibatches : int (default: 1)</span>
+<span class="sd">        Divides training data into k minibatches for efficiency.</span>
+<span class="sd">        Normal gradient descent learning if k=1 (default).</span>
+<span class="sd">    random_state : int (default: None)</span>
+<span class="sd">        Set random state for shuffling and initializing the weights.</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    -----------</span>
+<span class="sd">    cost_ : list</span>
+<span class="sd">        Sum of squared errors after each epoch.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_output</span><span class="p">,</span> <span class="n">n_features</span><span class="p">,</span> <span class="n">n_hidden</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>
+                 <span class="n">l1</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">l2</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">eta</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span>
+                 <span class="n">alpha</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">decrease_const</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                 <span class="n">minibatches</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+
+        <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">random_state</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_output</span> <span class="o">=</span> <span class="n">n_output</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_features</span> <span class="o">=</span> <span class="n">n_features</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_hidden</span> <span class="o">=</span> <span class="n">n_hidden</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">w1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">w2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_initialize_weights</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">l1</span> <span class="o">=</span> <span class="n">l1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">l2</span> <span class="o">=</span> <span class="n">l2</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">epochs</span> <span class="o">=</span> <span class="n">epochs</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">eta</span> <span class="o">=</span> <span class="n">eta</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span> <span class="o">=</span> <span class="n">alpha</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">decrease_const</span> <span class="o">=</span> <span class="n">decrease_const</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">shuffle</span> <span class="o">=</span> <span class="n">shuffle</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">minibatches</span> <span class="o">=</span> <span class="n">minibatches</span>
+
+    <span class="k">def</span> <span class="nf">_encode_labels</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Encode labels into one-hot representation</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ------------</span>
+<span class="sd">        y : array, shape = [n_samples]</span>
+<span class="sd">            Target values.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -----------</span>
+<span class="sd">        onehot : array, shape = (n_labels, n_samples)</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">onehot</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">k</span><span class="p">,</span> <span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+        <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">y</span><span class="p">):</span>
+            <span class="n">onehot</span><span class="p">[</span><span class="n">val</span><span class="p">,</span> <span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span>
+        <span class="k">return</span> <span class="n">onehot</span>
+
+    <span class="k">def</span> <span class="nf">_initialize_weights</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialize weights with small random numbers.&quot;&quot;&quot;</span>
+        <span class="n">w1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span>
+                               <span class="n">size</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">n_hidden</span><span class="o">*</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_features</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+        <span class="n">w1</span> <span class="o">=</span> <span class="n">w1</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_hidden</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_features</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">w2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span>
+                               <span class="n">size</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">n_output</span><span class="o">*</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_hidden</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+        <span class="n">w2</span> <span class="o">=</span> <span class="n">w2</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_output</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_hidden</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">w1</span><span class="p">,</span> <span class="n">w2</span>
+
+    <span class="k">def</span> <span class="nf">_sigmoid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Compute logistic function (sigmoid)</span>
+
+<span class="sd">        Uses scipy.special.expit to avoid overflow</span>
+<span class="sd">        error for very small input values z.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># return 1.0 / (1.0 + np.exp(-z))</span>
+        <span class="k">return</span> <span class="n">expit</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_sigmoid_gradient</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Compute gradient of the logistic function&quot;&quot;&quot;</span>
+        <span class="n">sg</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sigmoid</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">sg</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">sg</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_add_bias_unit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;column&#39;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Add bias unit (column or row of 1s) to array at index 0&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">how</span> <span class="o">==</span> <span class="s1">&#39;column&#39;</span><span class="p">:</span>
+            <span class="n">X_new</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+            <span class="n">X_new</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:]</span> <span class="o">=</span> <span class="n">X</span>
+        <span class="k">elif</span> <span class="n">how</span> <span class="o">==</span> <span class="s1">&#39;row&#39;</span><span class="p">:</span>
+            <span class="n">X_new</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+            <span class="n">X_new</span><span class="p">[</span><span class="mi">1</span><span class="p">:,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">X</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s1">&#39;`how` must be `column` or `row`&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">X_new</span>
+
+    <span class="k">def</span> <span class="nf">_feedforward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Compute feedforward step</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        -----------</span>
+<span class="sd">        X : array, shape = [n_samples, n_features]</span>
+<span class="sd">            Input layer with original features.</span>
+<span class="sd">        w1 : array, shape = [n_hidden_units, n_features]</span>
+<span class="sd">            Weight matrix for input layer -&gt; hidden layer.</span>
+<span class="sd">        w2 : array, shape = [n_output_units, n_hidden_units]</span>
+<span class="sd">            Weight matrix for hidden layer -&gt; output layer.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        ----------</span>
+<span class="sd">        a1 : array, shape = [n_samples, n_features+1]</span>
+<span class="sd">            Input values with bias unit.</span>
+<span class="sd">        z2 : array, shape = [n_hidden, n_samples]</span>
+<span class="sd">            Net input of hidden layer.</span>
+<span class="sd">        a2 : array, shape = [n_hidden+1, n_samples]</span>
+<span class="sd">            Activation of hidden layer.</span>
+<span class="sd">        z3 : array, shape = [n_output_units, n_samples]</span>
+<span class="sd">            Net input of output layer.</span>
+<span class="sd">        a3 : array, shape = [n_output_units, n_samples]</span>
+<span class="sd">            Activation of output layer.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">a1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_add_bias_unit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;column&#39;</span><span class="p">)</span>
+        <span class="n">z2</span> <span class="o">=</span> <span class="n">w1</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">a1</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+        <span class="n">a2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sigmoid</span><span class="p">(</span><span class="n">z2</span><span class="p">)</span>
+        <span class="n">a2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_add_bias_unit</span><span class="p">(</span><span class="n">a2</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;row&#39;</span><span class="p">)</span>
+        <span class="n">z3</span> <span class="o">=</span> <span class="n">w2</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">a2</span><span class="p">)</span>
+        <span class="n">a3</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sigmoid</span><span class="p">(</span><span class="n">z3</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">a1</span><span class="p">,</span> <span class="n">z2</span><span class="p">,</span> <span class="n">a2</span><span class="p">,</span> <span class="n">z3</span><span class="p">,</span> <span class="n">a3</span>
+
+    <span class="k">def</span> <span class="nf">_L2_reg</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lambda_</span><span class="p">,</span> <span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Compute L2-regularization cost&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">lambda_</span><span class="o">/</span><span class="mf">2.0</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">w1</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:]</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span>
+                                <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">w2</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:]</span> <span class="o">**</span> <span class="mi">2</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">_L1_reg</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lambda_</span><span class="p">,</span> <span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Compute L1-regularization cost&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">lambda_</span><span class="o">/</span><span class="mf">2.0</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">w1</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">+</span>
+                                <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">w2</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:])</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+
+    <span class="k">def</span> <span class="nf">_get_cost</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">y_enc</span><span class="p">,</span> <span class="n">output</span><span class="p">,</span> <span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Compute cost function.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        y_enc : array, shape = (n_labels, n_samples)</span>
+<span class="sd">            one-hot encoded class labels.</span>
+<span class="sd">        output : array, shape = [n_output_units, n_samples]</span>
+<span class="sd">            Activation of the output layer (feedforward)</span>
+<span class="sd">        w1 : array, shape = [n_hidden_units, n_features]</span>
+<span class="sd">            Weight matrix for input layer -&gt; hidden layer.</span>
+<span class="sd">        w2 : array, shape = [n_output_units, n_hidden_units]</span>
+<span class="sd">            Weight matrix for hidden layer -&gt; output layer.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        ---------</span>
+<span class="sd">        cost : float</span>
+<span class="sd">            Regularized cost.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">term1</span> <span class="o">=</span> <span class="o">-</span><span class="n">y_enc</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">output</span><span class="p">))</span>
+        <span class="n">term2</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">y_enc</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">output</span><span class="p">)</span>
+        <span class="n">cost</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">term1</span> <span class="o">-</span> <span class="n">term2</span><span class="p">)</span>
+        <span class="n">L1_term</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_L1_reg</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">l1</span><span class="p">,</span> <span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">)</span>
+        <span class="n">L2_term</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_L2_reg</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">l2</span><span class="p">,</span> <span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">)</span>
+        <span class="n">cost</span> <span class="o">=</span> <span class="n">cost</span> <span class="o">+</span> <span class="n">L1_term</span> <span class="o">+</span> <span class="n">L2_term</span>
+        <span class="k">return</span> <span class="n">cost</span>
+
+    <span class="k">def</span> <span class="nf">_get_gradient</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a1</span><span class="p">,</span> <span class="n">a2</span><span class="p">,</span> <span class="n">a3</span><span class="p">,</span> <span class="n">z2</span><span class="p">,</span> <span class="n">y_enc</span><span class="p">,</span> <span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; Compute gradient step using backpropagation.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ------------</span>
+<span class="sd">        a1 : array, shape = [n_samples, n_features+1]</span>
+<span class="sd">            Input values with bias unit.</span>
+<span class="sd">        a2 : array, shape = [n_hidden+1, n_samples]</span>
+<span class="sd">            Activation of hidden layer.</span>
+<span class="sd">        a3 : array, shape = [n_output_units, n_samples]</span>
+<span class="sd">            Activation of output layer.</span>
+<span class="sd">        z2 : array, shape = [n_hidden, n_samples]</span>
+<span class="sd">            Net input of hidden layer.</span>
+<span class="sd">        y_enc : array, shape = (n_labels, n_samples)</span>
+<span class="sd">            one-hot encoded class labels.</span>
+<span class="sd">        w1 : array, shape = [n_hidden_units, n_features]</span>
+<span class="sd">            Weight matrix for input layer -&gt; hidden layer.</span>
+<span class="sd">        w2 : array, shape = [n_output_units, n_hidden_units]</span>
+<span class="sd">            Weight matrix for hidden layer -&gt; output layer.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        ---------</span>
+<span class="sd">        grad1 : array, shape = [n_hidden_units, n_features]</span>
+<span class="sd">            Gradient of the weight matrix w1.</span>
+<span class="sd">        grad2 : array, shape = [n_output_units, n_hidden_units]</span>
+<span class="sd">            Gradient of the weight matrix w2.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># backpropagation</span>
+        <span class="n">sigma3</span> <span class="o">=</span> <span class="n">a3</span> <span class="o">-</span> <span class="n">y_enc</span>
+        <span class="n">z2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_add_bias_unit</span><span class="p">(</span><span class="n">z2</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;row&#39;</span><span class="p">)</span>
+        <span class="n">sigma2</span> <span class="o">=</span> <span class="n">w2</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">sigma3</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sigmoid_gradient</span><span class="p">(</span><span class="n">z2</span><span class="p">)</span>
+        <span class="n">sigma2</span> <span class="o">=</span> <span class="n">sigma2</span><span class="p">[</span><span class="mi">1</span><span class="p">:,</span> <span class="p">:]</span>
+        <span class="n">grad1</span> <span class="o">=</span> <span class="n">sigma2</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">a1</span><span class="p">)</span>
+        <span class="n">grad2</span> <span class="o">=</span> <span class="n">sigma3</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">a2</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+
+        <span class="c1"># regularize</span>
+        <span class="n">grad1</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:]</span> <span class="o">+=</span> <span class="p">(</span><span class="n">w1</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:]</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">l1</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">l2</span><span class="p">))</span>
+        <span class="n">grad2</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:]</span> <span class="o">+=</span> <span class="p">(</span><span class="n">w2</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:]</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">l1</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">l2</span><span class="p">))</span>
+
+        <span class="k">return</span> <span class="n">grad1</span><span class="p">,</span> <span class="n">grad2</span>
+
+    <span class="k">def</span> <span class="nf">_gradient_checking</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y_enc</span><span class="p">,</span> <span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">,</span> <span class="n">grad1</span><span class="p">,</span> <span class="n">grad2</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; Apply gradient checking (for debugging only)</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        ---------</span>
+<span class="sd">        relative_error : float</span>
+<span class="sd">          Relative error between the numerically</span>
+<span class="sd">          approximated gradients and the backpropagated gradients.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">num_grad1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">w1</span><span class="p">))</span>
+        <span class="n">epsilon_ary1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">w1</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">w1</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">w1</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
+                <span class="n">epsilon_ary1</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">epsilon</span>
+                <span class="n">a1</span><span class="p">,</span> <span class="n">z2</span><span class="p">,</span> <span class="n">a2</span><span class="p">,</span> <span class="n">z3</span><span class="p">,</span> <span class="n">a3</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_feedforward</span><span class="p">(</span><span class="n">X</span><span class="p">,</span>
+                                                       <span class="n">w1</span> <span class="o">-</span> <span class="n">epsilon_ary1</span><span class="p">,</span> <span class="n">w2</span><span class="p">)</span>
+                <span class="n">cost1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_cost</span><span class="p">(</span><span class="n">y_enc</span><span class="p">,</span> <span class="n">a3</span><span class="p">,</span> <span class="n">w1</span><span class="o">-</span><span class="n">epsilon_ary1</span><span class="p">,</span> <span class="n">w2</span><span class="p">)</span>
+                <span class="n">a1</span><span class="p">,</span> <span class="n">z2</span><span class="p">,</span> <span class="n">a2</span><span class="p">,</span> <span class="n">z3</span><span class="p">,</span> <span class="n">a3</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_feedforward</span><span class="p">(</span><span class="n">X</span><span class="p">,</span>
+                                                       <span class="n">w1</span> <span class="o">+</span> <span class="n">epsilon_ary1</span><span class="p">,</span> <span class="n">w2</span><span class="p">)</span>
+                <span class="n">cost2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_cost</span><span class="p">(</span><span class="n">y_enc</span><span class="p">,</span> <span class="n">a3</span><span class="p">,</span> <span class="n">w1</span> <span class="o">+</span> <span class="n">epsilon_ary1</span><span class="p">,</span> <span class="n">w2</span><span class="p">)</span>
+                <span class="n">num_grad1</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">cost2</span> <span class="o">-</span> <span class="n">cost1</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">epsilon</span><span class="p">)</span>
+                <span class="n">epsilon_ary1</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="n">num_grad2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">w2</span><span class="p">))</span>
+        <span class="n">epsilon_ary2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">w2</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">w2</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">w2</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
+                <span class="n">epsilon_ary2</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">epsilon</span>
+                <span class="n">a1</span><span class="p">,</span> <span class="n">z2</span><span class="p">,</span> <span class="n">a2</span><span class="p">,</span> <span class="n">z3</span><span class="p">,</span> <span class="n">a3</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_feedforward</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">w1</span><span class="p">,</span>
+                                                       <span class="n">w2</span> <span class="o">-</span> <span class="n">epsilon_ary2</span><span class="p">)</span>
+                <span class="n">cost1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_cost</span><span class="p">(</span><span class="n">y_enc</span><span class="p">,</span> <span class="n">a3</span><span class="p">,</span> <span class="n">w1</span><span class="p">,</span> <span class="n">w2</span> <span class="o">-</span> <span class="n">epsilon_ary2</span><span class="p">)</span>
+                <span class="n">a1</span><span class="p">,</span> <span class="n">z2</span><span class="p">,</span> <span class="n">a2</span><span class="p">,</span> <span class="n">z3</span><span class="p">,</span> <span class="n">a3</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_feedforward</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">w1</span><span class="p">,</span>
+                                                       <span class="n">w2</span> <span class="o">+</span> <span class="n">epsilon_ary2</span><span class="p">)</span>
+                <span class="n">cost2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_cost</span><span class="p">(</span><span class="n">y_enc</span><span class="p">,</span> <span class="n">a3</span><span class="p">,</span> <span class="n">w1</span><span class="p">,</span> <span class="n">w2</span> <span class="o">+</span> <span class="n">epsilon_ary2</span><span class="p">)</span>
+                <span class="n">num_grad2</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">cost2</span> <span class="o">-</span> <span class="n">cost1</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">epsilon</span><span class="p">)</span>
+                <span class="n">epsilon_ary2</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="n">num_grad</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">num_grad1</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="n">num_grad2</span><span class="o">.</span><span class="n">flatten</span><span class="p">()))</span>
+        <span class="n">grad</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">grad1</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="n">grad2</span><span class="o">.</span><span class="n">flatten</span><span class="p">()))</span>
+        <span class="n">norm1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">num_grad</span> <span class="o">-</span> <span class="n">grad</span><span class="p">)</span>
+        <span class="n">norm2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">num_grad</span><span class="p">)</span>
+        <span class="n">norm3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">grad</span><span class="p">)</span>
+        <span class="n">relative_error</span> <span class="o">=</span> <span class="n">norm1</span> <span class="o">/</span> <span class="p">(</span><span class="n">norm2</span> <span class="o">+</span> <span class="n">norm3</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">relative_error</span>
+
+    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Predict class labels</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        -----------</span>
+<span class="sd">        X : array, shape = [n_samples, n_features]</span>
+<span class="sd">            Input layer with original features.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">        ----------</span>
+<span class="sd">        y_pred : array, shape = [n_samples]</span>
+<span class="sd">            Predicted class labels.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s1">&#39;X must be a [n_samples, n_features] array.</span><span class="se">\n</span><span class="s1">&#39;</span>
+                                 <span class="s1">&#39;Use X[:,None] for 1-feature classification,&#39;</span>
+                                 <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">or X[[i]] for 1-sample classification&#39;</span><span class="p">)</span>
+
+        <span class="n">a1</span><span class="p">,</span> <span class="n">z2</span><span class="p">,</span> <span class="n">a2</span><span class="p">,</span> <span class="n">z3</span><span class="p">,</span> <span class="n">a3</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_feedforward</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">w1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">w2</span><span class="p">)</span>
+        <span class="n">y_pred</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">z3</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">y_pred</span>
+
+    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">print_progress</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; Learn weights from training data.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        -----------</span>
+<span class="sd">        X : array, shape = [n_samples, n_features]</span>
+<span class="sd">            Input layer with original features.</span>
+<span class="sd">        y : array, shape = [n_samples]</span>
+<span class="sd">            Target class labels.</span>
+<span class="sd">        print_progress : bool (default: False)</span>
+<span class="sd">            Prints progress as the number of epochs</span>
+<span class="sd">            to stderr.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">        ----------</span>
+<span class="sd">        self</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cost_</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">X_data</span><span class="p">,</span> <span class="n">y_data</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">copy</span><span class="p">(),</span> <span class="n">y</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">y_enc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_encode_labels</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_output</span><span class="p">)</span>
+
+        <span class="n">delta_w1_prev</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">w1</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+        <span class="n">delta_w2_prev</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">w2</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">epochs</span><span class="p">):</span>
+
+            <span class="c1"># adaptive learning rate</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">eta</span> <span class="o">/=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">decrease_const</span><span class="o">*</span><span class="n">i</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">print_progress</span><span class="p">:</span>
+                <span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\r</span><span class="s1">Epoch: </span><span class="si">%d</span><span class="s1">/</span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">epochs</span><span class="p">))</span>
+                <span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
+
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">shuffle</span><span class="p">:</span>
+                <span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">permutation</span><span class="p">(</span><span class="n">y_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+                <span class="n">X_data</span><span class="p">,</span> <span class="n">y_enc</span> <span class="o">=</span> <span class="n">X_data</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="n">y_enc</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+
+            <span class="n">mini</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array_split</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">y_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="bp">self</span><span class="o">.</span><span class="n">minibatches</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="n">mini</span><span class="p">:</span>
+
+                <span class="c1"># feedforward</span>
+                <span class="n">a1</span><span class="p">,</span> <span class="n">z2</span><span class="p">,</span> <span class="n">a2</span><span class="p">,</span> <span class="n">z3</span><span class="p">,</span> <span class="n">a3</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_feedforward</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span>
+                                                       <span class="bp">self</span><span class="o">.</span><span class="n">w1</span><span class="p">,</span>
+                                                       <span class="bp">self</span><span class="o">.</span><span class="n">w2</span><span class="p">)</span>
+                <span class="n">cost</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_cost</span><span class="p">(</span><span class="n">y_enc</span><span class="o">=</span><span class="n">y_enc</span><span class="p">[:,</span> <span class="n">idx</span><span class="p">],</span>
+                                      <span class="n">output</span><span class="o">=</span><span class="n">a3</span><span class="p">,</span>
+                                      <span class="n">w1</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">w1</span><span class="p">,</span>
+                                      <span class="n">w2</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">w2</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">cost_</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cost</span><span class="p">)</span>
+
+                <span class="c1"># compute gradient via backpropagation</span>
+                <span class="n">grad1</span><span class="p">,</span> <span class="n">grad2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_gradient</span><span class="p">(</span><span class="n">a1</span><span class="o">=</span><span class="n">a1</span><span class="p">,</span> <span class="n">a2</span><span class="o">=</span><span class="n">a2</span><span class="p">,</span>
+                                                  <span class="n">a3</span><span class="o">=</span><span class="n">a3</span><span class="p">,</span> <span class="n">z2</span><span class="o">=</span><span class="n">z2</span><span class="p">,</span>
+                                                  <span class="n">y_enc</span><span class="o">=</span><span class="n">y_enc</span><span class="p">[:,</span> <span class="n">idx</span><span class="p">],</span>
+                                                  <span class="n">w1</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">w1</span><span class="p">,</span>
+                                                  <span class="n">w2</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">w2</span><span class="p">)</span>
+
+                <span class="c1"># start gradient checking</span>
+                <span class="n">grad_diff</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gradient_checking</span><span class="p">(</span><span class="n">X</span><span class="o">=</span><span class="n">X_data</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span>
+                                                    <span class="n">y_enc</span><span class="o">=</span><span class="n">y_enc</span><span class="p">[:,</span> <span class="n">idx</span><span class="p">],</span>
+                                                    <span class="n">w1</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">w1</span><span class="p">,</span>
+                                                    <span class="n">w2</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">w2</span><span class="p">,</span>
+                                                    <span class="n">epsilon</span><span class="o">=</span><span class="mi">1</span><span class="n">e</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span>
+                                                    <span class="n">grad1</span><span class="o">=</span><span class="n">grad1</span><span class="p">,</span>
+                                                    <span class="n">grad2</span><span class="o">=</span><span class="n">grad2</span><span class="p">)</span>
+
+
+                <span class="k">if</span> <span class="n">grad_diff</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="n">e</span><span class="o">-</span><span class="mi">7</span><span class="p">:</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Ok: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">grad_diff</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="n">grad_diff</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="n">e</span><span class="o">-</span><span class="mi">4</span><span class="p">:</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Warning: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">grad_diff</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;PROBLEM: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">grad_diff</span><span class="p">)</span>
+
+                <span class="c1"># update weights; [alpha * delta_w_prev] for momentum learning</span>
+                <span class="n">delta_w1</span><span class="p">,</span> <span class="n">delta_w2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">eta</span> <span class="o">*</span> <span class="n">grad1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">eta</span> <span class="o">*</span> <span class="n">grad2</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">w1</span> <span class="o">-=</span> <span class="p">(</span><span class="n">delta_w1</span> <span class="o">+</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">alpha</span> <span class="o">*</span> <span class="n">delta_w1_prev</span><span class="p">))</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">w2</span> <span class="o">-=</span> <span class="p">(</span><span class="n">delta_w2</span> <span class="o">+</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">alpha</span> <span class="o">*</span> <span class="n">delta_w2_prev</span><span class="p">))</span>
+                <span class="n">delta_w1_prev</span><span class="p">,</span> <span class="n">delta_w2_prev</span> <span class="o">=</span> <span class="n">delta_w1</span><span class="p">,</span> <span class="n">delta_w2</span>
+
+        <span class="k">return</span> <span class="bp">self</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>In [29]:
+</pre></div>
+</div>
+<div class="highlight-ipython3"><div class="highlight"><pre>
+<span></span><span class="n">nn_check</span> <span class="o">=</span> <span class="n">MLPGradientCheck</span><span class="p">(</span><span class="n">n_output</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+                            <span class="n">n_features</span><span class="o">=</span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+                            <span class="n">n_hidden</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+                            <span class="n">l2</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+                            <span class="n">l1</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+                            <span class="n">epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+                            <span class="n">eta</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span>
+                            <span class="n">alpha</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+                            <span class="n">decrease_const</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+                            <span class="n">minibatches</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                            <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                            <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>In [30]:
+</pre></div>
+</div>
+<div class="highlight-ipython3"><div class="highlight"><pre>
+<span></span><span class="n">nn_check</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">[:</span><span class="mi">5</span><span class="p">],</span> <span class="n">y_train</span><span class="p">[:</span><span class="mi">5</span><span class="p">],</span> <span class="n">print_progress</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput container">
+<div class="container">
+</div>
+<div class="container">
+<div class="highlight"><pre>
+Ok: 2.55068505986e-10
+Ok: 2.93547837023e-10
+Ok: 2.37449571314e-10
+Ok: 3.08194323691e-10
+Ok: 3.38249440642e-10
+Ok: 3.57890221135e-10
+Ok: 2.19231256383e-10
+Ok: 2.36583740198e-10
+Ok: 3.43584860701e-10
+Ok: 2.13345208113e-10
+</pre></div></div>
+</div>
+<div class="nboutput nblast container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>Out[30]:
+</pre></div>
+</div>
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>&lt;__main__.MLPGradientCheck at 0x1134f7ef0&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Convergence-in-neural-networks">
+<h1>Convergence in neural networks<a class="headerlink" href="#Convergence-in-neural-networks" title="Permalink to this headline">¶</a></h1>
+<div class="nbinput container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>In [31]:
+</pre></div>
+</div>
+<div class="highlight-ipython3"><div class="highlight"><pre>
+<span></span><span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;./images/12_14.png&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>Out[31]:
+</pre></div>
+</div>
+<div class="container">
+<img alt="../../_images/rasbt_py_ml_book_ch12_ch12_68_0.png" src="../../_images/rasbt_py_ml_book_ch12_ch12_68_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="Other-neural-network-architectures">
+<h1>Other neural network architectures<a class="headerlink" href="#Other-neural-network-architectures" title="Permalink to this headline">¶</a></h1>
+<p>...</p>
+<div class="nbinput container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>In [32]:
+</pre></div>
+</div>
+<div class="highlight-ipython3"><div class="highlight"><pre>
+<span></span><span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;./images/12_15.png&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">400</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>Out[32]:
+</pre></div>
+</div>
+<div class="container">
+<img alt="../../_images/rasbt_py_ml_book_ch12_ch12_73_0.png" src="../../_images/rasbt_py_ml_book_ch12_ch12_73_0.png" />
+</div>
+</div>
+<div class="nbinput container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>In [33]:
+</pre></div>
+</div>
+<div class="highlight-ipython3"><div class="highlight"><pre>
+<span></span><span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;./images/12_16.png&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">700</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>Out[33]:
+</pre></div>
+</div>
+<div class="container">
+<img alt="../../_images/rasbt_py_ml_book_ch12_ch12_74_0.png" src="../../_images/rasbt_py_ml_book_ch12_ch12_74_0.png" />
+</div>
+</div>
+<div class="nbinput container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>In [34]:
+</pre></div>
+</div>
+<div class="highlight-ipython3"><div class="highlight"><pre>
+<span></span><span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;./images/12_17.png&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">400</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>Out[34]:
+</pre></div>
+</div>
+<div class="container">
+<img alt="../../_images/rasbt_py_ml_book_ch12_ch12_77_0.png" src="../../_images/rasbt_py_ml_book_ch12_ch12_77_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="A-few-last-words-about-neural-network-implementation">
+<h1>A few last words about neural network implementation<a class="headerlink" href="#A-few-last-words-about-neural-network-implementation" title="Permalink to this headline">¶</a></h1>
+<p>...</p>
+</div>
+<div class="section" id="Summary">
+<h1>Summary<a class="headerlink" href="#Summary" title="Permalink to this headline">¶</a></h1>
+<p>...</p>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Scott Ming.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

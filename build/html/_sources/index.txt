@@ -18,4 +18,4 @@ Python 和数据科学
     
     beginning/index
     base/index
-    tool/index
+    tools/index
